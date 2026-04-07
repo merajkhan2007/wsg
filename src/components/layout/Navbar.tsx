@@ -1,0 +1,417 @@
+"use client";
+
+import Link from 'next/link';
+import { Search, ShoppingCart, Heart, User, Menu, X } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import { sellerLinks } from './SellerSidebar';
+import { adminLinks } from './AdminSidebar';
+
+export default function Navbar() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
+  const pathname = usePathname();
+  const router = useRouter();
+  const [user, setUser] = useState<any>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // Search States
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [isSearching, setIsSearching] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const searchRef = useRef<HTMLDivElement>(null);
+  const mobileSearchRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    
+    const updateCartCount = () => {
+      const cart = localStorage.getItem('cart');
+      if (cart) {
+        const items = JSON.parse(cart);
+        setCartCount(items.reduce((sum: number, item: any) => sum + item.quantity, 0));
+      } else {
+        setCartCount(0);
+      }
+    };
+
+    updateCartCount();
+    window.addEventListener('cart_updated', updateCartCount);
+
+    const checkUser = () => {
+      const userData = localStorage.getItem('user');
+      if (userData) {
+        try {
+          setUser(JSON.parse(userData));
+        } catch (e) {
+          setUser(null);
+        }
+      } else {
+        setUser(null);
+      }
+    };
+
+    checkUser();
+    // Dispatching a custom event on login/logout can update this immediately,
+    // otherwise it will update on page refresh or when login page redirects.
+    window.addEventListener('user_updated', checkUser);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('cart_updated', updateCartCount);
+      window.removeEventListener('user_updated', checkUser);
+    };
+  }, []);
+
+  // Handle Search Fetching
+  useEffect(() => {
+    if (searchQuery.trim().length === 0) {
+      setSearchResults([]);
+      setShowDropdown(false);
+      return;
+    }
+
+    const delayDebounceFn = setTimeout(() => {
+      setIsSearching(true);
+      fetch(`/api/products?q=${encodeURIComponent(searchQuery)}`)
+        .then(res => res.json())
+        .then(data => {
+          if (Array.isArray(data)) {
+             setSearchResults(data.slice(0, 5) as never[]); 
+             setShowDropdown(true);
+          }
+        })
+        .catch(console.error)
+        .finally(() => setIsSearching(false));
+    }, 300);
+
+    return () => clearTimeout(delayDebounceFn);
+  }, [searchQuery]);
+
+  // Handle Click Outside Search
+  useEffect(() => {
+    const handleClickOutside = (event: any) => {
+      const clickedDesktop = searchRef.current && searchRef.current.contains(event.target);
+      const clickedMobile = mobileSearchRef.current && mobileSearchRef.current.contains(event.target);
+      if (!clickedDesktop && !clickedMobile) {
+        setShowDropdown(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  return (
+    <>
+      <nav className="w-full z-50 transition-all duration-300 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07)] sticky top-0">
+        
+        {/* Top Header - Light */}
+        <div className="bg-[#f5f5f7] h-[70px] flex items-center shadow-sm relative z-20">
+          <div className="w-full mx-auto px-4 sm:px-8 lg:px-12 flex justify-between items-center">
+            
+            {/* LEFT: Logo & Brand */}
+            <div className="flex items-center gap-3">
+              <button 
+                onClick={() => setIsMobileMenuOpen(true)}
+                className="lg:hidden p-1 text-gray-700 hover:text-brand-pink transition-colors"
+              >
+                <Menu size={24} />
+              </button>
+              <Link href="/" className="flex items-center gap-3 group">
+                <div className="h-[50px] sm:h-[60px] flex items-center justify-center drop-shadow-sm">
+                  <img src="/logo-train.png" alt="WeSoulGifts" className="w-auto h-full object-contain group-hover:-translate-y-0.5 transition-transform duration-300" />
+                </div>
+                <div className="hidden sm:flex flex-col">
+                  <span className="font-bold text-gray-900 text-[18px] tracking-tight leading-none font-sans">WeSoulGifts</span>
+                  <span className="text-[11px] text-gray-500 mt-1 font-sans">Handmade with Love</span>
+                </div>
+              </Link>
+            </div>
+
+            {/* CENTER: Search Bar */}
+            <div className="hidden lg:flex flex-1 max-w-[500px] mx-8 relative" ref={searchRef}>
+               <form 
+                 onSubmit={(e) => { e.preventDefault(); setShowDropdown(false); router.push(`/shop?q=${searchQuery}`); }}
+                 className="w-full relative"
+               >
+                 <input 
+                   type="text" 
+                   value={searchQuery}
+                   onChange={(e) => setSearchQuery(e.target.value)}
+                   onFocus={() => { if (searchResults.length > 0) setShowDropdown(true); }}
+                   placeholder="Search for gifts, handmade items..." 
+                   className="w-full bg-white border border-[#ddd] rounded-[30px] py-[10px] pl-[20px] pr-[50px] text-sm text-gray-700 focus:outline-none focus:border-brand-pink transition-colors shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)]"
+                 />
+                 <button type="submit" className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-brand-pink transition-colors p-1">
+                   {isSearching ? <span className="animate-spin w-4 h-4 border-2 border-brand-pink border-t-transparent rounded-full block"></span> : <Search size={20} />}
+                 </button>
+               </form>
+               
+               {/* Search Dropdown */}
+               {showDropdown && (
+                 <div className="absolute top-[50px] left-0 w-full bg-white rounded-2xl shadow-soft border border-gray-100 overflow-hidden z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+                    {searchResults.length > 0 ? (
+                      <div>
+                        {searchResults.map((product: any) => {
+                           let displayImage = product.image || 'https://images.unsplash.com/photo-1513201099705-a9746e1e201f?q=80&w=100';
+                           if (product.images) {
+                             try {
+                               const imgs = typeof product.images === 'string' ? JSON.parse(product.images) : product.images;
+                               if (imgs.length > 0) displayImage = imgs[0];
+                             } catch(e){}
+                           }
+                           return (
+                             <Link 
+                               key={product.id} 
+                               href={`/product/${product.id}`} 
+                               className="flex items-center gap-3 p-3 hover:bg-surface-light border-b border-gray-50 transition-colors" 
+                               onClick={() => { setShowDropdown(false); setSearchQuery(''); }}
+                             >
+                               <img src={displayImage} alt="Product" className="w-10 h-10 object-cover rounded-md shadow-sm" />
+                               <div className="flex-1 overflow-hidden">
+                                 <h4 className="text-xs font-semibold text-gray-900 truncate">{product.title}</h4>
+                                 <span className="text-brand-pink font-bold text-[11px] mt-0.5 block">₹{product.price}</span>
+                               </div>
+                             </Link>
+                           );
+                        })}
+                        <Link 
+                          href={`/shop?q=${searchQuery}`}
+                          className="block p-3 text-center text-xs font-bold text-white bg-brand-pink hover:bg-brand-darkPink transition-colors"
+                          onClick={() => { setShowDropdown(false); }}
+                        >
+                          View all results 
+                        </Link>
+                      </div>
+                    ) : (
+                      <div className="p-5 text-center text-sm text-gray-500 font-medium">No gifts found for "{searchQuery}"</div>
+                    )}
+                 </div>
+               )}
+            </div>
+
+            {/* RIGHT: Actions */}
+            <div className="flex items-center gap-6">
+              
+              {user ? (
+                <Link 
+                  href={user.role === 'admin' ? '/admin/dashboard' : user.role === 'seller' ? '/seller/dashboard' : '/dashboard/customer'} 
+                  className="flex items-center gap-2 group text-gray-700 hover:text-brand-pink transition-colors"
+                >
+                  <div className="w-8 h-8 rounded-full bg-brand-pink/10 flex items-center justify-center text-brand-pink font-semibold group-hover:bg-brand-pink/20 transition-colors">
+                    {user.name ? user.name.charAt(0).toUpperCase() : <User size={18} className="stroke-[2]" />}
+                  </div>
+                  <span className="hidden md:block text-[14px] font-medium">{user.name || 'Dashboard'}</span>
+                </Link>
+              ) : (
+                <Link href="/login" className="flex items-center gap-2 text-gray-700 hover:text-brand-pink transition-colors group">
+                  <User size={22} className="stroke-[1.5]" />
+                  <span className="hidden md:block text-[14px] font-medium">Login / Register</span>
+                </Link>
+              )}
+
+              <Link href="/cart" className="flex items-center text-gray-700 hover:text-brand-pink transition-colors relative group">
+                <ShoppingCart size={22} className="stroke-[1.5]" />
+                {cartCount > 0 && (
+                  <span className="absolute -top-1.5 -right-2 bg-brand-pink text-white text-[10px] w-[18px] h-[18px] flex items-center justify-center rounded-full font-bold shadow-sm">
+                    {cartCount}
+                  </span>
+                )}
+              </Link>
+            </div>
+            
+          </div>
+        </div>
+
+        {/* Bottom Menu - Dark */}
+        <div className="hidden lg:flex bg-[#1f1f1f] h-[50px] items-center relative z-10">
+          <div className="max-w-[1200px] w-full mx-auto px-6 flex justify-center items-center relative font-montserrat font-bold text-[14.8px] leading-[23.68px]">
+            <div className="flex items-center gap-[28px] text-[#FFFFFF]">
+              <Link href="/" className="hover:opacity-80 transition-opacity">Home</Link>
+              <Link href="/shop" className="hover:opacity-80 transition-opacity flex items-center gap-1 group">
+                Home & Living <span className="text-[8px] opacity-60 group-hover:opacity-100 transition-opacity mt-0.5">▼</span>
+              </Link>
+              <Link href="/shop" className="hover:opacity-80 transition-opacity flex items-center gap-1 group">
+                Fashion <span className="text-[8px] opacity-60 group-hover:opacity-100 transition-opacity mt-0.5">▼</span>
+              </Link>
+              <Link href="/shop" className="hover:opacity-80 transition-opacity flex items-center gap-1 group">
+                Jewellery <span className="text-[8px] opacity-60 group-hover:opacity-100 transition-opacity mt-0.5">▼</span>
+              </Link>
+              <Link href="/shop" className="hover:opacity-80 transition-opacity flex items-center gap-1 group">
+                Gifts <span className="text-[8px] opacity-60 group-hover:opacity-100 transition-opacity mt-0.5">▼</span>
+              </Link>
+              <Link href="/shop" className="hover:opacity-80 transition-opacity flex items-center gap-1 group">
+                Stationery <span className="text-[8px] opacity-60 group-hover:opacity-100 transition-opacity mt-0.5">▼</span>
+              </Link>
+              <Link href="/shop" className="hover:opacity-80 transition-opacity flex items-center gap-1 group">
+                Paintings <span className="text-[8px] opacity-60 group-hover:opacity-100 transition-opacity mt-0.5">▼</span>
+              </Link>
+            </div>
+            <div className="absolute right-6">
+              <Link href="/login?tab=register&role=seller" className="text-[#FFFFFF] opacity-90 hover:opacity-100 transition-opacity">
+                Sell on WeSoulGifts
+              </Link>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {/* Search Input for Mobile - placed below header */}
+      <div className="lg:hidden bg-[#f5f5f7] px-4 pb-3 pt-0 shadow-sm sticky top-[70px] z-40 border-t border-[#eaeaea]">
+         <div className="relative max-w-full" ref={mobileSearchRef}>
+           <form 
+             onSubmit={(e) => { e.preventDefault(); setShowDropdown(false); router.push(`/shop?q=${searchQuery}`); }}
+             className="w-full relative"
+           >
+             <input 
+               type="text" 
+               value={searchQuery}
+               onChange={(e) => setSearchQuery(e.target.value)}
+               onFocus={() => { if (searchResults.length > 0) setShowDropdown(true); }}
+               placeholder="Search for gifts, handmade items..." 
+               className="w-full bg-white border border-[#ddd] rounded-[30px] py-[10px] pl-[20px] pr-[50px] text-sm text-gray-700 focus:outline-none focus:border-brand-pink transition-colors shadow-[inset_0_2px_4px_rgba(0,0,0,0.02)]"
+             />
+             <button type="submit" className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-brand-pink transition-colors p-1">
+               {isSearching ? <span className="animate-spin w-4 h-4 border-2 border-brand-pink border-t-transparent rounded-full block"></span> : <Search size={20} />}
+             </button>
+           </form>
+
+           {/* Search Dropdown for Mobile */}
+           {showDropdown && (
+             <div className="absolute top-[50px] left-0 w-full bg-white rounded-2xl shadow-soft border border-gray-100 overflow-hidden z-50">
+                {searchResults.length > 0 ? (
+                  <div>
+                    {searchResults.map((product: any) => {
+                       let displayImage = product.image || 'https://images.unsplash.com/photo-1513201099705-a9746e1e201f?q=80&w=100';
+                       if (product.images) {
+                         try {
+                           const imgs = typeof product.images === 'string' ? JSON.parse(product.images) : product.images;
+                           if (imgs.length > 0) displayImage = imgs[0];
+                         } catch(e){}
+                       }
+                       return (
+                         <Link 
+                           key={product.id} 
+                           href={`/product/${product.id}`} 
+                           className="flex items-center gap-3 p-3 hover:bg-surface-light border-b border-gray-50 transition-colors" 
+                           onClick={() => { setShowDropdown(false); setSearchQuery(''); }}
+                         >
+                           <img src={displayImage} alt="Product" className="w-10 h-10 object-cover rounded-md shadow-sm" />
+                           <div className="flex-1 overflow-hidden">
+                             <h4 className="text-xs font-semibold text-gray-900 truncate">{product.title}</h4>
+                             <span className="text-brand-pink font-bold text-[11px] mt-0.5 block">₹{product.price}</span>
+                           </div>
+                         </Link>
+                       );
+                    })}
+                    <Link 
+                      href={`/shop?q=${searchQuery}`}
+                      className="block p-3 text-center text-xs font-bold text-white bg-brand-pink hover:bg-brand-darkPink transition-colors"
+                      onClick={() => { setShowDropdown(false); }}
+                    >
+                      View all results 
+                    </Link>
+                  </div>
+                ) : (
+                  <div className="p-5 text-center text-sm text-gray-500 font-medium">No gifts found for "{searchQuery}"</div>
+                )}
+             </div>
+           )}
+         </div>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div className="lg:hidden fixed inset-0 z-[100] bg-white text-gray-900 flex flex-col animate-in fade-in slide-in-from-left-8 duration-300">
+          <div className="flex items-center justify-between p-5 border-b border-gray-100 shadow-sm">
+            <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
+              <span className="text-xl font-bold bg-gradient-to-r from-brand-teal to-brand-pink bg-clip-text text-transparent">WeSoulGifts</span>
+            </Link>
+            <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 text-gray-500 hover:text-gray-900 hover:bg-gray-100 rounded-full transition-colors">
+              <X size={24} />
+            </button>
+          </div>
+          
+          <div className="flex-1 overflow-y-auto px-6 py-8 space-y-6">
+            {pathname.startsWith('/seller') ? (
+              <div className="flex flex-col space-y-5 text-xl font-semibold">
+                <div className="text-sm font-bold text-brand-teal uppercase tracking-wider mb-2 border-b border-gray-100 pb-2">Seller Menu</div>
+                {sellerLinks.map(link => {
+                  const Icon = link.icon;
+                  return (
+                    <Link key={link.name} href={link.href} onClick={() => setIsMobileMenuOpen(false)} className="flex items-center text-gray-700 hover:text-brand-teal transition-colors">
+                      <Icon className="mr-3 h-5 w-5 stroke-[2]" /> {link.name}
+                    </Link>
+                  )
+                })}
+              </div>
+            ) : pathname.startsWith('/admin') ? (
+              <div className="flex flex-col space-y-5 text-xl font-semibold">
+                <div className="text-sm font-bold text-blue-600 uppercase tracking-wider mb-2 border-b border-gray-100 pb-2">Admin Menu</div>
+                {adminLinks.map(link => {
+                  const Icon = link.icon;
+                  return (
+                    <Link key={link.name} href={link.href} onClick={() => setIsMobileMenuOpen(false)} className="flex items-center text-gray-700 hover:text-blue-600 transition-colors">
+                      <Icon className="mr-3 h-5 w-5 stroke-[2]" /> {link.name}
+                    </Link>
+                  )
+                })}
+              </div>
+            ) : (
+              <div className="flex flex-col space-y-5 text-xl font-semibold">
+                <div className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2 border-b border-gray-100 pb-2">Storefront</div>
+                <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-teal hover:translate-x-1 transition-all">Home</Link>
+                <Link href="/shop" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-teal hover:translate-x-1 transition-all">Shop All</Link>
+                <Link href="/category/birthday" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-teal hover:translate-x-1 transition-all">Birthday Gifts</Link>
+                <Link href="/category/anniversary" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-teal hover:translate-x-1 transition-all">Anniversary Gifts</Link>
+              </div>
+            )}
+            
+            <div className="border-t border-gray-100 pt-6 flex flex-col space-y-5 font-medium">
+              <Link href="/wishlist" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center text-gray-600 hover:text-brand-teal transition-colors">
+                <Heart size={20} className="mr-3 stroke-[2]" /> My Wishlist
+              </Link>
+              <Link href="/cart" onClick={() => setIsMobileMenuOpen(false)} className="flex items-center text-gray-600 hover:text-brand-teal transition-colors">
+                <ShoppingCart size={20} className="mr-3 stroke-[2]" /> Shopping Cart ({cartCount})
+              </Link>
+            </div>
+            
+            {user ? (
+               <div className="border-t border-gray-100 pt-6">
+                 <Link 
+                   href={user.role === 'admin' ? '/admin/dashboard' : user.role === 'seller' ? '/seller/dashboard' : '/dashboard/customer'} 
+                   onClick={() => setIsMobileMenuOpen(false)}
+                   className="flex items-center w-full justify-center py-3 bg-brand-teal/10 text-brand-teal rounded-xl font-bold"
+                 >
+                   Open Dashboard
+                 </Link>
+                 <button 
+                   onClick={() => {
+                     localStorage.removeItem('token');
+                     localStorage.removeItem('user');
+                     window.dispatchEvent(new Event('user_updated'));
+                     window.location.href = '/login';
+                   }}
+                   className="mt-3 flex items-center w-full justify-center py-3 bg-rose-50 text-rose-500 rounded-xl font-bold transition-colors hover:bg-rose-100"
+                 >
+                   Logout Securely
+                 </button>
+               </div>
+            ) : (
+               <div className="border-t border-gray-100 pt-6 text-center">
+                 <p className="text-sm text-gray-500 mb-3">Join us to manage orders</p>
+                 <Link href="/login" onClick={() => setIsMobileMenuOpen(false)} className="block w-full py-3 bg-brand-teal text-white rounded-xl font-bold mb-3 shadow-[0_0_15px_rgba(31,163,156,0.3)]">
+                   Login
+                 </Link>
+               </div>
+            )}
+          </div>
+        </div>
+      )}
+    </>
+  );
+}
