@@ -15,7 +15,8 @@ export async function POST(req: NextRequest) {
     const result = contactSchema.safeParse(body);
     
     if (!result.success) {
-      return NextResponse.json({ error: 'Validation Error', details: result.error.errors }, { status: 400 });
+      const errorMessage = result.error.issues.map((err: any) => err.message).join(', ');
+      return NextResponse.json({ error: errorMessage }, { status: 400 });
     }
 
     const { name, email, subject, message } = result.data;
