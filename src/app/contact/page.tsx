@@ -120,7 +120,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h4 className="font-medium text-neutral-900 mb-1">WhatsApp Us</h4>
-                    <a href="https://wa.me/18001234567" target="_blank" rel="noopener noreferrer" className="text-neutral-500 text-sm hover:text-green-600 transition-colors">Chat with us on WhatsApp</a>
+                    <a href="https://wa.me/917595989813" target="_blank" rel="noopener noreferrer" className="text-neutral-500 text-sm hover:text-green-600 transition-colors">Chat with us on WhatsApp</a>
                   </div>
                 </div>
 
@@ -186,7 +186,7 @@ export default function ContactPage() {
                         value={formData.name}
                         onChange={handleChange}
                         required 
-                        className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:ring-2 focus:ring-accent focus:border-accent transition-all outline-none"
+                        className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:ring-2 focus:ring-brand-pink focus:border-brand-pink transition-all outline-none"
                         placeholder="John Doe"
                       />
                     </div>
@@ -199,7 +199,7 @@ export default function ContactPage() {
                         value={formData.email}
                         onChange={handleChange}
                         required 
-                        className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:ring-2 focus:ring-accent focus:border-accent transition-all outline-none"
+                        className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:ring-2 focus:ring-brand-pink focus:border-brand-pink transition-all outline-none"
                         placeholder="john@example.com"
                       />
                     </div>
@@ -214,7 +214,7 @@ export default function ContactPage() {
                       value={formData.subject}
                       onChange={handleChange}
                       required 
-                      className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:ring-2 focus:ring-accent focus:border-accent transition-all outline-none"
+                      className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:ring-2 focus:ring-brand-pink focus:border-brand-pink transition-all outline-none"
                       placeholder="How can we help you?"
                     />
                   </div>
@@ -228,27 +228,29 @@ export default function ContactPage() {
                       value={formData.message}
                       onChange={handleChange}
                       required 
-                      className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:ring-2 focus:ring-accent focus:border-accent transition-all outline-none resize-none"
+                      className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:ring-2 focus:ring-brand-pink focus:border-brand-pink transition-all outline-none resize-none"
                       placeholder="Type your message here..."
                     ></textarea>
                   </div>
 
-                  <button 
-                    type="submit" 
-                    disabled={status === 'submitting'}
-                    className="w-full sm:w-auto px-8 py-4 bg-accent text-white rounded-full font-medium hover:bg-accent-dark transition-colors flex items-center justify-center min-w-[200px]"
-                  >
-                    {status === 'submitting' ? (
-                      <span className="flex items-center gap-2">
-                         <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                         Sending...
-                      </span>
-                    ) : (
-                      <span className="flex items-center gap-2">
-                        Send Message <Send className="w-4 h-4 ml-1" />
-                      </span>
-                    )}
-                  </button>
+                  <div className="flex justify-center mt-8">
+                    <button 
+                      type="submit" 
+                      disabled={status === 'submitting'}
+                      className="w-full sm:w-auto px-10 py-4 bg-brand-pink text-white rounded-full font-medium hover:bg-brand-burgundy transition-colors flex items-center justify-center min-w-[200px]"
+                    >
+                      {status === 'submitting' ? (
+                        <span className="flex items-center gap-2">
+                           <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                           Sending...
+                        </span>
+                      ) : (
+                        <span className="flex items-center gap-2">
+                          Send Message <Send className="w-4 h-4 ml-1" />
+                        </span>
+                      )}
+                    </button>
+                  </div>
                 </form>
               )}
             </div>
