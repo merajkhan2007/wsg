@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Mail, Phone, Clock, Send, CheckCircle } from 'lucide-react';
+import { MapPin, Mail, Phone, Clock, Send, CheckCircle, MessageCircle } from 'lucide-react';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -115,12 +115,12 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start group">
-                  <div className="w-12 h-12 bg-neutral-50 group-hover:bg-accent/10 transition-colors rounded-full flex items-center justify-center flex-shrink-0 mr-4">
-                    <Phone className="w-5 h-5 text-neutral-600 group-hover:text-accent transition-colors" />
+                  <div className="w-12 h-12 bg-neutral-50 group-hover:bg-green-100 transition-colors rounded-full flex items-center justify-center flex-shrink-0 mr-4">
+                    <MessageCircle className="w-5 h-5 text-neutral-600 group-hover:text-green-600 transition-colors" />
                   </div>
                   <div>
-                    <h4 className="font-medium text-neutral-900 mb-1">Call Us</h4>
-                    <a href="tel:+18001234567" className="text-neutral-500 text-sm hover:text-accent transition-colors">+1 (800) 123-4567</a>
+                    <h4 className="font-medium text-neutral-900 mb-1">WhatsApp Us</h4>
+                    <a href="https://wa.me/18001234567" target="_blank" rel="noopener noreferrer" className="text-neutral-500 text-sm hover:text-green-600 transition-colors">Chat with us on WhatsApp</a>
                   </div>
                 </div>
 
