@@ -39,10 +39,10 @@ export async function GET(req: NextRequest) {
     // Fetch individual ticket and its replies
     if (id) {
         const ticketRes = await query(`
-          SELECT t.*, u.name as user_name, u.email as user_email,
+          SELECT t.*, COALESCE(u.name, 'Guest') as user_name, COALESCE(u.email, 'contact@form') as user_email,
             s.shop_name, s.id as seller_id, o.total_amount
           FROM tickets t
-          JOIN users u ON u.id = t.user_id
+          LEFT JOIN users u ON u.id = t.user_id
           LEFT JOIN sellers s ON t.seller_id = s.id
           LEFT JOIN orders o ON t.order_id = o.id
           WHERE t.id = $${paramIndex}
@@ -63,10 +63,10 @@ export async function GET(req: NextRequest) {
 
     // Fetch list of tickets with filters
     const ticketsRes = await query(`
-      SELECT t.*, u.name as user_name, u.role as user_role,
+      SELECT t.*, COALESCE(u.name, 'Guest') as user_name, COALESCE(u.role, 'visitor') as user_role,
         s.shop_name, o.id as order_id
       FROM tickets t
-      JOIN users u ON u.id = t.user_id
+      LEFT JOIN users u ON u.id = t.user_id
       LEFT JOIN sellers s ON t.seller_id = s.id
       LEFT JOIN orders o ON t.order_id = o.id
       ${whereClause}
@@ -92,7 +92,7 @@ export async function POST(req: NextRequest) {
     const result = ticketReplySchema.safeParse(body);
     
     if (!result.success) {
-      return NextResponse.json({ error: 'Validation Error', details: result.error.errors }, { status: 400 });
+      return NextResponse.json({ error: 'Validation Error', details: result.error.issues }, { status: 400 });
     }
 
     const { searchParams } = new URL(req.url);
