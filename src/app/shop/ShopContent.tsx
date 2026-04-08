@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ShoppingCart, Heart, Search, Filter } from 'lucide-react';
@@ -13,6 +13,11 @@ export default function ShopContent({ initialProducts }: { initialProducts: any[
   const [search, setSearch] = useState('');
   const [activeCategory, setActiveCategory] = useState<string>(defaultCategory);
   
+  useEffect(() => {
+    const category = searchParams.get('category');
+    setActiveCategory(category || 'All');
+  }, [searchParams]);
+
   const categories = useMemo(() => {
      const cats = new Set(initialProducts.map(p => p.category_name).filter(Boolean));
      return ['All', ...Array.from(cats)];
@@ -22,7 +27,8 @@ export default function ShopContent({ initialProducts }: { initialProducts: any[
     return initialProducts.filter(product => {
       const matchesSearch = (product.title || product.name || '').toLowerCase().includes(search.toLowerCase()) ||
                             (product.description || '').toLowerCase().includes(search.toLowerCase());
-      const matchesCategory = activeCategory === 'All' || product.category_name === activeCategory;
+      const matchesCategory = activeCategory === 'All' || 
+          (product.category_name && product.category_name.toLowerCase() === activeCategory.toLowerCase());
       return matchesSearch && matchesCategory;
     });
   }, [initialProducts, search, activeCategory]);
