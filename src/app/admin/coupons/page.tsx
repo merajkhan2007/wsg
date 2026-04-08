@@ -91,7 +91,7 @@ export default function AdminCouponsPage() {
         {/* Create Form */}
         <div className="bg-white/70 backdrop-blur-xl border border-white rounded-3xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] lg:col-span-1 h-fit">
            <h3 className="text-lg font-semibold text-gray-900 mb-6 flex items-center">
-             <Plus className="w-5 h-5 mr-2 text-brand-pink" /> New Coupon
+             <Plus className="w-5 h-5 mr-2 text-brand-primary" /> New Coupon
            </h3>
 
            {formMsg.text && (
@@ -111,7 +111,7 @@ export default function AdminCouponsPage() {
                       value={code}
                       onChange={(e) => setCode(e.target.value.toUpperCase())}
                       placeholder="e.g. SUMMER25"
-                      className="w-full pl-9 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:ring-1 focus:ring-brand-pink transition-all font-mono text-sm uppercase"
+                      className="w-full pl-9 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:ring-1 focus:ring-brand-primary transition-all font-mono text-sm uppercase"
                     />
                  </div>
               </div>
@@ -142,7 +142,7 @@ export default function AdminCouponsPage() {
                     value={value}
                     onChange={(e) => setValue(e.target.value)}
                     placeholder="25.00"
-                    className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:ring-1 focus:ring-brand-pink transition-all text-sm"
+                    className="w-full px-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:ring-1 focus:ring-brand-primary transition-all text-sm"
                  />
               </div>
 
@@ -155,7 +155,7 @@ export default function AdminCouponsPage() {
                       required
                       value={expiryDate}
                       onChange={(e) => setExpiryDate(e.target.value)}
-                      className="w-full pl-9 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:ring-1 focus:ring-brand-pink transition-all text-sm"
+                      className="w-full pl-9 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:ring-1 focus:ring-brand-primary transition-all text-sm"
                     />
                  </div>
               </div>
@@ -174,7 +174,7 @@ export default function AdminCouponsPage() {
               <button 
                  type="submit" 
                  disabled={submitting}
-                 className="w-full mt-4 bg-brand-pink hover:bg-[#d6517a] text-white rounded-xl py-3 font-semibold transition-colors shadow-md disabled:opacity-70 flex justify-center items-center"
+                 className="w-full mt-4 bg-brand-primary hover:bg-[#d6517a] text-white rounded-xl py-3 font-semibold transition-colors shadow-md disabled:opacity-70 flex justify-center items-center"
               >
                  {submitting ? 'Generating...' : <><Gift className="w-4 h-4 mr-2" /> Generate Code</>}
               </button>
@@ -184,7 +184,7 @@ export default function AdminCouponsPage() {
         {/* List View */}
         <div className="bg-white/70 backdrop-blur-xl border border-white rounded-3xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] lg:col-span-2">
            <h3 className="text-lg font-semibold text-gray-900 mb-6 flex items-center">
-             <Gift className="w-5 h-5 mr-2 text-brand-pink" /> Active Promotions
+             <Gift className="w-5 h-5 mr-2 text-brand-primary" /> Active Promotions
            </h3>
            
            <div className="overflow-x-auto">
@@ -199,7 +199,7 @@ export default function AdminCouponsPage() {
                 </thead>
                 <tbody className="divide-y divide-gray-100/50">
                    {loading ? (
-                     <tr><td colSpan={4} className="py-10 text-center"><div className="w-6 h-6 border-b-2 border-brand-pink rounded-full animate-spin inline-block"></div></td></tr>
+                     <tr><td colSpan={4} className="py-10 text-center"><div className="w-6 h-6 border-b-2 border-brand-primary rounded-full animate-spin inline-block"></div></td></tr>
                    ) : coupons.length > 0 ? (
                      coupons.map((c: any) => (
                         <tr key={c.id} className="hover:bg-gray-50/50 transition-colors">

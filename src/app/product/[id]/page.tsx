@@ -42,9 +42,9 @@ export default async function ProductPage({ params }: { params: { id: string } }
         
         {/* Breadcrumbs */}
         <nav className="text-sm font-medium text-gray-500 mb-8 flex space-x-2">
-          <Link href="/" className="hover:text-brand-pink transition-colors">Home</Link>
+          <Link href="/" className="hover:text-brand-primary transition-colors">Home</Link>
           <span>/</span>
-          <Link href="/shop" className="hover:text-brand-pink transition-colors">Shop</Link>
+          <Link href="/shop" className="hover:text-brand-primary transition-colors">Shop</Link>
           <span>/</span>
           <span className="text-gray-900">{product.title || product.name}</span>
         </nav>

@@ -74,13 +74,13 @@ export default function SellerSettingsPage() {
     }
   };
 
-  if (loading) return <div className="flex h-[calc(100vh-100px)] items-center justify-center"><div className="w-10 h-10 rounded-full border-b-4 border-brand-teal border-l-4 animate-spin"></div></div>;
+  if (loading) return <div className="flex h-[calc(100vh-100px)] items-center justify-center"><div className="w-10 h-10 rounded-full border-b-4 border-brand-accent border-l-4 animate-spin"></div></div>;
 
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 text-gray-700">
       <div>
         <h1 className="text-3xl font-bold tracking-tight text-gray-900 flex items-center gap-3">
-           <Settings className="w-8 h-8 text-brand-teal p-1 bg-brand-teal/10 rounded-lg border border-brand-teal/20" />
+           <Settings className="w-8 h-8 text-brand-accent p-1 bg-brand-accent/10 rounded-lg border border-brand-accent/20" />
            Store Configuration
         </h1>
         <p className="text-gray-500 mt-2">Manage your public brand identity, logos, and personal info.</p>
@@ -96,7 +96,7 @@ export default function SellerSettingsPage() {
 
             <form onSubmit={handleSave} className="bg-white border border-gray-100 rounded-3xl p-8 shadow-soft">
                <h3 className="text-lg font-semibold text-gray-900 mb-6 border-b border-gray-100 pb-4 flex items-center">
-                  <Store className="w-5 h-5 mr-3 text-brand-teal" /> Public Store Profile
+                  <Store className="w-5 h-5 mr-3 text-brand-accent" /> Public Store Profile
                </h3>
                
                <div className="flex flex-col sm:flex-row gap-8 mb-8">
@@ -108,7 +108,7 @@ export default function SellerSettingsPage() {
                            <ImageIcon className="w-10 h-10 text-gray-400" />
                         )}
                      </div>
-                     <button type="button" className="text-xs font-semibold text-brand-teal hover:text-brand-teal/80 transition-colors">Change Photo</button>
+                     <button type="button" className="text-xs font-semibold text-brand-accent hover:text-brand-accent/80 transition-colors">Change Photo</button>
                   </div>
 
                   <div className="flex-1 space-y-6">
@@ -118,7 +118,7 @@ export default function SellerSettingsPage() {
                            type="text" 
                            value={profile.name}
                            onChange={(e) => setProfile({...profile, name: e.target.value})}
-                           className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-brand-teal transition-all text-gray-900"
+                           className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-brand-accent transition-all text-gray-900"
                         />
                      </div>
                      <div>
@@ -127,7 +127,7 @@ export default function SellerSettingsPage() {
                            type="text" 
                            value={profile.shop_name}
                            onChange={(e) => setProfile({...profile, shop_name: e.target.value})}
-                           className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-brand-teal transition-all text-gray-900"
+                           className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-brand-accent transition-all text-gray-900"
                         />
                         <p className="text-xs text-gray-400 mt-2">This is the brand name buyers will see on your product listings.</p>
                      </div>
@@ -141,7 +141,7 @@ export default function SellerSettingsPage() {
                         rows={4}
                         value={profile.shop_description}
                         onChange={(e) => setProfile({...profile, shop_description: e.target.value})}
-                        className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-brand-teal transition-all text-gray-900 resize-none"
+                        className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-brand-accent transition-all text-gray-900 resize-none"
                      />
                   </div>
                </div>
@@ -149,7 +149,7 @@ export default function SellerSettingsPage() {
                <div className="mt-12 pt-8 border-t border-gray-100">
                   <div className="flex items-center justify-between mb-6">
                      <h3 className="text-lg font-semibold text-gray-900 flex items-center">
-                        <svg className="w-5 h-5 mr-3 text-brand-teal" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg className="w-5 h-5 mr-3 text-brand-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
                         </svg>
                         Bank Account Details
@@ -161,7 +161,7 @@ export default function SellerSettingsPage() {
                          "text-xs font-bold px-3 py-1.5 rounded-lg border transition-all shadow-sm",
                          isEditingBank 
                            ? "bg-rose-50 text-rose-600 border-rose-200 hover:bg-rose-100"
-                           : "bg-white text-gray-700 border-gray-200 hover:bg-gray-50 hover:text-brand-teal"
+                           : "bg-white text-gray-700 border-gray-200 hover:bg-gray-50 hover:text-brand-accent"
                        )}
                      >
                        {isEditingBank ? 'Cancel Edit' : 'Edit Details'}
@@ -175,7 +175,7 @@ export default function SellerSettingsPage() {
                            disabled={!isEditingBank}
                            value={profile.bank_name}
                            onChange={(e) => setProfile({...profile, bank_name: e.target.value})}
-                           className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-brand-teal transition-all text-gray-900 disabled:opacity-60 disabled:bg-gray-100/50 disabled:cursor-not-allowed"
+                           className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-brand-accent transition-all text-gray-900 disabled:opacity-60 disabled:bg-gray-100/50 disabled:cursor-not-allowed"
                            placeholder="e.g. HDFC Bank"
                         />
                      </div>
@@ -186,7 +186,7 @@ export default function SellerSettingsPage() {
                            disabled={!isEditingBank}
                            value={profile.bank_account_name}
                            onChange={(e) => setProfile({...profile, bank_account_name: e.target.value})}
-                           className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-brand-teal transition-all text-gray-900 disabled:opacity-60 disabled:bg-gray-100/50 disabled:cursor-not-allowed"
+                           className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-brand-accent transition-all text-gray-900 disabled:opacity-60 disabled:bg-gray-100/50 disabled:cursor-not-allowed"
                            placeholder="As per bank records"
                         />
                      </div>
@@ -197,7 +197,7 @@ export default function SellerSettingsPage() {
                            disabled={!isEditingBank}
                            value={profile.bank_account_number}
                            onChange={(e) => setProfile({...profile, bank_account_number: e.target.value})}
-                           className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-brand-teal transition-all text-gray-900 disabled:opacity-60 disabled:bg-gray-100/50 disabled:cursor-not-allowed"
+                           className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-brand-accent transition-all text-gray-900 disabled:opacity-60 disabled:bg-gray-100/50 disabled:cursor-not-allowed"
                         />
                      </div>
                      <div>
@@ -207,7 +207,7 @@ export default function SellerSettingsPage() {
                            disabled={!isEditingBank}
                            value={profile.bank_ifsc}
                            onChange={(e) => setProfile({...profile, bank_ifsc: e.target.value})}
-                           className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-brand-teal transition-all text-gray-900 uppercase disabled:opacity-60 disabled:bg-gray-100/50 disabled:cursor-not-allowed"
+                           className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-brand-accent transition-all text-gray-900 uppercase disabled:opacity-60 disabled:bg-gray-100/50 disabled:cursor-not-allowed"
                         />
                      </div>
                   </div>
@@ -217,7 +217,7 @@ export default function SellerSettingsPage() {
                   <button 
                      type="submit" 
                      disabled={saving}
-                     className="px-6 py-3 bg-brand-teal hover:bg-brand-teal/90 disabled:bg-gray-50 disabled:text-gray-400 text-white rounded-xl font-medium transition-colors flex items-center shadow-glow disabled:shadow-none"
+                     className="px-6 py-3 bg-brand-accent hover:bg-brand-accent/90 disabled:bg-gray-50 disabled:text-gray-400 text-white rounded-xl font-medium transition-colors flex items-center shadow-glow disabled:shadow-none"
                   >
                      <Save className="w-5 h-5 mr-2" />
                      {saving ? 'Saving Changes...' : 'Save Configuration'}

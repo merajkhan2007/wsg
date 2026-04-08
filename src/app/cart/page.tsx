@@ -44,12 +44,12 @@ export default function CartPage() {
           <div className="py-20 text-center text-gray-500">Loading cart...</div>
         ) : items.length === 0 ? (
           <div className="bg-white p-12 text-center rounded-2xl shadow-sm border border-gray-100">
-             <div className="w-24 h-24 bg-brand-pink/10 rounded-full flex items-center justify-center mx-auto mb-6 text-brand-pink text-4xl">
+             <div className="w-24 h-24 bg-brand-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 text-brand-primary text-4xl">
                🎁
              </div>
              <h2 className="text-2xl font-medium text-gray-900 mb-4">Your cart is feeling light</h2>
              <p className="text-gray-500 mb-8 max-w-md mx-auto">It's waiting to be filled with emotional and premium gifts for your loved ones.</p>
-             <Link href="/shop" className="bg-brand-pink text-white px-8 py-3 rounded-full font-medium hover:bg-brand-darkPink transition-all">
+             <Link href="/shop" className="bg-brand-primary text-white px-8 py-3 rounded-full font-medium hover:bg-[#d63b63] transition-all">
                 Continue Shopping
              </Link>
           </div>
@@ -58,22 +58,22 @@ export default function CartPage() {
             {/* Cart Items */}
             <div className="lg:col-span-2 space-y-6">
               {items.map(item => (
-                <div key={item.id} className="flex flex-col sm:flex-row gap-6 bg-white p-6 rounded-2xl shadow-sm border border-gray-100 items-center sm:items-start group hover:border-brand-pink/30 transition-colors">
+                <div key={item.id} className="flex flex-col sm:flex-row gap-6 bg-white p-6 rounded-2xl shadow-sm border border-gray-100 items-center sm:items-start group hover:border-brand-primary/30 transition-colors">
                   <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden flex-shrink-0 bg-gray-100">
                     <img src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
                   </div>
                   
                   <div className="flex-grow flex flex-col items-center sm:items-start text-center sm:text-left">
                     <h3 className="text-lg font-medium text-gray-900 mb-2">{item.name}</h3>
-                    <p className="text-brand-pink font-semibold text-lg mb-4">₹{item.price}</p>
+                    <p className="text-brand-primary font-semibold text-lg mb-4">₹{item.price}</p>
                     
                     <div className="flex items-center gap-6 mt-auto">
                       <div className="flex items-center border border-gray-200 rounded-full overflow-hidden">
-                        <button onClick={() => updateQuantity(item.id, -1)} className="p-2 text-gray-500 hover:text-brand-pink hover:bg-brand-pink/5 transition-colors">
+                        <button onClick={() => updateQuantity(item.id, -1)} className="p-2 text-gray-500 hover:text-brand-primary hover:bg-brand-primary/5 transition-colors">
                           <Minus size={16} />
                         </button>
                         <span className="w-10 text-center font-medium text-gray-900">{item.quantity}</span>
-                        <button onClick={() => updateQuantity(item.id, 1)} className="p-2 text-gray-500 hover:text-brand-pink hover:bg-brand-pink/5 transition-colors">
+                        <button onClick={() => updateQuantity(item.id, 1)} className="p-2 text-gray-500 hover:text-brand-primary hover:bg-brand-primary/5 transition-colors">
                           <Plus size={16} />
                         </button>
                       </div>
@@ -105,10 +105,10 @@ export default function CartPage() {
 
                 <div className="flex justify-between text-lg font-bold text-gray-900 py-4 border-t border-b border-gray-100 mb-8">
                   <span>Total</span>
-                  <span className="text-brand-pink text-2xl">₹{total}</span>
+                  <span className="text-brand-primary text-2xl">₹{total}</span>
                 </div>
 
-                <Link href="/checkout" className="w-full flex items-center justify-center gap-2 bg-brand-pink text-white py-4 rounded-full font-medium text-lg hover:bg-brand-darkPink transition-colors shadow-glow">
+                <Link href="/checkout" className="w-full flex items-center justify-center gap-2 bg-brand-primary text-white py-4 rounded-full font-medium text-lg hover:bg-[#d63b63] transition-colors shadow-glow">
                   Proceed to Checkout <ArrowRight size={20} />
                 </Link>
                 

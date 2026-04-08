@@ -176,7 +176,7 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
   };
 
   if (fetching) {
-     return <div className="flex justify-center p-20"><Loader2 className="w-8 h-8 animate-spin text-brand-teal" /></div>;
+     return <div className="flex justify-center p-20"><Loader2 className="w-8 h-8 animate-spin text-brand-accent" /></div>;
   }
 
   return (
@@ -184,11 +184,11 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-           <Link href="/seller/products" className="inline-flex items-center text-sm font-semibold text-gray-400 hover:text-brand-teal transition-colors mb-2">
+           <Link href="/seller/products" className="inline-flex items-center text-sm font-semibold text-gray-400 hover:text-brand-accent transition-colors mb-2">
               <ArrowLeft className="w-4 h-4 mr-1" /> Back to Inventory
            </Link>
            <h1 className="text-3xl font-bold tracking-tight text-gray-900 flex items-center gap-3">
-              <PackagePlus className="w-8 h-8 text-brand-teal p-1 bg-brand-teal/10 rounded-lg border border-brand-teal/20" />
+              <PackagePlus className="w-8 h-8 text-brand-accent p-1 bg-brand-accent/10 rounded-lg border border-brand-accent/20" />
               Edit Product
            </h1>
            <p className="text-gray-500 mt-2">Update product details, pricing, and media.</p>
@@ -208,7 +208,7 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
          {/* Main Form Fields */}
          <div className="lg:col-span-2 space-y-8">
             <div className="bg-white border border-gray-100 rounded-3xl p-8 shadow-soft relative overflow-hidden">
-               <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-teal/50 to-transparent"></div>
+               <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-accent/50 to-transparent"></div>
                <h3 className="text-lg font-semibold text-gray-900 mb-6 border-b border-gray-100 pb-4">Core Information</h3>
                
                {msg.text && (
@@ -227,7 +227,7 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
                         value={formData.title}
                         onChange={handleChange}
                         placeholder="e.g. Handmade Ceramic Vase"
-                        className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-brand-teal transition-all text-gray-900 font-medium"
+                        className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-brand-accent transition-all text-gray-900 font-medium"
                      />
                   </div>
                   <div>
@@ -239,7 +239,7 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
                         value={formData.description}
                         onChange={handleChange}
                         placeholder="Detail the materials, dimensions, and story behind this product..."
-                        className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-brand-teal transition-all text-gray-900 resize-none leading-relaxed"
+                        className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-brand-accent transition-all text-gray-900 resize-none leading-relaxed"
                      />
                   </div>
                </div>
@@ -247,7 +247,7 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
 
             <div className="bg-white border border-gray-100 rounded-3xl p-8 shadow-soft relative overflow-hidden">
                <h3 className="text-lg font-semibold text-gray-900 mb-6 border-b border-gray-100 pb-4 flex items-center">
-                  <ImageIcon className="w-5 h-5 mr-3 text-brand-teal" /> Product Media
+                  <ImageIcon className="w-5 h-5 mr-3 text-brand-accent" /> Product Media
                </h3>
 
                {uploadError && (
@@ -281,11 +281,11 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
                )}>
                   <input type="file" multiple className="hidden" accept="image/*" onChange={handleImageUpload} disabled={uploadingImage} />
                   
-                  <div className="w-16 h-16 bg-white group-hover:bg-brand-teal/5 rounded-2xl flex items-center justify-center shadow-soft mb-4 border border-gray-100 transition-colors">
+                  <div className="w-16 h-16 bg-white group-hover:bg-brand-accent/5 rounded-2xl flex items-center justify-center shadow-soft mb-4 border border-gray-100 transition-colors">
                      {uploadingImage ? (
-                        <Loader2 className="w-8 h-8 text-brand-teal animate-spin" />
+                        <Loader2 className="w-8 h-8 text-brand-accent animate-spin" />
                      ) : (
-                        <UploadCloud className="w-8 h-8 text-brand-teal" />
+                        <UploadCloud className="w-8 h-8 text-brand-accent" />
                      )}
                   </div>
                   <h4 className="font-semibold text-gray-700">
@@ -315,7 +315,7 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
                            value={formData.price}
                            onChange={handleChange}
                            placeholder="0.00"
-                           className="w-full pl-10 pr-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-brand-teal transition-all text-gray-900 font-mono"
+                           className="w-full pl-10 pr-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-brand-accent transition-all text-gray-900 font-mono"
                         />
                      </div>
                   </div>
@@ -330,7 +330,7 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
                         value={formData.stock}
                         onChange={handleChange}
                         placeholder="e.g. 50"
-                        className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-brand-teal transition-all text-gray-900 font-mono"
+                        className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-brand-accent transition-all text-gray-900 font-mono"
                      />
                   </div>
                </div>
@@ -346,7 +346,7 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
                      required
                      value={formData.category_id}
                      onChange={handleChange}
-                     className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-brand-teal transition-all text-gray-900 appearance-none cursor-pointer"
+                     className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-brand-accent transition-all text-gray-900 appearance-none cursor-pointer"
                   >
                      <option value="" disabled>Choose a placement...</option>
                      {categories.map((cat: any) => (
@@ -359,7 +359,7 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
                   <button 
                      type="submit" 
                      disabled={loading}
-                     className="w-full bg-brand-teal hover:bg-brand-teal/90 disabled:bg-gray-50 disabled:text-gray-400 text-white rounded-xl py-3.5 font-semibold transition-colors flex items-center justify-center shadow-glow disabled:shadow-none"
+                     className="w-full bg-brand-accent hover:bg-brand-accent/90 disabled:bg-gray-50 disabled:text-gray-400 text-white rounded-xl py-3.5 font-semibold transition-colors flex items-center justify-center shadow-glow disabled:shadow-none"
                   >
                      {loading ? (
                         <div className="flex items-center">

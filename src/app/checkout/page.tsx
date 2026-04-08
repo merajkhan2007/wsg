@@ -85,7 +85,7 @@ export default function CheckoutPage() {
             <div className="flex justify-between"><span>Order Number:</span> <span className="font-semibold text-gray-900">#WSG-{placedOrderId ? String(placedOrderId).padStart(4, '0') : '0000'}</span></div>
             <div className="flex justify-between"><span>Estimated Delivery:</span> <span className="font-semibold text-gray-900">3 Days</span></div>
           </div>
-          <Link href="/shop" className="bg-brand-pink text-white px-8 py-3 rounded-full font-medium hover:bg-brand-darkPink transition-all flex justify-center items-center">
+          <Link href="/shop" className="bg-brand-primary text-white px-8 py-3 rounded-full font-medium hover:bg-[#d63b63] transition-all flex justify-center items-center">
             Continue Shopping
           </Link>
         </div>
@@ -96,10 +96,10 @@ export default function CheckoutPage() {
   return (
     <div className="min-h-screen bg-surface-light pt-10 pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Link href="/cart" className="flex items-center gap-2 text-gray-500 hover:text-brand-pink font-medium mb-8 transition-colors">
+        <Link href="/cart" className="flex items-center gap-2 text-gray-500 hover:text-brand-primary font-medium mb-8 transition-colors">
           <ArrowLeft size={20} /> Back to Cart
         </Link>
-        <div className="flex gap-2 mb-8 items-center text-sm font-medium text-brand-pink uppercase tracking-widest">
+        <div className="flex gap-2 mb-8 items-center text-sm font-medium text-brand-primary uppercase tracking-widest">
            <ShieldCheck size={18} /> Secure Checkout
         </div>
         
@@ -111,30 +111,30 @@ export default function CheckoutPage() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-gray-700">First Name</label>
-                  <input required type="text" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-pink focus:ring-1 focus:ring-brand-pink transition-all" />
+                  <input required type="text" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all" />
                 </div>
                 <div className="space-y-2">
                   <label className="text-sm font-medium text-gray-700">Last Name</label>
-                  <input required type="text" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-pink focus:ring-1 focus:ring-brand-pink transition-all" />
+                  <input required type="text" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all" />
                 </div>
               </div>
 
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-700">Email Address</label>
-                <input required type="email" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-pink focus:ring-1 focus:ring-brand-pink transition-all" />
+                <input required type="email" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all" />
               </div>
 
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-700">Phone Number</label>
-                <input required name="phone" type="tel" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-pink focus:ring-1 focus:ring-brand-pink transition-all" />
+                <input required name="phone" type="tel" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all" />
               </div>
 
               <div className="space-y-2">
                 <label className="text-sm font-medium text-gray-700">Shipping Address</label>
-                <input required name="address" type="text" placeholder="Street address, P.O. box, etc." className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-pink focus:ring-1 focus:ring-brand-pink transition-all mb-4" />
+                <input required name="address" type="text" placeholder="Street address, P.O. box, etc." className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all mb-4" />
                 <div className="grid grid-cols-2 gap-4">
-                   <input required name="city" type="text" placeholder="City" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-pink focus:ring-1 focus:ring-brand-pink transition-all" />
-                   <input required name="zip" type="text" placeholder="Postal Code" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-pink focus:ring-1 focus:ring-brand-pink transition-all" />
+                   <input required name="city" type="text" placeholder="City" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all" />
+                   <input required name="zip" type="text" placeholder="Postal Code" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all" />
                 </div>
               </div>
 
@@ -142,9 +142,9 @@ export default function CheckoutPage() {
                 <h2 className="text-2xl font-serif font-bold text-gray-900 mb-6">Payment Method</h2>
                 {/* Dummy Payment visual */}
                  <div className="space-y-4">
-                    <div className="border border-brand-pink bg-brand-pink/5 rounded-xl p-4 flex items-center justify-between cursor-pointer transition-colors">
+                    <div className="border border-brand-primary bg-brand-primary/5 rounded-xl p-4 flex items-center justify-between cursor-pointer transition-colors">
                       <div className="flex items-center gap-3">
-                         <div className="w-5 h-5 rounded-full border-4 border-brand-pink bg-white"></div>
+                         <div className="w-5 h-5 rounded-full border-4 border-brand-primary bg-white"></div>
                          <span className="font-semibold text-gray-900 text-sm">Credit OR Debit Card (Dummy)</span>
                       </div>
                       <div className="flex gap-1">
@@ -155,7 +155,7 @@ export default function CheckoutPage() {
                  </div>
               </div>
 
-              <button type="submit" disabled={items.length === 0} className="w-full bg-brand-teal text-white py-4 rounded-full font-bold text-lg hover:bg-brand-burgundy transition-colors shadow-glow mt-8 flex items-center justify-center gap-2">
+              <button type="submit" disabled={items.length === 0} className="w-full bg-brand-accent text-white py-4 rounded-full font-bold text-lg hover:bg-brand-dark transition-colors shadow-glow mt-8 flex items-center justify-center gap-2">
                  Pay ₹{total}
               </button>
             </form>
@@ -172,7 +172,7 @@ export default function CheckoutPage() {
                     <div>
                       <h4 className="font-medium text-gray-900 line-clamp-2">{item.name}</h4>
                       <p className="text-sm text-gray-500 mb-1">Qty: {item.quantity}</p>
-                      <p className="font-semibold text-brand-pink">₹{item.price * item.quantity}</p>
+                      <p className="font-semibold text-brand-primary">₹{item.price * item.quantity}</p>
                     </div>
                   </div>
                 ))}
@@ -182,7 +182,7 @@ export default function CheckoutPage() {
                   <div className="flex justify-between text-sm text-gray-600"><span>Shipping</span> <span className="font-medium text-green-600">{shipping === 0 ? 'Free' : `₹${shipping}`}</span></div>
                 </div>
                 <div className="pt-4 border-t border-gray-200 flex justify-between font-bold text-xl text-gray-900">
-                  <span>Total</span> <span className="text-brand-pink">₹{total}</span>
+                  <span>Total</span> <span className="text-brand-primary">₹{total}</span>
                 </div>
              </div>
           </div>

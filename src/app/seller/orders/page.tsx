@@ -112,7 +112,7 @@ export default function SellerOrdersPage() {
           <style>
             @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
             body { font-family: 'Inter', sans-serif; color: #333; margin: 40px; }
-            h1 { color: #f43f5e; margin-bottom: 5px; } /* brand-pink */
+            h1 { color: #f43f5e; margin-bottom: 5px; } /* brand-primary */
             .header { border-bottom: 2px solid #eee; padding-bottom: 20px; margin-bottom: 20px; display: flex; justify-content: space-between; }
             .details { margin-bottom: 30px; }
             table { width: 100%; border-collapse: collapse; margin-top: 20px; }
@@ -186,7 +186,7 @@ export default function SellerOrdersPage() {
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h1 className="text-3xl font-bold tracking-tight text-gray-900 flex items-center gap-3">
-             <ShoppingBag className="w-8 h-8 text-brand-pink" />
+             <ShoppingBag className="w-8 h-8 text-brand-primary" />
              Order Management
           </h1>
           <p className="text-gray-500 mt-2">Process fulfillment and track returns for your inventory.</p>
@@ -197,21 +197,21 @@ export default function SellerOrdersPage() {
         
         {/* Order List */}
         <div className="bg-white border border-gray-100 rounded-3xl shadow-soft overflow-hidden lg:col-span-1 h-[calc(100vh-180px)] flex flex-col relative">
-           <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-pink/50 to-transparent"></div>
+           <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-primary/50 to-transparent"></div>
            <div className="p-4 border-b border-gray-100 bg-white/50 backdrop-blur-sm">
              <div className="relative">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
                 <input 
                   type="text" 
                   placeholder="Search order ID or customer..." 
-                  className="w-full pl-10 pr-4 py-2 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:ring-1 focus:ring-brand-pink text-gray-800 outline-none text-sm transition-all placeholder:text-gray-400"
+                  className="w-full pl-10 pr-4 py-2 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:ring-1 focus:ring-brand-primary text-gray-800 outline-none text-sm transition-all placeholder:text-gray-400"
                 />
              </div>
            </div>
            
            <div className="flex-1 overflow-y-auto">
              {loading ? (
-                <div className="flex justify-center p-10"><div className="w-6 h-6 rounded-full border-t-2 border-r-2 border-brand-pink animate-spin"></div></div>
+                <div className="flex justify-center p-10"><div className="w-6 h-6 rounded-full border-t-2 border-r-2 border-brand-primary animate-spin"></div></div>
              ) : orders.length > 0 ? (
                 <ul className="divide-y divide-gray-100">
                    {orders.map((order) => (
@@ -220,7 +220,7 @@ export default function SellerOrdersPage() {
                             onClick={() => loadOrderDetails(order.id)}
                             className={twMerge(
                                "w-full text-left p-4 hover:bg-gray-50/50 transition-colors border-l-2 border-transparent",
-                               selectedOrder?.id === order.id && "bg-gray-50/80 border-brand-pink"
+                               selectedOrder?.id === order.id && "bg-gray-50/80 border-brand-primary"
                             )}
                          >
                             <div className="flex justify-between items-start mb-2">
@@ -232,7 +232,7 @@ export default function SellerOrdersPage() {
                             <h4 className="text-sm font-medium text-gray-900 line-clamp-1 mb-1">{order.product_names || 'Products'}</h4>
                             <div className="flex justify-between items-end mt-2">
                                <span className="text-xs text-gray-400 max-w-[150px] truncate">for {order.customer_name} • {order.seller_item_count} items</span>
-                               <span className="text-sm font-bold text-brand-pink">₹{Number(order.seller_revenue).toFixed(2)}</span>
+                               <span className="text-sm font-bold text-brand-primary">₹{Number(order.seller_revenue).toFixed(2)}</span>
                             </div>
                          </button>
                       </li>
@@ -262,13 +262,13 @@ export default function SellerOrdersPage() {
                            Placed {new Date(selectedOrder.created_at).toLocaleString()}
                         </p>
                         <p className="text-sm text-gray-500 flex items-start gap-1 mt-2">
-                           <MapPin className="w-4 h-4 text-brand-pink shrink-0" />
+                           <MapPin className="w-4 h-4 text-brand-primary shrink-0" />
                            <span className="max-w-md bg-gray-50/80 px-2 py-1 rounded border border-gray-100">{selectedOrder.address}</span>
                         </p>
                     </div>
                     <div className="text-right">
                        <p className="text-xs text-gray-400 mb-1">Your Earnings</p>
-                       <p className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-pink to-brand-teal">
+                       <p className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-primary to-brand-accent">
                           ₹{Number(selectedOrder.seller_revenue).toFixed(2)}
                        </p>
                     </div>
@@ -281,7 +281,7 @@ export default function SellerOrdersPage() {
                     </h3>
 
                     {itemsLoading ? (
-                       <div className="flex justify-center p-10"><div className="w-6 h-6 rounded-full border-t-2 border-r-2 border-brand-pink animate-spin"></div></div>
+                       <div className="flex justify-center p-10"><div className="w-6 h-6 rounded-full border-t-2 border-r-2 border-brand-primary animate-spin"></div></div>
                     ) : (
                        <div className="bg-gray-50/30 rounded-2xl border border-gray-200 overflow-hidden">
                           <table className="w-full text-left text-sm">
@@ -307,7 +307,7 @@ export default function SellerOrdersPage() {
                                             <div>
                                                <p className="font-semibold text-gray-800">{item.product_name}</p>
                                                {item.customization_data && (
-                                                  <div className="text-xs text-brand-pink mt-0.5 flex items-center">
+                                                  <div className="text-xs text-brand-primary mt-0.5 flex items-center">
                                                      <AlertCircle className="w-3 h-3 mr-1" /> Custom Request Attached
                                                   </div>
                                                )}
@@ -338,7 +338,7 @@ export default function SellerOrdersPage() {
                              <button 
                                 id="status-btn"
                                 onClick={() => handleUpdateStatus('shipped')}
-                                className="flex-1 bg-brand-pink hover:bg-brand-pink/90 text-white py-3 rounded-xl font-medium transition-colors flex items-center justify-center shadow-glow"
+                                className="flex-1 bg-brand-primary hover:bg-[#d63b63] text-white py-3 rounded-xl font-medium transition-colors flex items-center justify-center shadow-glow"
                               >
                                 <Truck className="w-5 h-5 mr-2" /> Mark as Shipped
                              </button>
@@ -355,7 +355,7 @@ export default function SellerOrdersPage() {
               </>
            ) : (
               <div className="flex-1 flex flex-col items-center justify-center text-gray-400 p-10 text-center">
-                 <PackageCheck className="w-16 h-16 text-brand-pink/20 mb-4" />
+                 <PackageCheck className="w-16 h-16 text-brand-primary/20 mb-4" />
                  <h3 className="text-lg font-medium text-gray-700">Select an Order</h3>
                  <p className="text-sm mt-2 max-w-sm">Choose an order from the queue to view its contents, check custom gift requests, and manage fulfillment.</p>
               </div>

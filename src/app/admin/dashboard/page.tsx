@@ -34,12 +34,12 @@ export default function AdminDashboard() {
       .catch(() => setLoading(false));
   }, []);
 
-  if (loading) return <div className="flex h-full items-center justify-center"><div className="w-8 h-8 rounded-full border-4 border-brand-teal border-t-transparent animate-spin"></div></div>;
+  if (loading) return <div className="flex h-full items-center justify-center"><div className="w-8 h-8 rounded-full border-4 border-brand-accent border-t-transparent animate-spin"></div></div>;
 
   const statCards = [
     { title: 'Total Revenue', value: `₹${Number(data.stats.total_revenue).toFixed(2)}`, icon: IndianRupee, color: 'bg-emerald-50 text-emerald-600' },
-    { title: 'Total Orders', value: data.stats.total_orders, icon: ShoppingBag, color: 'bg-brand-teal/10 text-brand-teal' },
-    { title: 'Total Users', value: data.stats.total_users, icon: Users, color: 'bg-brand-pink/10 text-brand-pink' },
+    { title: 'Total Orders', value: data.stats.total_orders, icon: ShoppingBag, color: 'bg-brand-accent/10 text-brand-accent' },
+    { title: 'Total Users', value: data.stats.total_users, icon: Users, color: 'bg-brand-primary/10 text-brand-primary' },
     { title: 'Active Sellers', value: data.stats.total_sellers, icon: TrendingUp, color: 'bg-purple-50 text-purple-600' }
   ];
 

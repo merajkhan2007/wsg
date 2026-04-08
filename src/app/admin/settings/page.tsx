@@ -80,7 +80,7 @@ export default function AdminSettingsPage() {
         <div className="lg:col-span-2 space-y-8">
             <div className="bg-white/70 backdrop-blur-xl border border-white rounded-3xl p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
                 <div className="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
-                    <Percent className="w-6 h-6 text-brand-teal" />
+                    <Percent className="w-6 h-6 text-brand-accent" />
                     <h3 className="text-xl font-semibold text-gray-900">Custom Seller Commissions</h3>
                 </div>
 
@@ -99,7 +99,7 @@ export default function AdminSettingsPage() {
                             value={newSellerId}
                             onChange={(e) => setNewSellerId(e.target.value)}
                             placeholder="e.g. 5"
-                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-teal/20 focus:border-brand-teal transition-all"
+                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-accent/20 focus:border-brand-accent transition-all"
                         />
                     </div>
                     <div>
@@ -113,14 +113,14 @@ export default function AdminSettingsPage() {
                             value={newPercentage}
                             onChange={(e) => setNewPercentage(e.target.value)}
                             placeholder="e.g. 15.00"
-                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-teal/20 focus:border-brand-teal transition-all"
+                            className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-accent/20 focus:border-brand-accent transition-all"
                         />
                     </div>
                     <div className="md:col-span-2 flex justify-end">
                         <button 
                             type="submit" 
                             disabled={saving}
-                            className="px-6 py-3 bg-brand-teal hover:bg-teal-700 text-white rounded-xl font-medium transition-colors flex items-center shadow-md disabled:opacity-70 disabled:cursor-not-allowed"
+                            className="px-6 py-3 bg-brand-accent hover:bg-teal-700 text-white rounded-xl font-medium transition-colors flex items-center shadow-md disabled:opacity-70 disabled:cursor-not-allowed"
                         >
                             {saving ? <RefreshCw className="w-5 h-5 mr-2 animate-spin" /> : <Save className="w-5 h-5 mr-2" />}
                             {saving ? 'Saving...' : 'Apply Commission Rate'}
@@ -146,20 +146,20 @@ export default function AdminSettingsPage() {
         <div className="lg:col-span-1 space-y-8">
             <div className="bg-white/70 backdrop-blur-xl border border-white rounded-3xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] h-full max-h-[600px] flex flex-col">
                 <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
-                    <Users className="w-5 h-5 mr-2 text-brand-pink" /> Active Custom Rates
+                    <Users className="w-5 h-5 mr-2 text-brand-primary" /> Active Custom Rates
                 </h3>
                 <div className="flex-1 overflow-y-auto pr-2">
                     {loading ? (
-                        <div className="flex justify-center p-8"><RefreshCw className="w-6 h-6 text-brand-teal animate-spin" /></div>
+                        <div className="flex justify-center p-8"><RefreshCw className="w-6 h-6 text-brand-accent animate-spin" /></div>
                     ) : commissions.length > 0 ? (
                         <ul className="space-y-4">
                             {commissions.map((comm: any) => (
-                                <li key={comm.id} className="p-4 bg-gray-50 border border-gray-100 rounded-2xl flex justify-between items-center hover:border-brand-teal/30 hover:bg-brand-teal/10/50 transition-colors">
+                                <li key={comm.id} className="p-4 bg-gray-50 border border-gray-100 rounded-2xl flex justify-between items-center hover:border-brand-accent/30 hover:bg-brand-accent/10/50 transition-colors">
                                     <div>
                                         <p className="font-semibold text-gray-900 line-clamp-1">{comm.shop_name}</p>
                                         <p className="text-xs text-gray-500">Seller #{comm.seller_id}</p>
                                     </div>
-                                    <div className="px-3 py-1.5 bg-white shadow-sm border border-gray-200 rounded-lg font-bold text-brand-teal">
+                                    <div className="px-3 py-1.5 bg-white shadow-sm border border-gray-200 rounded-lg font-bold text-brand-accent">
                                         {comm.percentage}%
                                     </div>
                                 </li>

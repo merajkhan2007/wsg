@@ -26,19 +26,10 @@ files.forEach(file => {
     let content = fs.readFileSync(file, 'utf8');
     let original = content;
 
-    // Mass replacements
-    content = content.replace(/brand-pink/g, 'brand-primary');
-    content = content.replace(/brand-teal/g, 'brand-accent');
-    content = content.replace(/brand-yellow/g, 'brand-accent');
-    content = content.replace(/brand-burgundy/g, 'brand-dark');
-
-    // Make sections use soft backgrounds
-    content = content.replace(/bg-neutral-50/g, 'bg-brand-base');
-    
-    // Convert dark #1A1A1A hero sections to use #FFF7F9 (brand-base) or white, with dark text
-    // The instructions say: "Alternate sections with #FFF7F9 and white for depth"
-    // For Header/Navbar: Background: white
-    // For Homepage Banner: gradient
+    content = content.replace(/brand-darkPink/g, 'brand-primary/90');
+    // For primary buttons hover states requested: #d63b63
+    content = content.replace(/hover:bg-brand-darkPink/g, 'hover:bg-[#d63b63]');
+    content = content.replace(/hover:bg-brand-primary\/90/g, 'hover:bg-[#d63b63]');
     
     if (original !== content) {
         fs.writeFileSync(file, content, 'utf8');
@@ -46,4 +37,4 @@ files.forEach(file => {
     }
 });
 
-console.log(`Replaced colors in ${replacedCount} files.`);
+console.log(`Replaced hovers in ${replacedCount} files.`);

@@ -107,13 +107,13 @@ export default function SellerPayoutsPage() {
                </div>
             </div>
 
-            <div className="bg-gradient-to-br from-white to-gray-50 border border-brand-teal/20 rounded-3xl p-6 shadow-soft relative overflow-hidden md:col-span-2 lg:col-span-3">
-               <div className="absolute top-0 right-0 p-6 opacity-10"><IndianRupee className="w-32 h-32 text-brand-teal" /></div>
-               <h3 className="text-sm font-semibold text-brand-teal mb-2 relative z-10">Total Available Balance</h3>
-               <p className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-brand-teal to-blue-600 relative z-10">
+            <div className="bg-gradient-to-br from-white to-gray-50 border border-brand-accent/20 rounded-3xl p-6 shadow-soft relative overflow-hidden md:col-span-2 lg:col-span-3">
+               <div className="absolute top-0 right-0 p-6 opacity-10"><IndianRupee className="w-32 h-32 text-brand-accent" /></div>
+               <h3 className="text-sm font-semibold text-brand-accent mb-2 relative z-10">Total Available Balance</h3>
+               <p className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-blue-600 relative z-10">
                    ₹{Number(metrics.available_balance).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                </p>
-               <div className="mt-4 flex items-center text-xs font-medium text-brand-teal bg-brand-teal/10 w-fit px-2.5 py-1 rounded-full relative z-10 border border-brand-teal/20">
+               <div className="mt-4 flex items-center text-xs font-medium text-brand-accent bg-brand-accent/10 w-fit px-2.5 py-1 rounded-full relative z-10 border border-brand-accent/20">
                   Ready to be withdrawn immediately
                </div>
             </div>

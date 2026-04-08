@@ -94,8 +94,8 @@ export default function AdminOrdersPage() {
     switch(status.toLowerCase()) {
        case 'completed':
        case 'delivered': return 'text-emerald-500 bg-emerald-50 border-emerald-200';
-       case 'shipped': return 'text-brand-teal bg-brand-teal/10 border-brand-teal/20';
-       case 'processing': return 'text-brand-pink bg-brand-pink/10 border-brand-pink/20';
+       case 'shipped': return 'text-brand-accent bg-brand-accent/10 border-brand-accent/20';
+       case 'processing': return 'text-brand-primary bg-brand-primary/10 border-brand-primary/20';
        case 'refunded':
        case 'cancelled': return 'text-red-500 bg-red-50 border-red-200';
        default: return 'text-amber-500 bg-amber-50 border-amber-200'; // pending
@@ -120,14 +120,14 @@ export default function AdminOrdersPage() {
                   <input 
                      type="text" 
                      placeholder="Search order ID or customer..." 
-                     className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-brand-teal/20 focus:border-brand-teal transition-all text-sm"
+                     className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-brand-accent/20 focus:border-brand-accent transition-all text-sm"
                   />
                </div>
             </div>
             
             <div className="flex-1 overflow-y-auto">
               {loading ? (
-                 <div className="flex justify-center p-10"><div className="w-6 h-6 rounded-full border-t-2 border-r-2 border-brand-teal animate-spin"></div></div>
+                 <div className="flex justify-center p-10"><div className="w-6 h-6 rounded-full border-t-2 border-r-2 border-brand-accent animate-spin"></div></div>
               ) : orders.length > 0 ? (
                  <ul className="divide-y divide-gray-100">
                     {orders.map((order) => (
@@ -136,7 +136,7 @@ export default function AdminOrdersPage() {
                              onClick={() => loadOrderDetails(order.id)}
                              className={twMerge(
                                 "w-full text-left p-4 hover:bg-gray-50/50 transition-colors border-l-2 border-transparent",
-                                selectedOrder?.id === order.id && "bg-gray-50/80 border-brand-teal"
+                                selectedOrder?.id === order.id && "bg-gray-50/80 border-brand-accent"
                              )}
                           >
                              <div className="flex justify-between items-start mb-2">
@@ -148,7 +148,7 @@ export default function AdminOrdersPage() {
                              <h4 className="text-sm font-medium text-gray-900 line-clamp-1 mb-1">{order.product_names || 'Products'}</h4>
                              <div className="flex justify-between items-end mt-2">
                                 <span className="text-xs text-gray-400 max-w-[150px] truncate">for {order.customer_name} • {order.item_count} items</span>
-                                <span className="text-sm font-bold text-brand-teal">₹{Number(order.total_amount).toFixed(2)}</span>
+                                <span className="text-sm font-bold text-brand-accent">₹{Number(order.total_amount).toFixed(2)}</span>
                              </div>
                           </button>
                        </li>
@@ -178,13 +178,13 @@ export default function AdminOrdersPage() {
                            Placed {new Date(selectedOrder.created_at).toLocaleString()}
                         </p>
                         <p className="text-sm text-gray-500 flex items-start gap-1 mt-2">
-                           <MapPin className="w-4 h-4 text-brand-teal shrink-0" />
+                           <MapPin className="w-4 h-4 text-brand-accent shrink-0" />
                            <span className="max-w-md bg-gray-50/80 px-2 py-1 rounded border border-gray-100">{selectedOrder.address}</span>
                         </p>
                      </div>
                      <div className="text-right">
                         <p className="text-xs text-gray-400 mb-1">Order Total</p>
-                        <p className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-teal to-blue-600">
+                        <p className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-blue-600">
                            ₹{Number(selectedOrder.total_amount).toFixed(2)}
                         </p>
                      </div>
@@ -197,7 +197,7 @@ export default function AdminOrdersPage() {
                      </h3>
 
                      {itemsLoading ? (
-                        <div className="flex justify-center p-10"><div className="w-6 h-6 rounded-full border-t-2 border-r-2 border-brand-teal animate-spin"></div></div>
+                        <div className="flex justify-center p-10"><div className="w-6 h-6 rounded-full border-t-2 border-r-2 border-brand-accent animate-spin"></div></div>
                      ) : (
                         <div className="bg-gray-50/30 rounded-2xl border border-gray-200 overflow-hidden">
                            <table className="w-full text-left text-sm">
@@ -222,7 +222,7 @@ export default function AdminOrdersPage() {
                                              )}
                                              <div>
                                                 <p className="font-semibold text-gray-900 line-clamp-1">{item.product_name}</p>
-                                                <p className="text-xs text-brand-teal font-medium">Sold by: {item.shop_name}</p>
+                                                <p className="text-xs text-brand-accent font-medium">Sold by: {item.shop_name}</p>
                                              </div>
                                           </div>
                                        </td>
@@ -263,7 +263,7 @@ export default function AdminOrdersPage() {
                </>
             ) : (
                <div className="flex-1 flex flex-col items-center justify-center text-gray-400 p-10 text-center">
-                  <PackageCheck className="w-16 h-16 text-brand-teal/20 mb-4" />
+                  <PackageCheck className="w-16 h-16 text-brand-accent/20 mb-4" />
                   <h3 className="text-lg font-medium text-gray-700">Select an Order</h3>
                   <p className="text-sm mt-2 max-w-sm">Choose an order from the global queue to view buyer details, track seller fulfillment, or forcefully override status.</p>
                </div>

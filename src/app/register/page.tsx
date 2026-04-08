@@ -52,7 +52,7 @@ export default function RegisterPage() {
     <div className="min-h-screen flex items-center justify-center bg-surface-light px-4 py-20">
       <div className="w-full max-w-lg bg-white p-8 sm:p-10 rounded-3xl shadow-soft border border-gray-100">
         <div className="text-center mb-8">
-          <Sparkles className="w-10 h-10 text-brand-pink mx-auto mb-4" />
+          <Sparkles className="w-10 h-10 text-brand-primary mx-auto mb-4" />
           <h1 className="text-3xl font-serif font-bold text-gray-900 mb-2">Join WeSoulGifts</h1>
           <p className="text-gray-500">Create an account to unlock premium gifting</p>
         </div>
@@ -90,7 +90,7 @@ export default function RegisterPage() {
                 name="name"
                 type="text" 
                 required
-                className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-pink focus:ring-1 focus:ring-brand-pink transition-all" 
+                className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all" 
                 placeholder="John Doe"
               />
             </div>
@@ -104,7 +104,7 @@ export default function RegisterPage() {
                 name="email"
                 type="email" 
                 required
-                className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-pink focus:ring-1 focus:ring-brand-pink transition-all" 
+                className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all" 
                 placeholder="you@example.com"
               />
             </div>
@@ -119,7 +119,7 @@ export default function RegisterPage() {
                 type="password" 
                 required
                 minLength={6}
-                className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-pink focus:ring-1 focus:ring-brand-pink transition-all" 
+                className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary transition-all" 
                 placeholder="••••••••"
               />
             </div>
@@ -129,14 +129,14 @@ export default function RegisterPage() {
           <button 
             type="submit" 
             disabled={loading}
-            className="w-full bg-brand-pink text-white py-4 rounded-xl font-bold hover:bg-brand-darkPink transition-colors shadow-glow disabled:opacity-70 disabled:cursor-not-allowed"
+            className="w-full bg-brand-primary text-white py-4 rounded-xl font-bold hover:bg-[#d63b63] transition-colors shadow-glow disabled:opacity-70 disabled:cursor-not-allowed"
           >
             {loading ? 'Creating account...' : (role === 'seller' ? 'Create Seller Account' : 'Create Account')}
           </button>
         </form>
 
         <p className="text-center text-gray-600 mt-8 text-sm">
-          Already have an account? <Link href="/login" className="text-brand-pink font-semibold hover:underline">Sign in</Link>
+          Already have an account? <Link href="/login" className="text-brand-primary font-semibold hover:underline">Sign in</Link>
         </p>
       </div>
     </div>

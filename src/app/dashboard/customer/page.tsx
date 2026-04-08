@@ -244,28 +244,28 @@ export default function CustomerDashboard() {
              <button 
                onClick={() => setActiveTab('orders')}
                className={twMerge("flex items-center gap-3 w-full p-3 rounded-xl font-medium transition-colors text-left", 
-                 activeTab === 'orders' ? "bg-brand-pink/10 text-brand-pink" : "text-gray-600 hover:bg-gray-50")}
+                 activeTab === 'orders' ? "bg-brand-primary/10 text-brand-primary" : "text-gray-600 hover:bg-gray-50")}
              >
                 <Package size={20} /> My Orders
              </button>
              <button 
                onClick={() => setActiveTab('messages')}
                className={twMerge("flex items-center gap-3 w-full p-3 rounded-xl font-medium transition-colors text-left", 
-                 activeTab === 'messages' ? "bg-brand-teal/10 text-brand-teal" : "text-gray-600 hover:bg-gray-50")}
+                 activeTab === 'messages' ? "bg-brand-accent/10 text-brand-accent" : "text-gray-600 hover:bg-gray-50")}
              >
                 <MessageSquare size={20} /> Messages
              </button>
              <button 
                onClick={() => setActiveTab('wishlist')}
                className={twMerge("flex items-center gap-3 w-full p-3 rounded-xl font-medium transition-colors text-left", 
-                 activeTab === 'wishlist' ? "bg-brand-pink/10 text-brand-pink" : "text-gray-600 hover:bg-gray-50")}
+                 activeTab === 'wishlist' ? "bg-brand-primary/10 text-brand-primary" : "text-gray-600 hover:bg-gray-50")}
              >
                 <Heart size={20} /> Wishlist
              </button>
              <button 
                onClick={() => setActiveTab('settings')}
                className={twMerge("flex items-center gap-3 w-full p-3 rounded-xl font-medium transition-colors text-left", 
-                 activeTab === 'settings' ? "bg-brand-pink/10 text-brand-pink" : "text-gray-600 hover:bg-gray-50")}
+                 activeTab === 'settings' ? "bg-brand-primary/10 text-brand-primary" : "text-gray-600 hover:bg-gray-50")}
              >
                 <Settings size={20} /> Profile Settings
              </button>
@@ -327,7 +327,7 @@ export default function CustomerDashboard() {
                   
                   <div className="flex-1 overflow-y-auto">
                     {loadingConvos ? (
-                       <div className="p-6 flex justify-center"><div className="w-6 h-6 rounded-full border-b-2 border-l-2 border-brand-teal animate-spin"></div></div>
+                       <div className="p-6 flex justify-center"><div className="w-6 h-6 rounded-full border-b-2 border-l-2 border-brand-accent animate-spin"></div></div>
                     ) : conversations.length > 0 ? (
                        conversations.map((conv: any, i) => (
                          <button 
@@ -335,10 +335,10 @@ export default function CustomerDashboard() {
                           onClick={() => loadConversation(conv)}
                           className={twMerge(
                             "w-full text-left p-4 flex items-start gap-4 hover:bg-white transition-colors border-b border-gray-100",
-                            activeChat?.order_id === conv.order_id && "bg-white border-l-2 border-l-brand-teal shadow-sm"
+                            activeChat?.order_id === conv.order_id && "bg-white border-l-2 border-l-brand-accent shadow-sm"
                           )}
                          >
-                            <div className="w-10 h-10 rounded-full bg-brand-teal/10 flex items-center justify-center flex-shrink-0 text-brand-teal">
+                            <div className="w-10 h-10 rounded-full bg-brand-accent/10 flex items-center justify-center flex-shrink-0 text-brand-accent">
                                <UserIcon className="w-5 h-5" />
                             </div>
                             <div className="flex-1 min-w-0">
@@ -352,7 +352,7 @@ export default function CustomerDashboard() {
                                   </div>
                                </div>
                                <p className="text-xs text-gray-500 truncate mb-1.5">{conv.content}</p>
-                               <div className="flex items-center text-[10px] text-brand-teal font-medium">
+                               <div className="flex items-center text-[10px] text-brand-accent font-medium">
                                   <Package className="w-3 h-3 mr-1" /> Order #{String(conv.order_id).padStart(4, '0')}
                                </div>
                             </div>
@@ -386,7 +386,7 @@ export default function CustomerDashboard() {
                       {/* Messages Area */}
                       <div className="flex-1 overflow-y-auto p-6 space-y-6 flex flex-col bg-slate-50">
                         {chatLoading ? (
-                           <div className="flex-1 flex items-center justify-center text-gray-400"><div className="w-6 h-6 rounded-full border-b-2 border-l-2 border-brand-teal animate-spin"></div></div>
+                           <div className="flex-1 flex items-center justify-center text-gray-400"><div className="w-6 h-6 rounded-full border-b-2 border-l-2 border-brand-accent animate-spin"></div></div>
                         ) : messages.length > 0 ? (
                            messages.map((msg: any, idx) => {
                              const isMe = msg.sender_id === user.id;
@@ -395,7 +395,7 @@ export default function CustomerDashboard() {
                                   <div className={twMerge(
                                     "max-w-[75%] rounded-2xl p-4 shadow-sm text-sm",
                                     isMe 
-                                     ? "bg-brand-pink text-white rounded-tr-sm" 
+                                     ? "bg-brand-primary text-white rounded-tr-sm" 
                                      : "bg-white text-gray-800 rounded-tl-sm border border-gray-200"
                                   )}>
                                      <p>{msg.content}</p>
@@ -431,12 +431,12 @@ export default function CustomerDashboard() {
                               value={newMessage}
                               onChange={(e) => setNewMessage(e.target.value)}
                               placeholder="Type your message..." 
-                              className="flex-1 bg-gray-50 border border-gray-200 rounded-xl py-3 px-4 text-sm text-gray-900 focus:ring-1 focus:ring-brand-pink focus:border-brand-pink outline-none transition-all placeholder:text-gray-400"
+                              className="flex-1 bg-gray-50 border border-gray-200 rounded-xl py-3 px-4 text-sm text-gray-900 focus:ring-1 focus:ring-brand-primary focus:border-brand-primary outline-none transition-all placeholder:text-gray-400"
                             />
                             <button 
                               type="submit" 
                               disabled={!newMessage.trim()}
-                              className="bg-brand-pink hover:bg-brand-darkPink disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed text-white px-5 rounded-xl transition-colors shadow-glow flex items-center justify-center"
+                              className="bg-brand-primary hover:bg-[#d63b63] disabled:bg-gray-100 disabled:text-gray-400 disabled:cursor-not-allowed text-white px-5 rounded-xl transition-colors shadow-glow flex items-center justify-center"
                             >
                               <Send className="w-5 h-5" />
                             </button>
@@ -459,7 +459,7 @@ export default function CustomerDashboard() {
             {activeTab === 'wishlist' && (
               <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 min-h-[400px] animate-in fade-in duration-300">
                 <h2 className="text-xl font-serif font-bold text-gray-900 mb-6 flex items-center gap-3">
-                   <Heart className="w-6 h-6 text-brand-pink fill-current" />
+                   <Heart className="w-6 h-6 text-brand-primary fill-current" />
                    My Wishlist
                 </h2>
 
@@ -470,7 +470,7 @@ export default function CustomerDashboard() {
                       <Heart size={40} className="mb-4 text-gray-200" />
                       <h3 className="text-lg font-medium text-gray-600">Wishlist Empty</h3>
                       <p>You haven't added any items to your wishlist yet.</p>
-                      <Link href="/shop" className="mt-6 text-brand-teal hover:text-brand-burgundy font-medium transition-colors">
+                      <Link href="/shop" className="mt-6 text-brand-accent hover:text-brand-dark font-medium transition-colors">
                          Explore Shop
                       </Link>
                    </div>
@@ -488,13 +488,13 @@ export default function CustomerDashboard() {
                                <Trash2 size={16} />
                             </button>
                             <div className="p-4">
-                               <div className="text-xs font-semibold text-brand-teal uppercase tracking-wider mb-1">{product.category_name || 'Gift'}</div>
-                               <Link href={`/product/${product.id}`} className="font-serif font-bold text-gray-900 line-clamp-1 hover:text-brand-pink transition-colors">
+                               <div className="text-xs font-semibold text-brand-accent uppercase tracking-wider mb-1">{product.category_name || 'Gift'}</div>
+                               <Link href={`/product/${product.id}`} className="font-serif font-bold text-gray-900 line-clamp-1 hover:text-brand-primary transition-colors">
                                   {product.title || product.name}
                                </Link>
                                <div className="flex justify-between items-center mt-3 pt-3 border-t border-gray-100">
-                                  <span className="font-bold text-brand-pink">₹{product.price}</span>
-                                  <Link href={`/product/${product.id}`} className="text-brand-teal hover:text-brand-burgundy font-medium text-sm flex items-center gap-1.5 transition-colors">
+                                  <span className="font-bold text-brand-primary">₹{product.price}</span>
+                                  <Link href={`/product/${product.id}`} className="text-brand-accent hover:text-brand-dark font-medium text-sm flex items-center gap-1.5 transition-colors">
                                     <ShoppingCart size={14} /> View
                                   </Link>
                                </div>
@@ -510,7 +510,7 @@ export default function CustomerDashboard() {
             {activeTab === 'settings' && (
               <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 animate-in fade-in duration-300">
                  <h2 className="text-xl font-serif font-bold text-gray-900 mb-6 flex items-center gap-3">
-                    <Settings className="w-6 h-6 text-brand-teal" />
+                    <Settings className="w-6 h-6 text-brand-accent" />
                     Profile Settings
                  </h2>
                  
@@ -531,7 +531,7 @@ export default function CustomerDashboard() {
                                 value={profile.name}
                                 onChange={(e) => setProfile({...profile, name: e.target.value})}
                                 required
-                                className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-teal/50 transition-all text-gray-900"
+                                className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-accent/50 transition-all text-gray-900"
                              />
                           </div>
                           <div>
@@ -556,7 +556,7 @@ export default function CustomerDashboard() {
                                 type="password" 
                                 value={passwords.current}
                                 onChange={(e) => setPasswords({...passwords, current: e.target.value})}
-                                className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-teal/50 transition-all text-gray-900"
+                                className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-accent/50 transition-all text-gray-900"
                                 placeholder="Enter to change password"
                              />
                           </div>
@@ -566,7 +566,7 @@ export default function CustomerDashboard() {
                                 type="password" 
                                 value={passwords.new}
                                 onChange={(e) => setPasswords({...passwords, new: e.target.value})}
-                                className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-teal/50 transition-all text-gray-900"
+                                className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-accent/50 transition-all text-gray-900"
                              />
                           </div>
                           <div>
@@ -575,7 +575,7 @@ export default function CustomerDashboard() {
                                 type="password" 
                                 value={passwords.confirm}
                                 onChange={(e) => setPasswords({...passwords, confirm: e.target.value})}
-                                className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-teal/50 transition-all text-gray-900"
+                                className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-accent/50 transition-all text-gray-900"
                              />
                           </div>
                        </div>
@@ -585,7 +585,7 @@ export default function CustomerDashboard() {
                        <button 
                           type="submit" 
                           disabled={settingsLoading}
-                          className="bg-brand-teal hover:bg-teal-700 disabled:bg-gray-200 disabled:text-gray-400 text-white px-8 py-3 rounded-xl font-medium transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-teal/50 flex items-center"
+                          className="bg-brand-accent hover:bg-teal-700 disabled:bg-gray-200 disabled:text-gray-400 text-white px-8 py-3 rounded-xl font-medium transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-accent/50 flex items-center"
                        >
                           {settingsLoading ? (
                              <div className="w-5 h-5 rounded-full border-b-2 border-white animate-spin mr-2"></div>

@@ -113,8 +113,8 @@ export default function AddToWishlistButton({ product }: { product: any }) {
       onClick={toggleWishlist}
       className={`w-16 h-16 flex flex-shrink-0 items-center justify-center rounded-full transition-all ${
         isSaved 
-          ? 'bg-brand-pink text-white shadow-glow' 
-          : 'bg-surface-light text-gray-900 hover:bg-brand-teal hover:text-white'
+          ? 'bg-brand-primary text-white shadow-glow' 
+          : 'bg-surface-light text-gray-900 hover:bg-brand-accent hover:text-white'
       }`}
     >
       <Heart size={24} fill={isSaved ? "currentColor" : "none"} />

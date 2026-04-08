@@ -1,50 +1,99 @@
 import Link from 'next/link';
+import { Mail, MapPin } from 'lucide-react';
 
 export default function Footer() {
   return (
-    <footer className="bg-white border-t border-gray-100 py-12 mt-auto">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          <div className="space-y-4">
-            <img src="/logo.png" alt="WeSoulGifts" className="h-[60px] w-auto -ml-2" />
-            <p className="text-gray-500 text-sm leading-relaxed mt-2">
-              Curated emotional gifting for every celebration. Experience the joy of giving.
+    <footer className="bg-brand-dark border-t border-brand-dark pt-16 pb-8 mt-auto text-white/80">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 mb-16">
+          
+          {/* Column 1: Brand & Bio */}
+          <div className="lg:col-span-2 space-y-6">
+            <Link href="/" className="inline-block">
+               <span className="text-2xl font-bold bg-gradient-to-r from-brand-accent to-brand-primary bg-clip-text text-transparent tracking-tight">WeSoulGifts</span>
+            </Link>
+            <p className="text-sm leading-relaxed text-white/70 max-w-sm">
+              Where thoughtful gifting meets passionate creators — a platform to buy and sell unique handmade products with a story.
             </p>
+            <div className="flex items-center gap-4 pt-2">
+              <a href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-all duration-300">
+                <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.04c-5.5 0-10 4.48-10 10.02 0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.66c0-2.5 1.5-3.89 3.77-3.89 1.1 0 2.23.2 2.23.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10.05 10.05 0 0 0 8.44-9.9c0-5.54-4.5-10.02-10-10.02Z"/></svg>
+              </a>
+              <a href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-all duration-300">
+                <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+              </a>
+              <a href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-brand-primary hover:text-white hover:border-brand-primary transition-all duration-300">
+                <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"></path></svg>
+              </a>
+            </div>
           </div>
+
+          {/* Column 2: Categories */}
           <div>
-            <h4 className="font-semibold mb-4 text-gray-800">Shop</h4>
-            <ul className="space-y-2 text-sm text-gray-500">
-              <li><Link href="/category/birthday" className="hover:text-brand-pink transition-colors">Birthday Gifts</Link></li>
-              <li><Link href="/category/anniversary" className="hover:text-brand-pink transition-colors">Anniversary</Link></li>
-              <li><Link href="/category/love" className="hover:text-brand-pink transition-colors">Love & Romance</Link></li>
-              <li><Link href="/shop" className="hover:text-brand-pink transition-colors">All Products</Link></li>
+            <h4 className="font-semibold mb-6 text-white text-sm tracking-widest uppercase">Categories</h4>
+            <ul className="space-y-3 text-sm">
+              <li><Link href="/shop?category=Home%20Living" className="text-brand-secondary hover:text-brand-primary transition-colors flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-secondary/50"></span> Home & Living</Link></li>
+              <li><Link href="/shop?category=Fashion" className="text-brand-secondary hover:text-brand-primary transition-colors flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-secondary/50"></span> Fashion</Link></li>
+              <li><Link href="/shop?category=Jewellery" className="text-brand-secondary hover:text-brand-primary transition-colors flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-secondary/50"></span> Jewellery</Link></li>
+              <li><Link href="/shop?category=Gifts" className="text-brand-secondary hover:text-brand-primary transition-colors flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-secondary/50"></span> Gifts</Link></li>
+              <li><Link href="/shop?category=Stationery" className="text-brand-secondary hover:text-brand-primary transition-colors flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-secondary/50"></span> Stationery</Link></li>
+              <li><Link href="/shop?category=Paintings" className="text-brand-secondary hover:text-brand-primary transition-colors flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-secondary/50"></span> Paintings</Link></li>
             </ul>
           </div>
-          <div>
-            <h4 className="font-semibold mb-4 text-gray-800">Company</h4>
-            <ul className="space-y-2 text-sm text-gray-500">
-              <li><Link href="/about" className="hover:text-brand-pink transition-colors">About Us</Link></li>
-              <li><Link href="/contact" className="hover:text-brand-pink transition-colors">Contact</Link></li>
-              <li><Link href="/sell" className="hover:text-brand-pink transition-colors">Become a Seller</Link></li>
-            </ul>
+
+          {/* Column 3: Occasions & Company */}
+          <div className="space-y-10 lg:space-y-8">
+            <div>
+              <h4 className="font-semibold mb-6 text-white text-sm tracking-widest uppercase">Occasions</h4>
+              <ul className="space-y-3 text-sm">
+                <li><Link href="/category/birthday" className="text-brand-secondary hover:text-brand-primary transition-colors">Birthday Gifts</Link></li>
+                <li><Link href="/category/anniversary" className="text-brand-secondary hover:text-brand-primary transition-colors">Anniversaries</Link></li>
+                <li><Link href="/category/love" className="text-brand-secondary hover:text-brand-primary transition-colors">Love & Romance</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-6 text-white text-sm tracking-widest uppercase">Company</h4>
+              <ul className="space-y-3 text-sm">
+                <li><Link href="/about" className="text-brand-secondary hover:text-brand-primary transition-colors">About Us</Link></li>
+                <li><Link href="/contact" className="text-brand-secondary hover:text-brand-primary transition-colors">Contact</Link></li>
+                <li><Link href="/sell" className="text-brand-secondary hover:text-brand-primary transition-colors">Become a Seller</Link></li>
+              </ul>
+            </div>
           </div>
+
+          {/* Column 4: Newsletter & Contact */}
           <div>
-            <h4 className="font-semibold mb-4 text-gray-800">Stay Connected</h4>
-            <p className="text-sm text-gray-500 mb-4">Subscribe to get special offers and updates.</p>
-            <div className="flex">
+            <h4 className="font-semibold mb-6 text-white text-sm tracking-widest uppercase">Stay Updated</h4>
+            <p className="text-sm text-white/70 mb-4 leading-relaxed">
+              Join our mailing list to receive updates on artisan stories and exclusive offers.
+            </p>
+            <div className="flex flex-col gap-3 mb-8">
               <input 
                 type="email" 
-                placeholder="Your email" 
-                className="px-4 py-2 border border-gray-200 rounded-l-md w-full focus:outline-none focus:border-brand-pink"
+                placeholder="Enter your email address" 
+                className="px-4 py-3 bg-white/5 border border-white/10 rounded-xl w-full focus:outline-none focus:border-brand-primary text-white text-sm placeholder:text-neutral-600 transition-colors"
               />
-              <button className="bg-brand-teal text-white px-4 py-2 rounded-r-md hover:bg-brand-burgundy transition-colors">
+              <button className="bg-brand-primary text-white px-4 py-3 rounded-xl hover:bg-[#d63b63] transition-all duration-300 text-sm font-semibold shadow-glow">
                 Subscribe
               </button>
             </div>
+            <div className="space-y-3 text-sm">
+              <a href="mailto:support@wesoulgifts.com" className="flex items-center gap-3 hover:text-white transition-colors group">
+                <Mail size={16} className="text-neutral-500 group-hover:text-brand-primary transition-colors" /> support@wesoulgifts.com
+              </a>
+            </div>
           </div>
+
         </div>
-        <div className="mt-12 pt-8 border-t border-gray-100 text-center text-sm text-gray-400">
+
+        {/* Bottom Bar */}
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
           <p>&copy; {new Date().getFullYear()} WeSoulGifts. All rights reserved.</p>
+          <div className="flex items-center gap-6">
+            <Link href="/privacy" className="text-brand-secondary hover:text-brand-primary transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="text-brand-secondary hover:text-brand-primary transition-colors">Terms of Service</Link>
+            <Link href="/shipping" className="text-brand-secondary hover:text-brand-primary transition-colors">Shipping Info</Link>
+          </div>
         </div>
       </div>
     </footer>

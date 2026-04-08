@@ -67,7 +67,7 @@ export default function AdminDashboard() {
 
   if (!user) return <div className="min-h-screen bg-surface-light flex items-center justify-center">Loading...</div>;
 
-  const tabClass = (tab: string) => `flex items-center gap-3 w-full p-3 rounded-xl transition-colors text-left ${activeTab === tab ? 'bg-brand-pink/10 text-brand-pink font-medium' : 'text-gray-600 hover:bg-gray-50'}`;
+  const tabClass = (tab: string) => `flex items-center gap-3 w-full p-3 rounded-xl transition-colors text-left ${activeTab === tab ? 'bg-brand-primary/10 text-brand-primary font-medium' : 'text-gray-600 hover:bg-gray-50'}`;
 
   return (
     <div className="min-h-screen bg-surface-light pt-10 pb-20">
@@ -93,7 +93,7 @@ export default function AdminDashboard() {
              <button onClick={() => setActiveTab('sellers')} className={`${tabClass('sellers')} flex justify-between`}>
                 <div className="flex items-center gap-3"><Store size={20} /> Sellers</div>
                 {sellers.filter(s => s.approval_status === 'pending').length > 0 && (
-                  <span className="bg-brand-pink text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full font-bold">
+                  <span className="bg-brand-primary text-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full font-bold">
                     {sellers.filter(s => s.approval_status === 'pending').length}
                   </span>
                 )}
@@ -132,7 +132,7 @@ export default function AdminDashboard() {
                     ) : sellers.filter(s => s.approval_status === 'pending').length === 0 ? (
                        <p className="text-gray-500 bg-gray-50 p-6 rounded-xl text-center border border-gray-100">No pending seller approvals.</p>
                     ) : sellers.filter(s => s.approval_status === 'pending').map((seller) => (
-                      <div key={seller.id} className="flex flex-col sm:flex-row justify-between items-center p-4 border border-gray-100 rounded-xl gap-4 hover:border-brand-pink/30 hover:bg-brand-pink/5 transition-all">
+                      <div key={seller.id} className="flex flex-col sm:flex-row justify-between items-center p-4 border border-gray-100 rounded-xl gap-4 hover:border-brand-primary/30 hover:bg-brand-primary/5 transition-all">
                         <div className="flex items-center gap-4">
                            <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-gray-500 font-serif font-bold text-xl uppercase">
                              {seller.shop_name?.charAt(0) || seller.name?.charAt(0)}

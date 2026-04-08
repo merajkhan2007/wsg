@@ -207,7 +207,7 @@ export default function SellerDashboard() {
 
   if (!user || loading) return <div className="min-h-screen bg-surface-light flex items-center justify-center">Loading...</div>;
 
-  const tabClass = (tab: string) => `flex items-center gap-3 w-full p-3 rounded-xl transition-colors text-left ${activeTab === tab ? 'bg-brand-pink/10 text-brand-pink font-medium' : 'text-gray-600 hover:bg-gray-50'}`;
+  const tabClass = (tab: string) => `flex items-center gap-3 w-full p-3 rounded-xl transition-colors text-left ${activeTab === tab ? 'bg-brand-primary/10 text-brand-primary font-medium' : 'text-gray-600 hover:bg-gray-50'}`;
 
   return (
     <div className="min-h-screen bg-surface-light pt-10 pb-20">
@@ -216,7 +216,7 @@ export default function SellerDashboard() {
         <div className="flex justify-between items-center mb-10">
           <div>
             <h1 className="text-3xl font-serif font-bold text-gray-900 mb-2">Seller Dashboard</h1>
-            <p className="text-gray-500">Manage your store - <span className="font-semibold text-brand-pink">{sellerData?.shop_name}</span></p>
+            <p className="text-gray-500">Manage your store - <span className="font-semibold text-brand-primary">{sellerData?.shop_name}</span></p>
           </div>
           <button onClick={handleLogout} className="flex items-center gap-2 text-gray-500 hover:text-red-500 transition-colors">
             <LogOut size={20} /> Logout
@@ -284,7 +284,7 @@ export default function SellerDashboard() {
               <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
                 <div className="flex justify-between items-center mb-6">
                   <h2 className="text-xl font-serif font-bold text-gray-900">Your Products ({products.length})</h2>
-                  <button onClick={openAddModal} className="bg-brand-teal text-white px-4 py-2 rounded-full font-medium text-sm flex items-center gap-2 hover:bg-brand-burgundy transition-colors">
+                  <button onClick={openAddModal} className="bg-brand-accent text-white px-4 py-2 rounded-full font-medium text-sm flex items-center gap-2 hover:bg-brand-dark transition-colors">
                     <PlusCircle size={18} /> Add Product
                   </button>
                 </div>
@@ -319,7 +319,7 @@ export default function SellerDashboard() {
                           <td className="py-4 font-medium text-gray-900">₹{product.price}</td>
                           <td className="py-4 text-green-600">In Stock ({product.stock})</td>
                           <td className="py-4 text-sm font-medium text-right">
-                            <button onClick={() => openEditModal(product)} className="text-brand-teal hover:underline mr-4 p-2 bg-brand-teal/10 rounded-lg inline-flex"><Pencil size={16} /></button>
+                            <button onClick={() => openEditModal(product)} className="text-brand-accent hover:underline mr-4 p-2 bg-brand-accent/10 rounded-lg inline-flex"><Pencil size={16} /></button>
                             <button onClick={() => handleDeleteProduct(product.id)} className="text-red-500 hover:underline p-2 bg-red-50 rounded-lg inline-flex"><Trash2 size={16} /></button>
                           </td>
                         </tr>
@@ -343,11 +343,11 @@ export default function SellerDashboard() {
                          type="text" 
                          value={shopNameForm}
                          onChange={(e) => setShopNameForm(e.target.value)}
-                         className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-brand-pink"
+                         className="w-full px-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:border-brand-primary"
                          required
                       />
                    </div>
-                   <button type="submit" className="bg-brand-pink text-white px-6 py-2 rounded-xl font-medium hover:bg-brand-darkPink transition-colors">
+                   <button type="submit" className="bg-brand-primary text-white px-6 py-2 rounded-xl font-medium hover:bg-[#d63b63] transition-colors">
                       Save Changes
                    </button>
                 </form>
@@ -381,7 +381,7 @@ export default function SellerDashboard() {
                         type="text" 
                         value={formData.title}
                         onChange={e => setFormData(prev => ({ ...prev, title: e.target.value }))}
-                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-pink" 
+                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-primary" 
                       />
                    </div>
                    <div className="space-y-2 col-span-2 sm:col-span-1">
@@ -390,7 +390,7 @@ export default function SellerDashboard() {
                         required 
                         value={formData.category_id}
                         onChange={e => setFormData(prev => ({ ...prev, category_id: e.target.value }))}
-                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-pink"
+                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-primary"
                       >
                         <option value="" disabled>Select a category</option>
                         {categories.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
@@ -404,7 +404,7 @@ export default function SellerDashboard() {
                         min="0" step="0.01"
                         value={formData.price}
                         onChange={e => setFormData(prev => ({ ...prev, price: e.target.value }))}
-                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-pink" 
+                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-primary" 
                       />
                    </div>
                    <div className="space-y-2">
@@ -415,7 +415,7 @@ export default function SellerDashboard() {
                         min="0"
                         value={formData.stock}
                         onChange={e => setFormData(prev => ({ ...prev, stock: e.target.value }))}
-                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-pink" 
+                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-primary" 
                       />
                    </div>
                    <div className="space-y-2 col-span-2">
@@ -424,7 +424,7 @@ export default function SellerDashboard() {
                         rows={4}
                         value={formData.description}
                         onChange={e => setFormData(prev => ({ ...prev, description: e.target.value }))}
-                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-pink" 
+                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:bg-white focus:outline-none focus:border-brand-primary" 
                       ></textarea>
                    </div>
                    <div className="space-y-2 col-span-2">
@@ -463,7 +463,7 @@ export default function SellerDashboard() {
                     <button type="button" onClick={() => setIsModalOpen(false)} className="px-6 py-3 font-medium text-gray-600 hover:bg-gray-100 rounded-xl transition-colors">
                       Cancel
                     </button>
-                    <button type="submit" disabled={uploadingImage} className="px-8 py-3 bg-brand-pink text-white font-bold rounded-xl hover:bg-brand-darkPink transition-colors shadow-glow disabled:opacity-50 hover:cursor-pointer disabled:cursor-not-allowed">
+                    <button type="submit" disabled={uploadingImage} className="px-8 py-3 bg-brand-primary text-white font-bold rounded-xl hover:bg-[#d63b63] transition-colors shadow-glow disabled:opacity-50 hover:cursor-pointer disabled:cursor-not-allowed">
                       {editingProduct ? 'Save Changes' : 'Create Product'}
                     </button>
                  </div>

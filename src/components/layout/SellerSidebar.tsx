@@ -38,7 +38,7 @@ export function SellerSidebar() {
   return (
     <div className="hidden lg:flex sticky top-20 h-[calc(100vh-80px)] w-64 flex-col bg-white border-r border-gray-100 shadow-sm relative overflow-y-auto">
       <div className="flex h-16 items-center px-6 border-b border-gray-50 flex-shrink-0">
-        <span className="text-xl font-bold bg-gradient-to-r from-brand-teal to-brand-pink bg-clip-text text-transparent">weSoulgifts Seller</span>
+        <span className="text-xl font-bold bg-gradient-to-r from-brand-accent to-brand-primary bg-clip-text text-transparent">weSoulgifts Seller</span>
       </div>
       
       <nav className="flex-1 space-y-2 px-4 py-6 overflow-y-auto">
@@ -53,14 +53,14 @@ export function SellerSidebar() {
               className={clsx(
                 'group flex items-center px-4 py-3 text-sm font-medium rounded-xl transition-all duration-300 ease-out',
                 isActive
-                  ? 'bg-brand-teal/10 text-brand-teal border border-brand-teal/20 shadow-glow'
+                  ? 'bg-brand-accent/10 text-brand-accent border border-brand-accent/20 shadow-glow'
                   : 'text-gray-500 hover:bg-gray-50 hover:text-gray-900 hover:border-gray-200 border border-transparent'
               )}
             >
                 <Icon
                   className={clsx(
                     'mr-3 h-5 w-5 flex-shrink-0 transition-colors',
-                    isActive ? 'text-brand-teal' : 'text-gray-400 group-hover:text-gray-700'
+                    isActive ? 'text-brand-accent' : 'text-gray-400 group-hover:text-gray-700'
                   )}
                   aria-hidden="true"
                 />

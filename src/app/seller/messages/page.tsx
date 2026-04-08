@@ -87,7 +87,7 @@ export default function SellerMessagesPage() {
       </div>
 
       <div className="flex-1 bg-white border border-gray-100 rounded-3xl shadow-soft overflow-hidden flex relative">
-        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-teal/50 to-transparent"></div>
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-accent/50 to-transparent"></div>
         
         {/* Sidebar Conversations List */}
         <div className="w-1/3 border-r border-gray-100 flex flex-col bg-white/50 backdrop-blur-sm">
@@ -97,14 +97,14 @@ export default function SellerMessagesPage() {
               <input 
                 type="text" 
                 placeholder="Search orders or customers..." 
-                className="w-full pl-10 pr-4 py-2.5 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:ring-1 focus:ring-brand-teal text-gray-800 outline-none text-sm transition-all placeholder:text-gray-400"
+                className="w-full pl-10 pr-4 py-2.5 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:ring-1 focus:ring-brand-accent text-gray-800 outline-none text-sm transition-all placeholder:text-gray-400"
               />
             </div>
           </div>
           
           <div className="flex-1 overflow-y-auto">
             {loading ? (
-               <div className="p-10 flex justify-center"><div className="w-6 h-6 rounded-full border-b-2 border-l-2 border-brand-teal animate-spin"></div></div>
+               <div className="p-10 flex justify-center"><div className="w-6 h-6 rounded-full border-b-2 border-l-2 border-brand-accent animate-spin"></div></div>
             ) : conversations.length > 0 ? (
                conversations.map((conv: any, i) => (
                  <button 
@@ -112,7 +112,7 @@ export default function SellerMessagesPage() {
                   onClick={() => loadConversation(conv)}
                   className={twMerge(
                     "w-full text-left p-4 flex items-start gap-4 hover:bg-gray-50/50 transition-colors border-b border-gray-100",
-                    activeChat?.order_id === conv.order_id && "bg-gray-50/80 border-l-2 border-l-brand-teal"
+                    activeChat?.order_id === conv.order_id && "bg-gray-50/80 border-l-2 border-l-brand-accent"
                   )}
                  >
                     <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center flex-shrink-0 border border-gray-200">
@@ -126,7 +126,7 @@ export default function SellerMessagesPage() {
                           </span>
                        </div>
                        <p className="text-xs text-gray-500 truncate mb-1.5">{conv.content}</p>
-                       <div className="flex items-center text-[10px] text-brand-teal font-medium">
+                       <div className="flex items-center text-[10px] text-brand-accent font-medium">
                           <Package className="w-3 h-3 mr-1" /> Order #{conv.order_id}
                        </div>
                     </div>
@@ -145,8 +145,8 @@ export default function SellerMessagesPage() {
               {/* Chat Header */}
               <div className="p-4 border-b border-gray-100 bg-white/80 backdrop-blur flex justify-between items-center z-10">
                 <div className="flex items-center gap-4">
-                  <div className="w-10 h-10 rounded-full bg-brand-teal/10 border border-brand-teal/20 flex items-center justify-center">
-                    <User className="w-5 h-5 text-brand-teal" />
+                  <div className="w-10 h-10 rounded-full bg-brand-accent/10 border border-brand-accent/20 flex items-center justify-center">
+                    <User className="w-5 h-5 text-brand-accent" />
                   </div>
                   <div>
                     <h3 className="text-gray-900 font-semibold">{activeChat.customer_name || 'Customer'}</h3>
@@ -163,7 +163,7 @@ export default function SellerMessagesPage() {
               {/* Messages Area */}
               <div className="flex-1 overflow-y-auto p-6 space-y-6 flex flex-col">
                 {chatLoading ? (
-                  <div className="flex-1 flex items-center justify-center"><div className="w-6 h-6 rounded-full border-b-2 border-l-2 border-brand-teal animate-spin"></div></div>
+                  <div className="flex-1 flex items-center justify-center"><div className="w-6 h-6 rounded-full border-b-2 border-l-2 border-brand-accent animate-spin"></div></div>
                 ) : messages.length > 0 ? (
                    messages.map((msg: any, idx) => {
                      const isSeller = msg.sender_role === 'seller';
@@ -172,7 +172,7 @@ export default function SellerMessagesPage() {
                           <div className={twMerge(
                             "max-w-[70%] rounded-2xl p-4 shadow-sm text-sm",
                             isSeller 
-                             ? "bg-brand-teal text-gray-900 rounded-tr-sm border border-brand-teal shadow-glow" 
+                             ? "bg-brand-accent text-gray-900 rounded-tr-sm border border-brand-accent shadow-glow" 
                              : "bg-gray-50 text-gray-800 rounded-tl-sm border border-gray-200"
                           )}>
                              <p>{msg.content}</p>
@@ -216,7 +216,7 @@ export default function SellerMessagesPage() {
             </>
           ) : (
             <div className="flex-1 flex flex-col items-center justify-center text-gray-400">
-               <MessageSquare className="w-16 h-16 text-brand-teal/20 mb-4" />
+               <MessageSquare className="w-16 h-16 text-brand-accent/20 mb-4" />
                <h3 className="text-lg font-medium text-gray-700">Your Messages</h3>
                <p className="text-sm mt-2 max-w-sm text-center">Select a conversation from the sidebar to view message history and reply to your customers.</p>
             </div>

@@ -51,13 +51,13 @@ export default function WishlistPage() {
         <p className="text-gray-500 mb-10">Manage the items you love.</p>
         
         {loading ? (
-           <div className="py-20 flex justify-center"><div className="w-8 h-8 rounded-full border-b-2 border-brand-teal animate-spin"></div></div>
+           <div className="py-20 flex justify-center"><div className="w-8 h-8 rounded-full border-b-2 border-brand-accent animate-spin"></div></div>
         ) : wishlist.length === 0 ? (
            <div className="bg-surface-light rounded-3xl p-16 flex flex-col items-center justify-center text-center">
               <Heart size={64} className="text-gray-200 mb-6" />
               <h2 className="text-2xl font-serif font-bold text-gray-900 mb-2">Your wishlist is empty</h2>
               <p className="text-gray-500 mb-8 max-w-sm">Save your favorite gifts here by clicking the heart icon on any product.</p>
-              <Link href="/shop" className="bg-brand-teal text-white px-8 py-3 rounded-full font-medium hover:bg-brand-burgundy transition-all shadow-glow hover:-translate-y-1">
+              <Link href="/shop" className="bg-brand-accent text-white px-8 py-3 rounded-full font-medium hover:bg-brand-dark transition-all shadow-glow hover:-translate-y-1">
                  Discover Gifts
               </Link>
            </div>
@@ -75,14 +75,14 @@ export default function WishlistPage() {
                        <Trash2 size={18} />
                     </button>
                     <div className="p-5">
-                       <div className="text-xs font-semibold text-brand-teal uppercase tracking-wider mb-2">{product.category_name || 'Gift'}</div>
-                       <Link href={`/product/${product.id}`} className="font-serif font-bold text-lg text-gray-900 line-clamp-1 hover:text-brand-pink transition-colors mb-2">
+                       <div className="text-xs font-semibold text-brand-accent uppercase tracking-wider mb-2">{product.category_name || 'Gift'}</div>
+                       <Link href={`/product/${product.id}`} className="font-serif font-bold text-lg text-gray-900 line-clamp-1 hover:text-brand-primary transition-colors mb-2">
                           {product.title || product.name}
                        </Link>
                        <p className="text-xs text-gray-400 mb-4 line-clamp-1">By {product.shop_name || 'Verified Seller'}</p>
                        <div className="flex justify-between items-center pt-4 border-t border-gray-100">
-                          <span className="font-bold text-brand-pink text-lg">₹{product.price}</span>
-                          <Link href={`/product/${product.id}`} className="text-brand-teal hover:text-brand-burgundy font-medium text-sm flex items-center gap-1.5 transition-colors">
+                          <span className="font-bold text-brand-primary text-lg">₹{product.price}</span>
+                          <Link href={`/product/${product.id}`} className="text-brand-accent hover:text-brand-dark font-medium text-sm flex items-center gap-1.5 transition-colors">
                             <ShoppingCart size={16} /> View
                           </Link>
                        </div>

@@ -47,7 +47,7 @@ export default function CustomerOrderDetailPage({ params }: { params: { id: stri
   if (loading) {
     return (
       <div className="min-h-screen bg-surface-light flex items-center justify-center">
-        <div className="w-12 h-12 rounded-full border-b-4 border-l-4 border-brand-teal animate-spin"></div>
+        <div className="w-12 h-12 rounded-full border-b-4 border-l-4 border-brand-accent animate-spin"></div>
       </div>
     );
   }
@@ -58,7 +58,7 @@ export default function CustomerOrderDetailPage({ params }: { params: { id: stri
         <Search size={64} className="text-gray-200 mb-6" />
         <h1 className="text-2xl font-bold text-gray-800 mb-2">Order Not Found</h1>
         <p className="text-gray-500 mb-8 max-w-md text-center">{error || 'The order you are looking for does not exist or you do not have permission to view it.'}</p>
-        <Link href="/dashboard/customer" className="bg-brand-teal text-white px-8 py-3 rounded-xl font-medium shadow-soft hover:bg-teal-700 transition flex items-center gap-2">
+        <Link href="/dashboard/customer" className="bg-brand-accent text-white px-8 py-3 rounded-xl font-medium shadow-soft hover:bg-teal-700 transition flex items-center gap-2">
            <ArrowLeft size={18} /> Back to Dashboard
         </Link>
       </div>
@@ -70,7 +70,7 @@ export default function CustomerOrderDetailPage({ params }: { params: { id: stri
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
         
         {/* Navigation */}
-        <Link href="/dashboard/customer" className="inline-flex items-center text-gray-500 hover:text-brand-teal transition-colors font-medium mb-8">
+        <Link href="/dashboard/customer" className="inline-flex items-center text-gray-500 hover:text-brand-accent transition-colors font-medium mb-8">
            <ArrowLeft size={18} className="mr-2" /> Back to Orders
         </Link>
 
@@ -82,8 +82,8 @@ export default function CustomerOrderDetailPage({ params }: { params: { id: stri
                  <span className={twMerge(
                     "px-4 py-1.5 text-xs font-bold rounded-full uppercase tracking-wider",
                     order.status === 'delivered' ? "bg-green-100 text-green-700" :
-                    order.status === 'shipped' ? "bg-brand-teal/20 text-brand-teal" :
-                    "bg-brand-pink/20 text-brand-pink"
+                    order.status === 'shipped' ? "bg-brand-accent/20 text-brand-accent" :
+                    "bg-brand-primary/20 text-brand-primary"
                  )}>
                     {order.status}
                  </span>
@@ -102,7 +102,7 @@ export default function CustomerOrderDetailPage({ params }: { params: { id: stri
            {/* Items List */}
            <div className="md:col-span-2 space-y-6">
               <h3 className="text-lg font-semibold text-gray-900 flex items-center gap-2 border-b border-gray-100 pb-3">
-                 <Package className="w-5 h-5 text-brand-teal" /> Order Items
+                 <Package className="w-5 h-5 text-brand-accent" /> Order Items
               </h3>
               
               <div className="bg-white rounded-3xl shadow-soft border border-gray-100 overflow-hidden">
@@ -123,7 +123,7 @@ export default function CustomerOrderDetailPage({ params }: { params: { id: stri
                              </div>
                              <div className="text-right flex-shrink-0">
                                 <p className="text-lg font-bold text-gray-900 mb-1">₹{item.price}</p>
-                                <p className="text-xs text-brand-teal font-medium mt-1">₹{item.price * item.quantity} Total</p>
+                                <p className="text-xs text-brand-accent font-medium mt-1">₹{item.price * item.quantity} Total</p>
                              </div>
                           </li>
                        ))}
@@ -138,7 +138,7 @@ export default function CustomerOrderDetailPage({ params }: { params: { id: stri
            <div className="space-y-8">
               <div className="bg-white rounded-3xl p-6 shadow-soft border border-gray-100">
                  <h3 className="text-base font-semibold text-gray-900 mb-4 flex items-center gap-2">
-                    <MapPin className="w-5 h-5 text-brand-pink" /> Delivery Address
+                    <MapPin className="w-5 h-5 text-brand-primary" /> Delivery Address
                  </h3>
                  <div className="bg-gray-50 rounded-2xl p-4 text-sm text-gray-700 leading-relaxed border border-gray-100">
                     <p className="font-medium text-gray-900 mb-2">Shipping To:</p>
@@ -146,10 +146,10 @@ export default function CustomerOrderDetailPage({ params }: { params: { id: stri
                  </div>
               </div>
 
-              <div className="bg-gradient-to-br from-brand-teal/10 to-transparent rounded-3xl p-6 border border-brand-teal/20">
-                 <h3 className="text-base font-semibold text-brand-teal mb-2">Need Help?</h3>
+              <div className="bg-gradient-to-br from-brand-accent/10 to-transparent rounded-3xl p-6 border border-brand-accent/20">
+                 <h3 className="text-base font-semibold text-brand-accent mb-2">Need Help?</h3>
                  <p className="text-sm text-gray-600 mb-4">Contact admin support for seller inquiries (privacy protected).</p>
-                 <Link href="/dashboard/customer" className="w-full bg-brand-teal text-white font-medium px-4 py-2.5 rounded-xl uppercase tracking-wider text-xs hover:bg-teal-600 transition-all shadow-sm text-center block">
+                 <Link href="/dashboard/customer" className="w-full bg-brand-accent text-white font-medium px-4 py-2.5 rounded-xl uppercase tracking-wider text-xs hover:bg-teal-600 transition-all shadow-sm text-center block">
                     Contact Support
                  </Link>
               </div>

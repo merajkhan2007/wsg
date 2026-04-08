@@ -42,12 +42,12 @@ export default function SellerDashboard() {
       .catch(() => setLoading(false));
   }, []);
 
-  if (loading) return <div className="flex h-full items-center justify-center"><div className="w-10 h-10 rounded-full border-b-4 border-brand-teal border-l-4 animate-spin"></div></div>;
+  if (loading) return <div className="flex h-full items-center justify-center"><div className="w-10 h-10 rounded-full border-b-4 border-brand-accent border-l-4 animate-spin"></div></div>;
 
   const statCards = [
-    { title: 'Gross Revenue', value: `₹${Number(data.stats.total_revenue).toFixed(2)}`, icon: IndianRupee, color: 'text-brand-teal bg-brand-teal/10 border-brand-teal/20', growth: data.growth.revenue },
-    { title: 'Total Orders', value: data.stats.total_orders, icon: ShoppingCart, color: 'text-brand-pink bg-brand-pink/10 border-brand-pink/20', growth: data.growth.orders },
-    { title: 'Active Products', value: data.stats.total_products, icon: Package, color: 'text-brand-teal bg-brand-teal/10 border-brand-teal/20', growth: data.growth.products },
+    { title: 'Gross Revenue', value: `₹${Number(data.stats.total_revenue).toFixed(2)}`, icon: IndianRupee, color: 'text-brand-accent bg-brand-accent/10 border-brand-accent/20', growth: data.growth.revenue },
+    { title: 'Total Orders', value: data.stats.total_orders, icon: ShoppingCart, color: 'text-brand-primary bg-brand-primary/10 border-brand-primary/20', growth: data.growth.orders },
+    { title: 'Active Products', value: data.stats.total_products, icon: Package, color: 'text-brand-accent bg-brand-accent/10 border-brand-accent/20', growth: data.growth.products },
     { title: 'Store Conversion', value: '4.2%', icon: TrendingUp, color: 'text-emerald-400 bg-emerald-500/10 border-emerald-500/20' }
   ];
 
@@ -56,7 +56,7 @@ export default function SellerDashboard() {
       <div className="flex justify-between items-center">
         <div>
           <h1 className="text-3xl font-bold tracking-tight text-gray-900 flex items-center">
-            Store Performance <Sparkles className="w-6 h-6 ml-2 text-brand-teal"/>
+            Store Performance <Sparkles className="w-6 h-6 ml-2 text-brand-accent"/>
           </h1>
           <p className="text-gray-500 mt-2">Scale your business with real-time insights.</p>
         </div>

@@ -40,7 +40,7 @@ export default function ProductGallery({ images, title }: { images: string[], ti
                 onClick={() => setSelectedIndex(idx)}
                 className={twMerge(
                   "relative aspect-square bg-surface-light rounded-xl overflow-hidden cursor-pointer border-2 transition-colors",
-                  selectedIndex === idx ? "border-brand-pink" : "border-transparent hover:border-brand-pink/50"
+                  selectedIndex === idx ? "border-brand-primary" : "border-transparent hover:border-brand-primary/50"
                 )}
               >
                 <Image src={imgSrc} alt={`thumbnail-${idx}`} fill className={twMerge("object-cover transition-opacity", selectedIndex === idx ? "opacity-100" : "opacity-70 hover:opacity-100")} />

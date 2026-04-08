@@ -45,23 +45,23 @@ export default function SellerProductsPage() {
              <Download className="w-4 h-4 mr-2" /> Export
           </button>
           <button className="px-4 py-2 bg-gray-50 hover:bg-gray-100 text-gray-900 rounded-xl text-sm font-medium transition-colors border border-gray-200 flex items-center">
-             <UploadCloud className="w-4 h-4 mr-2 text-brand-teal" /> Bulk CSV
+             <UploadCloud className="w-4 h-4 mr-2 text-brand-accent" /> Bulk CSV
           </button>
-          <Link href="/seller/products/new" className="px-4 py-2 bg-brand-teal hover:bg-brand-teal/90 text-white rounded-xl text-sm font-semibold transition-colors shadow-glow flex items-center">
+          <Link href="/seller/products/new" className="px-4 py-2 bg-brand-accent hover:bg-brand-accent/90 text-white rounded-xl text-sm font-semibold transition-colors shadow-glow flex items-center">
              <Plus className="w-4 h-4 mr-1" /> Add Product
           </Link>
         </div>
       </div>
 
       <div className="bg-white border border-gray-100 rounded-3xl shadow-soft overflow-hidden relative">
-        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-teal/50 to-transparent"></div>
+        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-brand-accent/50 to-transparent"></div>
         <div className="px-6 py-5 border-b border-gray-100 flex justify-between items-center">
           <h3 className="text-lg font-semibold text-gray-900 flex items-center">
-            <PackageSearch className="w-5 h-5 mr-3 text-brand-teal" /> Catalog
+            <PackageSearch className="w-5 h-5 mr-3 text-brand-accent" /> Catalog
           </h3>
           <div className="flex items-center space-x-2">
             <span className="text-sm text-gray-500">Filter by:</span>
-            <select className="bg-gray-50 border-none text-sm rounded-lg focus:ring-1 focus:ring-brand-teal px-3 py-1.5 outline-none">
+            <select className="bg-gray-50 border-none text-sm rounded-lg focus:ring-1 focus:ring-brand-accent px-3 py-1.5 outline-none">
                <option>All Items</option>
                <option>Low Stock</option>
                <option>Gift Enabled</option>
@@ -70,7 +70,7 @@ export default function SellerProductsPage() {
         </div>
         
         {loading ? (
-             <div className="p-20 flex justify-center"><div className="w-8 h-8 rounded-full border-b-4 border-l-4 border-brand-teal animate-spin"></div></div>
+             <div className="p-20 flex justify-center"><div className="w-8 h-8 rounded-full border-b-4 border-l-4 border-brand-accent animate-spin"></div></div>
         ) : products.length > 0 ? (
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-100">
@@ -115,8 +115,8 @@ export default function SellerProductsPage() {
                         <button 
                           onClick={() => toggleGiftCustomization(product.id, product.gift_customization)}
                           className={clsx(
-                            "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-brand-teal focus:ring-offset-2 focus:ring-offset-white",
-                            product.gift_customization ? "bg-brand-teal shadow-glow" : "bg-gray-200"
+                            "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-brand-accent focus:ring-offset-2 focus:ring-offset-white",
+                            product.gift_customization ? "bg-brand-accent shadow-glow" : "bg-gray-200"
                           )}
                           role="switch"
                           aria-checked={product.gift_customization}
@@ -125,7 +125,7 @@ export default function SellerProductsPage() {
                             "pointer-events-none sticky inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out flex items-center justify-center",
                             product.gift_customization ? "translate-x-5" : "translate-x-0"
                           )}>
-                             {product.gift_customization ? <Gift className="w-3 h-3 text-brand-teal absolute" /> : null}
+                             {product.gift_customization ? <Gift className="w-3 h-3 text-brand-accent absolute" /> : null}
                           </span>
                         </button>
                       </div>
@@ -142,10 +142,10 @@ export default function SellerProductsPage() {
           </div>
         ) : (
           <div className="p-16 text-center">
-            <PackageSearch className="w-12 h-12 text-brand-teal/20 mx-auto mb-4" />
+            <PackageSearch className="w-12 h-12 text-brand-accent/20 mx-auto mb-4" />
             <h4 className="text-lg font-medium text-gray-700">No products yet</h4>
             <p className="text-gray-400 mt-2 mb-6">Start by uploading your first product or bulk import via CSV.</p>
-            <Link href="/seller/products/new" className="px-5 py-2.5 bg-brand-teal hover:bg-brand-teal/90 text-white rounded-xl text-sm font-semibold transition-colors shadow-glow inline-block">
+            <Link href="/seller/products/new" className="px-5 py-2.5 bg-brand-accent hover:bg-brand-accent/90 text-white rounded-xl text-sm font-semibold transition-colors shadow-glow inline-block">
               Create Product
             </Link>
           </div>

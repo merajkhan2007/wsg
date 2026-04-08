@@ -13,23 +13,24 @@ const config: Config = {
       },
       colors: {
         brand: {
-          burgundy: "#4a2323",
-          pink: "#ea658d",
-          teal: "#1fa39c",
-          yellow: "#f1b82d",
+          primary: "#E94E77",    // Soft Pink-Red
+          secondary: "#FFB3C1",  // Light Pink
+          accent: "#F6A623",     // Warm Orange
+          base: "#FFF7F9",       // Very Light Pink
+          dark: "#2C2C2C",       // Dark Gray
         },
         surface: {
-          light: "#fcfbff",
+          light: "#FFF7F9",
           DEFAULT: "#ffffff",
-          dark: "#f3f4f6",
+          dark: "#f9f0f2",
         }
       },
       backgroundImage: {
-        'premium-gradient': 'linear-gradient(135deg, #1fa39c 0%, #ea658d 100%)',
+        'premium-gradient': 'linear-gradient(135deg, #E94E77 0%, #FFB3C1 100%)',
       },
       boxShadow: {
-        'soft': '0 4px 20px rgba(0, 0, 0, 0.05)',
-        'glow': '0 0 15px rgba(234, 101, 141, 0.3)',
+        'soft': '0 4px 15px rgba(233, 78, 119, 0.08)',
+        'glow': '0 0 20px rgba(233, 78, 119, 0.3)',
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-out',

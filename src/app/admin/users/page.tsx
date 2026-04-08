@@ -67,7 +67,7 @@ export default function AdminUsersPage() {
 
   const getRoleIcon = (role: string) => {
      if (role === 'admin') return <ShieldAlert className="w-4 h-4 text-rose-500 mr-2" />;
-     if (role === 'seller') return <Store className="w-4 h-4 text-brand-pink mr-2" />;
+     if (role === 'seller') return <Store className="w-4 h-4 text-brand-primary mr-2" />;
      return <Monitor className="w-4 h-4 text-emerald-500 mr-2" />;
   };
 
@@ -83,7 +83,7 @@ export default function AdminUsersPage() {
           <input 
             type="text" 
             placeholder="Search by name or email..." 
-            className="pl-10 pr-4 py-2 bg-white/70 border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand-teal focus:border-transparent outline-none shadow-sm w-full sm:w-64 transition-all"
+            className="pl-10 pr-4 py-2 bg-white/70 border border-gray-200 rounded-xl focus:ring-2 focus:ring-brand-accent focus:border-transparent outline-none shadow-sm w-full sm:w-64 transition-all"
           />
         </div>
       </div>
@@ -91,7 +91,7 @@ export default function AdminUsersPage() {
       <div className="bg-white/70 backdrop-blur-xl border border-white rounded-3xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] overflow-hidden">
         <div className="px-6 py-5 border-b border-gray-100/50 flex items-center justify-between">
           <h3 className="text-lg font-semibold text-gray-900 flex items-center">
-             <Users className="w-5 h-5 mr-3 text-brand-teal" /> Platform Directory
+             <Users className="w-5 h-5 mr-3 text-brand-accent" /> Platform Directory
           </h3>
           <span className="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded-full font-medium">{users.length} Total</span>
         </div>
@@ -108,7 +108,7 @@ export default function AdminUsersPage() {
             </thead>
             <tbody className="bg-transparent divide-y divide-gray-200/50">
               {loading ? (
-                 <tr><td colSpan={4} className="py-12"><div className="flex justify-center"><div className="w-8 h-8 rounded-full border-t-2 border-r-2 border-brand-teal animate-spin"></div></div></td></tr>
+                 <tr><td colSpan={4} className="py-12"><div className="flex justify-center"><div className="w-8 h-8 rounded-full border-t-2 border-r-2 border-brand-accent animate-spin"></div></div></td></tr>
               ) : users.length > 0 ? (
                 users.map((u: any) => (
                   <tr key={u.id} className="hover:bg-gray-50/50 transition-colors">
@@ -132,9 +132,9 @@ export default function AdminUsersPage() {
                              value={u.role || 'customer'}
                              onChange={(e) => handleRoleChange(u.id, e.target)}
                              className={twMerge(
-                               "text-xs font-semibold rounded-lg border-gray-200 py-1.5 pl-3 pr-8 focus:ring-1 focus:ring-brand-teal outline-none appearance-none cursor-pointer",
+                               "text-xs font-semibold rounded-lg border-gray-200 py-1.5 pl-3 pr-8 focus:ring-1 focus:ring-brand-accent outline-none appearance-none cursor-pointer",
                                u.role === 'admin' ? "bg-rose-50 text-rose-700" :
-                               u.role === 'seller' ? "bg-brand-pink/10 text-[#d6517a]" : "bg-emerald-50 text-emerald-700"
+                               u.role === 'seller' ? "bg-brand-primary/10 text-[#d6517a]" : "bg-emerald-50 text-emerald-700"
                              )}
                            >
                               <option value="admin">Administrator</option>

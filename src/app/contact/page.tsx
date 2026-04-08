@@ -47,7 +47,7 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-50 pb-20">
+    <div className="min-h-screen bg-brand-base pb-20">
       {/* Hero Section */}
       <section className="relative bg-[#1A1A1A] text-white py-24 px-6 sm:px-8 lg:px-16 overflow-hidden">
         <div className="absolute inset-0 opacity-20 pointer-events-none">
@@ -89,21 +89,20 @@ export default function ContactPage() {
               
               <div className="space-y-8 flex-grow">
                 <div className="flex items-start group">
-                  <div className="w-12 h-12 bg-neutral-50 group-hover:bg-accent/10 transition-colors rounded-full flex items-center justify-center flex-shrink-0 mr-4">
+                  <div className="w-12 h-12 bg-brand-base group-hover:bg-accent/10 transition-colors rounded-full flex items-center justify-center flex-shrink-0 mr-4">
                     <MapPin className="w-5 h-5 text-neutral-600 group-hover:text-accent transition-colors" />
                   </div>
                   <div>
                     <h4 className="font-medium text-neutral-900 mb-1">Head Office</h4>
                     <p className="text-neutral-500 text-sm leading-relaxed">
-                      123 Emotional Gifting Lane,<br />
-                      Suite 400, Creative District<br />
-                      New York, NY 10001
+                      Aali Village, Sarita Vihar<br />
+                      New Delhi, 110076
                     </p>
                   </div>
                 </div>
 
                 <div className="flex items-start group">
-                  <div className="w-12 h-12 bg-neutral-50 group-hover:bg-accent/10 transition-colors rounded-full flex items-center justify-center flex-shrink-0 mr-4">
+                  <div className="w-12 h-12 bg-brand-base group-hover:bg-accent/10 transition-colors rounded-full flex items-center justify-center flex-shrink-0 mr-4">
                     <Mail className="w-5 h-5 text-neutral-600 group-hover:text-accent transition-colors" />
                   </div>
                   <div>
@@ -115,7 +114,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start group">
-                  <div className="w-12 h-12 bg-neutral-50 group-hover:bg-green-100 transition-colors rounded-full flex items-center justify-center flex-shrink-0 mr-4">
+                  <div className="w-12 h-12 bg-brand-base group-hover:bg-green-100 transition-colors rounded-full flex items-center justify-center flex-shrink-0 mr-4">
                     <MessageCircle className="w-5 h-5 text-neutral-600 group-hover:text-green-600 transition-colors" />
                   </div>
                   <div>
@@ -125,7 +124,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start group">
-                  <div className="w-12 h-12 bg-neutral-50 group-hover:bg-accent/10 transition-colors rounded-full flex items-center justify-center flex-shrink-0 mr-4">
+                  <div className="w-12 h-12 bg-brand-base group-hover:bg-accent/10 transition-colors rounded-full flex items-center justify-center flex-shrink-0 mr-4">
                     <Clock className="w-5 h-5 text-neutral-600 group-hover:text-accent transition-colors" />
                   </div>
                   <div>
@@ -186,7 +185,7 @@ export default function ContactPage() {
                         value={formData.name}
                         onChange={handleChange}
                         required 
-                        className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:ring-2 focus:ring-brand-pink focus:border-brand-pink transition-all outline-none"
+                        className="w-full px-4 py-3 bg-brand-base border border-neutral-200 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-brand-primary transition-all outline-none"
                         placeholder="John Doe"
                       />
                     </div>
@@ -199,7 +198,7 @@ export default function ContactPage() {
                         value={formData.email}
                         onChange={handleChange}
                         required 
-                        className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:ring-2 focus:ring-brand-pink focus:border-brand-pink transition-all outline-none"
+                        className="w-full px-4 py-3 bg-brand-base border border-neutral-200 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-brand-primary transition-all outline-none"
                         placeholder="john@example.com"
                       />
                     </div>
@@ -214,7 +213,7 @@ export default function ContactPage() {
                       value={formData.subject}
                       onChange={handleChange}
                       required 
-                      className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:ring-2 focus:ring-brand-pink focus:border-brand-pink transition-all outline-none"
+                      className="w-full px-4 py-3 bg-brand-base border border-neutral-200 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-brand-primary transition-all outline-none"
                       placeholder="How can we help you?"
                     />
                   </div>
@@ -228,7 +227,7 @@ export default function ContactPage() {
                       value={formData.message}
                       onChange={handleChange}
                       required 
-                      className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl focus:ring-2 focus:ring-brand-pink focus:border-brand-pink transition-all outline-none resize-none"
+                      className="w-full px-4 py-3 bg-brand-base border border-neutral-200 rounded-xl focus:ring-2 focus:ring-brand-primary focus:border-brand-primary transition-all outline-none resize-none"
                       placeholder="Type your message here..."
                     ></textarea>
                   </div>
@@ -237,7 +236,7 @@ export default function ContactPage() {
                     <button 
                       type="submit" 
                       disabled={status === 'submitting'}
-                      className="w-full sm:w-auto px-10 py-4 bg-brand-pink text-white rounded-full font-medium hover:bg-brand-burgundy transition-colors flex items-center justify-center min-w-[200px]"
+                      className="w-full sm:w-auto px-10 py-4 bg-brand-primary text-white rounded-full font-medium hover:bg-brand-dark transition-colors flex items-center justify-center min-w-[200px]"
                     >
                       {status === 'submitting' ? (
                         <span className="flex items-center gap-2">

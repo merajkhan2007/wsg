@@ -107,7 +107,7 @@ export default function Home() {
                   index === currentSlide ? 'scale-110' : 'scale-100'
                 }`}
               />
-              {slide.title && <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-transparent"></div>}
+              {slide.title && <div className="absolute inset-0 bg-gradient-to-r from-brand-primary/90 via-brand-secondary/70 to-transparent"></div>}
               
               <div className="absolute inset-0 flex flex-col justify-center">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
@@ -118,7 +118,7 @@ export default function Home() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={index === currentSlide ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                         transition={{ duration: 0.6 }}
-                        className="text-brand-pink font-bold tracking-wider uppercase text-xs sm:text-sm mb-4 bg-white/90 w-max px-4 py-1.5 rounded-full shadow-sm block"
+                        className="text-brand-primary font-bold tracking-wider uppercase text-xs sm:text-sm mb-4 bg-white/90 w-max px-4 py-1.5 rounded-full shadow-sm block"
                       >
                         {slide.tag}
                       </motion.span>
@@ -151,7 +151,7 @@ export default function Home() {
                         animate={index === currentSlide ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                         transition={{ duration: 0.6, delay: 0.3 }}
                       >
-                        <Link href={slide.link} className="w-max inline-flex items-center gap-2 bg-brand-pink text-white px-8 py-4 rounded-full font-medium hover:bg-brand-darkPink transition-all shadow-lg hover:shadow-brand-pink/30 transform hover:-translate-y-1">
+                        <Link href={slide.link} className="w-max inline-flex items-center gap-2 bg-brand-primary text-white px-8 py-4 rounded-full font-medium hover:bg-[#d63b63] transition-all shadow-lg hover:shadow-brand-primary/30 transform hover:-translate-y-1">
                           {slide.btnText} <ArrowRight size={18} />
                         </Link>
                       </motion.div>
@@ -169,7 +169,7 @@ export default function Home() {
                 key={index}
                 onClick={() => setCurrentSlide(index)}
                 className={`transition-all duration-300 rounded-full ${
-                  index === currentSlide ? 'w-8 h-2 bg-brand-pink' : 'w-2 h-2 bg-white/50 hover:bg-white/80'
+                  index === currentSlide ? 'w-8 h-2 bg-brand-primary' : 'w-2 h-2 bg-white/50 hover:bg-white/80'
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               />
@@ -246,7 +246,7 @@ export default function Home() {
                   <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-2">{categoryGroup.name}</h2>
                   <p className="text-gray-500">Discover our best curated selections</p>
                 </div>
-                <Link href="/shop" className="hidden md:flex items-center gap-2 text-brand-pink font-medium hover:underline">
+                <Link href="/shop" className="hidden md:flex items-center gap-2 text-brand-primary font-medium hover:underline">
                   View All <ArrowRight size={16} />
                 </Link>
               </div>
@@ -268,9 +268,9 @@ export default function Home() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: (pIndex % 6) * 0.1 }}
-                      className="group flex flex-col"
+                      className="group flex flex-col bg-white p-3 rounded-[12px] shadow-sm border border-gray-50 hover:shadow-[0_8px_25px_rgba(233,78,119,0.12)] transition-all duration-300 transform hover:-translate-y-1"
                     >
-                      <div className="relative overflow-hidden rounded-xl mb-3 aspect-[4/5] bg-gray-100 shadow-sm border border-gray-100 group-hover:shadow-md transition-shadow">
+                      <div className="relative overflow-hidden rounded-xl mb-3 aspect-[4/5] bg-brand-base border border-gray-50">
                         <Link href={`/product/${product.id}`} className="absolute inset-0 z-0">
                           <Image 
                             src={displayImage} 
@@ -281,11 +281,11 @@ export default function Home() {
                           />
                         </Link>
                         <div className="absolute inset-x-0 bottom-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0 flex justify-center bg-gradient-to-t from-black/50 to-transparent pointer-events-none z-10">
-                          <button className="pointer-events-auto bg-brand-pink/90 backdrop-blur-sm text-white px-4 py-2 w-full rounded-lg text-sm font-medium hover:bg-brand-darkPink transition-colors shadow-sm flex items-center justify-center gap-2">
+                          <button className="pointer-events-auto bg-brand-primary/90 backdrop-blur-sm text-white px-4 py-2 w-full rounded-lg text-sm font-medium hover:bg-[#d63b63] transition-colors shadow-sm flex items-center justify-center gap-2">
                             <ShoppingCart size={16} /> Add
                           </button>
                         </div>
-                        <button className="absolute z-10 top-2 right-2 bg-white/90 backdrop-blur-sm p-1.5 rounded-full text-gray-400 hover:text-brand-pink hover:bg-white transition-all shadow-sm">
+                        <button className="absolute z-10 top-2 right-2 bg-white/90 backdrop-blur-sm p-1.5 rounded-full text-gray-400 hover:text-brand-primary hover:bg-white transition-all shadow-sm">
                           <Heart size={16} />
                         </button>
                         <div className="absolute z-10 top-2 left-2 bg-white/90 backdrop-blur-sm px-2 py-0.5 rounded-full text-[10px] font-medium text-gray-600 shadow-sm pointer-events-none">
@@ -293,10 +293,10 @@ export default function Home() {
                         </div>
                       </div>
                       <div className="flex-1 flex flex-col">
-                        <h3 className="text-sm font-medium text-gray-800 group-hover:text-brand-pink transition-colors leading-snug line-clamp-2">
+                        <h3 className="text-sm font-medium text-gray-800 group-hover:text-brand-primary transition-colors leading-snug line-clamp-2">
                           <Link href={`/product/${product.id}`}>{product.title || product.name}</Link>
                         </h3>
-                        <p className="text-gray-900 font-bold mt-auto pt-1 text-sm md:text-base">₹{product.price}</p>
+                        <p className="text-brand-accent font-bold mt-auto pt-1 text-sm md:text-base">₹{product.price}</p>
                       </div>
                     </motion.div>
                   );
@@ -308,7 +308,7 @@ export default function Home() {
       </div>
 
       {/* Newsletter Section */}
-      <section className="py-12 bg-brand-pink text-white relative overflow-hidden">
+      <section className="py-12 bg-brand-primary text-white relative overflow-hidden">
         <div className="absolute inset-0 opacity-10">
            <Image src="https://images.unsplash.com/photo-1513201099705-a9746e1e201f?q=80&w=1920&auto=format&fit=crop" alt="Pattern" fill className="object-cover" />
         </div>
