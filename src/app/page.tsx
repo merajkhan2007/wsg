@@ -74,10 +74,33 @@ export default function Home() {
              return acc;
            }, {});
            
+           const orderPrefixes = [
+             "handycraft",
+             "home décor",
+             "festivals",
+             "art and painting",
+             "jewel",
+             "love",
+             "personal",
+             "birthday"
+           ];
+
            const newCategories = Object.keys(grouped).map(k => ({
              name: k,
              products: grouped[k]
-           }));
+           })).sort((a, b) => {
+             const aName = a.name.toLowerCase();
+             const bName = b.name.toLowerCase();
+             
+             let aIndex = orderPrefixes.findIndex(prefix => aName.includes(prefix) || aName.startsWith(prefix));
+             let bIndex = orderPrefixes.findIndex(prefix => bName.includes(prefix) || bName.startsWith(prefix));
+             
+             if (aIndex === -1) aIndex = 999;
+             if (bIndex === -1) bIndex = 999;
+             
+             if (aIndex !== bIndex) return aIndex - bIndex;
+             return a.name.localeCompare(b.name);
+           });
            setCategories(newCategories);
         }
       })
