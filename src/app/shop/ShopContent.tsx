@@ -4,10 +4,14 @@ import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ShoppingCart, Heart, Search, Filter } from 'lucide-react';
+import { useSearchParams } from 'next/navigation';
 
 export default function ShopContent({ initialProducts }: { initialProducts: any[] }) {
+  const searchParams = useSearchParams();
+  const defaultCategory = searchParams.get('category') || 'All';
+  
   const [search, setSearch] = useState('');
-  const [activeCategory, setActiveCategory] = useState<string>('All');
+  const [activeCategory, setActiveCategory] = useState<string>(defaultCategory);
   
   const categories = useMemo(() => {
      const cats = new Set(initialProducts.map(p => p.category_name).filter(Boolean));

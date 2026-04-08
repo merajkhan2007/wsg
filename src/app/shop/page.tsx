@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { query } from '@/lib/db';
 import ShopContent from './ShopContent';
+import { Suspense } from 'react';
 
 async function getProducts() {
   try {
@@ -15,5 +16,9 @@ async function getProducts() {
 
 export default async function ShopPage() {
   const products = await getProducts();
-  return <ShopContent initialProducts={products} />;
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-surface-light flex items-center justify-center p-10"><div className="w-10 h-10 border-4 border-brand-primary border-t-transparent rounded-full animate-spin"></div></div>}>
+      <ShopContent initialProducts={products} />
+    </Suspense>
+  );
 }

@@ -101,6 +101,7 @@ export default function Home() {
              const displayName = categoryMapping[lowerK] || k;
              return {
                name: displayName,
+               originalName: k,
                products: grouped[k]
              };
            }).sort((a, b) => {
@@ -279,7 +280,7 @@ export default function Home() {
                   <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-2">{categoryGroup.name}</h2>
                   <p className="text-gray-500">Discover our best curated selections</p>
                 </div>
-                <Link href="/shop" className="hidden md:flex items-center gap-2 text-brand-primary font-medium hover:underline">
+                <Link href={`/shop?category=${encodeURIComponent(categoryGroup.originalName || categoryGroup.name)}`} className="hidden md:flex items-center gap-2 text-brand-primary font-medium hover:underline">
                   View All <ArrowRight size={16} />
                 </Link>
               </div>
