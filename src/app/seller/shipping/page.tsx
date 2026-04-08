@@ -23,8 +23,9 @@ export default function SellerShippingPage() {
   const fetchZones = async () => {
     try {
       setLoading(true);
+      const token = localStorage.getItem('token') || '';
       const res = await fetch('/api/seller/shipping', {
-        headers: { 'Authorization': 'Bearer YOUR_SELLER_TOKEN_HERE' }
+        headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await res.json();
       if (data.success) {
@@ -46,10 +47,11 @@ export default function SellerShippingPage() {
       // Assuming regions is comma separated
       const regionArray = newRegions.split(',').map(r => r.trim()).filter(Boolean);
 
+      const token = localStorage.getItem('token') || '';
       const res = await fetch('/api/seller/shipping', {
         method: 'POST',
         headers: { 
-           'Authorization': 'Bearer YOUR_SELLER_TOKEN_HERE',
+           'Authorization': `Bearer ${token}`,
            'Content-Type': 'application/json' 
         },
         body: JSON.stringify({

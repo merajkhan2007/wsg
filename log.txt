@@ -1,0 +1,5 @@
+﻿d7df712 Chore: Trigger fresh deployment for mobile UI updates
+4392cfd UI/UX: Etsy style design overhaul, Add Privacy & Terms pages
+ae7b4ee Allow anonymous tickets to show in admin dashboard
+127c920 Improve API error message for contact validation
+185e74d Update whatsapp number and button visibility/centering

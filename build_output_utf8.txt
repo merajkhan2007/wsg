@@ -1,0 +1,385 @@
+﻿
+> wesoulgifts@0.1.0 build
+> next build
+
+  ▲ Next.js 14.2.15
+  - Environments: .env.local
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Skipping validation of types
+   Skipping linting
+   Collecting page data ...
+   Generating static pages (0/59) ...
+node.exe : Analytics 
+error: B [Error]: Dynamic 
+server usage: Route 
+/api/admin/analytics 
+couldn't be rendered 
+statically because it 
+used `request.headers`. 
+See more info here: https:
+//nextjs.org/docs/messages
+/dynamic-server-error
+At line:1 char:1
++ & "C:\Program 
+Files\nodejs/node.exe" 
+"C:\Program 
+Files\nodejs/node_mo ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo        
+      : NotSpecified: (A  
+  nalytics error...ic-s   
+ erver-error:String) [    
+], RemoteException
+    + FullyQualifiedError 
+   Id : NativeCommandErr  
+  or
+ 
+    at V (D:\AntiGravity_P
+roject\Ecommerce\wesoulgif
+ts\node_modules\next\dist\
+compiled\next-server\app-r
+oute.runtime.prod.js:6:217
+77)
+    at Object.get (D:\Anti
+Gravity_Project\Ecommerce\
+wesoulgifts\node_modules\n
+ext\dist\compiled\next-ser
+ver\app-route.runtime.prod
+.js:6:29137)
+    at u (D:\AntiGravity_P
+roject\Ecommerce\wesoulgif
+ts\.next\server\app\api\ad
+min\tickets\route.js:29:70
+7)
+    at u (D:\AntiGravity_P
+roject\Ecommerce\wesoulgif
+ts\.next\server\app\api\ad
+min\analytics\route.js:1:1
+395)
+    at D:\AntiGravity_Proj
+ect\Ecommerce\wesoulgifts\
+node_modules\next\dist\com
+piled\next-server\app-rout
+e.runtime.prod.js:6:36963
+    at D:\AntiGravity_Proj
+ect\Ecommerce\wesoulgifts\
+node_modules\next\dist\ser
+ver\lib\trace\tracer.js:14
+0:36
+    at 
+NoopContextManager.with (D
+:\AntiGravity_Project\Ecom
+merce\wesoulgifts\node_mod
+ules\next\dist\compiled\@o
+pentelemetry\api\index.js:
+1:7062)
+    at ContextAPI.with (D:
+\AntiGravity_Project\Ecomm
+erce\wesoulgifts\node_modu
+les\next\dist\compiled\@op
+entelemetry\api\index.js:1
+:518)
+    at NoopTracer.startAct
+iveSpan (D:\AntiGravity_Pr
+oject\Ecommerce\wesoulgift
+s\node_modules\next\dist\c
+ompiled\@opentelemetry\api
+\index.js:1:18093)
+    at ProxyTracer.startAc
+tiveSpan (D:\AntiGravity_P
+roject\Ecommerce\wesoulgif
+ts\node_modules\next\dist\
+compiled\@opentelemetry\ap
+i\index.js:1:18854) {
+  description: "Route 
+/api/admin/analytics 
+couldn't be rendered 
+statically because it 
+used `request.headers`. 
+See more info here: https:
+//nextjs.org/docs/messages
+/dynamic-server-error",
+  digest: 
+'DYNAMIC_SERVER_USAGE'
+}
+   Generating static pages (14/59) 
+Admin Sellers Error: B 
+[Error]: Dynamic server 
+usage: Route 
+/api/admin/sellers 
+couldn't be rendered 
+statically because it 
+used `request.headers`. 
+See more info here: https:
+//nextjs.org/docs/messages
+/dynamic-server-error
+    at V (D:\AntiGravity_P
+roject\Ecommerce\wesoulgif
+ts\node_modules\next\dist\
+compiled\next-server\app-r
+oute.runtime.prod.js:6:217
+77)
+    at Object.get (D:\Anti
+Gravity_Project\Ecommerce\
+wesoulgifts\node_modules\n
+ext\dist\compiled\next-ser
+ver\app-route.runtime.prod
+.js:6:29137)
+    at l (D:\AntiGravity_P
+roject\Ecommerce\wesoulgif
+ts\.next\server\app\api\ad
+min\sellers\route.js:1:137
+7)
+    at D:\AntiGravity_Proj
+ect\Ecommerce\wesoulgifts\
+node_modules\next\dist\com
+piled\next-server\app-rout
+e.runtime.prod.js:6:36963
+    at D:\AntiGravity_Proj
+ect\Ecommerce\wesoulgifts\
+node_modules\next\dist\ser
+ver\lib\trace\tracer.js:14
+0:36
+    at 
+NoopContextManager.with (D
+:\AntiGravity_Project\Ecom
+merce\wesoulgifts\node_mod
+ules\next\dist\compiled\@o
+pentelemetry\api\index.js:
+1:7062)
+    at ContextAPI.with (D:
+\AntiGravity_Project\Ecomm
+erce\wesoulgifts\node_modu
+les\next\dist\compiled\@op
+entelemetry\api\index.js:1
+:518)
+    at NoopTracer.startAct
+iveSpan (D:\AntiGravity_Pr
+oject\Ecommerce\wesoulgift
+s\node_modules\next\dist\c
+ompiled\@opentelemetry\api
+\index.js:1:18093)
+    at ProxyTracer.startAc
+tiveSpan (D:\AntiGravity_P
+roject\Ecommerce\wesoulgif
+ts\node_modules\next\dist\
+compiled\@opentelemetry\ap
+i\index.js:1:18854)
+    at D:\AntiGravity_Proj
+ect\Ecommerce\wesoulgifts\
+node_modules\next\dist\ser
+ver\lib\trace\tracer.js:12
+2:103 {
+  description: "Route 
+/api/admin/sellers 
+couldn't be rendered 
+statically because it 
+used `request.headers`. 
+See more info here: https:
+//nextjs.org/docs/messages
+/dynamic-server-error",
+  digest: 
+'DYNAMIC_SERVER_USAGE'
+}
+Seller Dashboard API 
+Error: B [Error]: Dynamic 
+server usage: Route 
+/api/seller couldn't be 
+rendered statically 
+because it used 
+`request.headers`. See 
+more info here: https://ne
+xtjs.org/docs/messages/dyn
+amic-server-error
+    at V (D:\AntiGravity_P
+roject\Ecommerce\wesoulgif
+ts\node_modules\next\dist\
+compiled\next-server\app-r
+oute.runtime.prod.js:6:217
+77)
+    at Object.get (D:\Anti
+Gravity_Project\Ecommerce\
+wesoulgifts\node_modules\n
+ext\dist\compiled\next-ser
+ver\app-route.runtime.prod
+.js:6:29137)
+    at u (D:\AntiGravity_P
+roject\Ecommerce\wesoulgif
+ts\.next\server\app\api\se
+ller\route.js:1:1353)
+    at D:\AntiGravity_Proj
+ect\Ecommerce\wesoulgifts\
+node_modules\next\dist\com
+piled\next-server\app-rout
+e.runtime.prod.js:6:36963
+    at D:\AntiGravity_Proj
+ect\Ecommerce\wesoulgifts\
+node_modules\next\dist\ser
+ver\lib\trace\tracer.js:14
+0:36
+    at 
+NoopContextManager.with (D
+:\AntiGravity_Project\Ecom
+merce\wesoulgifts\node_mod
+ules\next\dist\compiled\@o
+pentelemetry\api\index.js:
+1:7062)
+    at ContextAPI.with (D:
+\AntiGravity_Project\Ecomm
+erce\wesoulgifts\node_modu
+les\next\dist\compiled\@op
+entelemetry\api\index.js:1
+:518)
+    at NoopTracer.startAct
+iveSpan (D:\AntiGravity_Pr
+oject\Ecommerce\wesoulgift
+s\node_modules\next\dist\c
+ompiled\@opentelemetry\api
+\index.js:1:18093)
+    at ProxyTracer.startAc
+tiveSpan (D:\AntiGravity_P
+roject\Ecommerce\wesoulgif
+ts\node_modules\next\dist\
+compiled\@opentelemetry\ap
+i\index.js:1:18854)
+    at D:\AntiGravity_Proj
+ect\Ecommerce\wesoulgifts\
+node_modules\next\dist\ser
+ver\lib\trace\tracer.js:12
+2:103 {
+  description: "Route 
+/api/seller couldn't be 
+rendered statically 
+because it used 
+`request.headers`. See 
+more info here: https://ne
+xtjs.org/docs/messages/dyn
+amic-server-error",
+  digest: 
+'DYNAMIC_SERVER_USAGE'
+}
+   Generating static pages (29/59) 
+   Generating static pages (44/59) 
+(node:17564) Warning: 
+SECURITY WARNING: The SSL 
+modes 'prefer', 
+'require', and 
+'verify-ca' are treated 
+as aliases for 
+'verify-full'.
+In the next major version 
+(pg-connection-string 
+v3.0.0 and pg v9.0.0), 
+these modes will adopt 
+standard libpq semantics, 
+which have weaker 
+security guarantees.
+
+To prepare for this 
+change:
+- If you want the current 
+behavior, explicitly use 
+'sslmode=verify-full'
+- If you want libpq 
+compatibility now, use 'us
+elibpqcompat=true&sslmode=
+require'
+
+See https://www.postgresql
+.org/docs/current/libpq-ss
+l.html for libpq SSL mode 
+definitions.
+(Use `node 
+--trace-warnings ...` to 
+show where the warning 
+was created)
+Executed query {
+  text: 'SELECT p.*, c.name as category_name FROM products p LEFT JOIN categories c ON p.category_id = c.id ORDER BY p.created_at DESC',
+  duration: 4599,
+  rows: 5
+}
+Executed query {
+  text: 'SELECT p.*, c.name as category_name FROM products p LEFT JOIN categories c ON p.category_id = c.id ORDER BY p.created_at DESC',
+  duration: 4729,
+  rows: 5
+}
+ ✓ Generating static pages (59/59)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                              Size     First Load JS
+┌ ○ /                                    6.6 kB          147 kB
+├ ○ /_not-found                          880 B          88.2 kB
+├ ○ /about                               4.43 kB         139 kB
+├ ○ /admin/coupons                       3.8 kB         99.6 kB
+├ ○ /admin/dashboard                     7.95 kB         209 kB
+├ ○ /admin/orders                        4.5 kB          100 kB
+├ ○ /admin/sellers                       4.07 kB        99.9 kB
+├ ○ /admin/settings                      3.48 kB        90.8 kB
+├ ○ /admin/tickets                       4.15 kB        99.9 kB
+├ ○ /admin/users                         3.52 kB        99.3 kB
+├ ƒ /api/admin/analytics                 0 B                0 B
+├ ƒ /api/admin/commissions               0 B                0 B
+├ ƒ /api/admin/coupons                   0 B                0 B
+├ ƒ /api/admin/orders                    0 B                0 B
+├ ƒ /api/admin/payouts                   0 B                0 B
+├ ƒ /api/admin/sellers                   0 B                0 B
+├ ƒ /api/admin/tickets                   0 B                0 B
+├ ƒ /api/admin/users                     0 B                0 B
+├ ƒ /api/auth/login                      0 B                0 B
+├ ƒ /api/auth/register                   0 B                0 B
+├ ƒ /api/categories                      0 B                0 B
+├ ƒ /api/contact                         0 B                0 B
+├ ƒ /api/customer/chat                   0 B                0 B
+├ ƒ /api/customer/profile                0 B                0 B
+├ ƒ /api/customer/wishlist               0 B                0 B
+├ ƒ /api/orders                          0 B                0 B
+├ ƒ /api/orders/[id]                     0 B                0 B
+├ ƒ /api/products                        0 B                0 B
+├ ƒ /api/seller                          0 B                0 B
+├ ƒ /api/seller/analytics                0 B                0 B
+├ ƒ /api/seller/chat                     0 B                0 B
+├ ƒ /api/seller/inventory                0 B                0 B
+├ ƒ /api/seller/orders                   0 B                0 B
+├ ƒ /api/seller/payouts                  0 B                0 B
+├ ƒ /api/seller/settings                 0 B                0 B
+├ ƒ /api/seller/shipping                 0 B                0 B
+├ ƒ /api/upload                          0 B                0 B
+├ ○ /cart                                2.23 kB          97 kB
+├ ○ /checkout                            3.19 kB        97.9 kB
+├ ○ /contact                             3.92 kB         131 kB
+├ ○ /dashboard/admin                     3.85 kB        91.2 kB
+├ ○ /dashboard/customer                  6.15 kB         109 kB
+├ ƒ /dashboard/customer/order/[id]       2.68 kB         106 kB
+├ ○ /dashboard/seller                    6.08 kB        93.4 kB
+├ ○ /icon.png                            0 B                0 B
+├ ○ /login                               2.13 kB        96.9 kB
+├ ○ /privacy                             2.68 kB         138 kB
+├ ƒ /product/[id]                        3.25 kB         111 kB
+├ ○ /register                            2.37 kB        97.1 kB
+├ ○ /seller/dashboard                    7.13 kB         209 kB
+├ ○ /seller/messages                     3.64 kB        99.4 kB
+├ ○ /seller/orders                       5.69 kB         101 kB
+├ ○ /seller/payouts                      3.91 kB        99.7 kB
+├ ○ /seller/products                     3.17 kB         106 kB
+├ ƒ /seller/products/[id]                4.34 kB         108 kB
+├ ○ /seller/products/new                 3.92 kB         107 kB
+├ ○ /seller/settings                     3.78 kB        99.6 kB
+├ ○ /seller/shipping                     3.5 kB         99.3 kB
+├ ○ /shipping                            3.73 kB         139 kB
+├ ○ /shop                                200 B           100 kB
+├ ○ /terms                               2.98 kB         138 kB
+└ ○ /wishlist                            2.38 kB        97.1 kB
++ First Load JS shared by all            87.4 kB
+  ├ chunks/2117-6376c81f67868bc5.js      31.8 kB
+  ├ chunks/fd9d1056-86ccd13bb9422ad2.js  53.6 kB
+  └ other shared chunks (total)          1.96 kB
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

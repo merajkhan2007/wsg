@@ -11,8 +11,9 @@ export default function SellerProductsPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    const token = localStorage.getItem('token') || '';
     fetch('/api/seller/inventory', {
-      headers: { 'Authorization': 'Bearer YOUR_SELLER_TOKEN_HERE' }
+      headers: { 'Authorization': `Bearer ${token}` }
     })
       .then(res => res.json())
       .then(json => {
@@ -23,9 +24,10 @@ export default function SellerProductsPage() {
   }, []);
 
   const toggleGiftCustomization = async (id: number, current: boolean) => {
+    const token = localStorage.getItem('token') || '';
     const res = await fetch(`/api/seller/inventory?id=${id}`, {
       method: 'PATCH',
-      headers: { 'Authorization': 'Bearer YOUR_SELLER_TOKEN_HERE', 'Content-Type': 'application/json' },
+      headers: { 'Authorization': `Bearer ${token}`, 'Content-Type': 'application/json' },
       body: JSON.stringify({ gift_customization: !current })
     });
     if (res.ok) {

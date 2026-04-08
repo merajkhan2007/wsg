@@ -20,8 +20,9 @@ export default function AdminSettingsPage() {
   const fetchCommissions = async () => {
     try {
       setLoading(true);
+      const token = localStorage.getItem('token') || '';
       const res = await fetch('/api/admin/commissions', {
-        headers: { 'Authorization': 'Bearer YOUR_ADMIN_TOKEN_HERE_FOR_TESTING' }
+        headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await res.json();
       if (data.success) {
@@ -40,10 +41,11 @@ export default function AdminSettingsPage() {
     setMessage({ text: '', type: '' });
 
     try {
+      const token = localStorage.getItem('token') || '';
       const res = await fetch('/api/admin/commissions', {
         method: 'POST',
         headers: { 
-          'Authorization': 'Bearer YOUR_ADMIN_TOKEN_HERE_FOR_TESTING',
+          'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({

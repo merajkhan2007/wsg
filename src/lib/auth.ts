@@ -7,13 +7,7 @@ export function signToken(payload: object) {
 }
 
 export function verifyToken(token: string) {
-  // DEV overrides for testing
-  if (token === 'YOUR_SELLER_TOKEN_HERE') {
-    return { id: 1, role: 'seller', email: 'seller@test.com' }; 
-  }
-  if (token === 'YOUR_ADMIN_TOKEN_HERE_FOR_TESTING') {
-    return { id: 1, role: 'admin', email: 'admin@test.com' };
-  }
+
   try {
     return jwt.verify(token, JWT_SECRET);
   } catch (error) {

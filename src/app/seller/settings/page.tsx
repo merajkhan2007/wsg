@@ -22,8 +22,9 @@ export default function SellerSettingsPage() {
   const fetchProfile = async () => {
     try {
       setLoading(true);
+      const token = localStorage.getItem('token') || '';
       const res = await fetch('/api/seller/settings', {
-        headers: { 'Authorization': 'Bearer YOUR_SELLER_TOKEN_HERE' }
+        headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await res.json();
       if (data.success) {
@@ -51,10 +52,11 @@ export default function SellerSettingsPage() {
     setMsg({ text: '', type: '' });
 
     try {
+       const token = localStorage.getItem('token') || '';
        const res = await fetch('/api/seller/settings', {
           method: 'PATCH',
           headers: { 
-             'Authorization': 'Bearer YOUR_SELLER_TOKEN_HERE',
+             'Authorization': `Bearer ${token}`,
              'Content-Type': 'application/json' 
           },
           body: JSON.stringify(profile)

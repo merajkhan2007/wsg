@@ -1,0 +1,6 @@
+﻿src/app/api/admin/commissions/route.ts(36,83): error TS2339: Property 'errors' does not exist on type 'ZodError<{ seller_id: number; percentage: number; }>'.
+src/app/api/admin/coupons/route.ts(37,83): error TS2339: Property 'errors' does not exist on type 'ZodError<{ code: string; discount_type: "fixed" | "percentage"; value: number; expiry_date: string; is_active?: boolean | undefined; }>'.
+src/app/api/admin/payouts/route.ts(57,83): error TS2339: Property 'errors' does not exist on type 'ZodError<{ status: "pending" | "completed" | "failed" | "rejected"; transaction_id?: string | undefined; }>'.
+src/app/api/seller/chat/route.ts(67,83): error TS2339: Property 'errors' does not exist on type 'ZodError<{ receiver_id: number; content: string; order_id?: number | undefined; }>'.
+src/app/api/seller/inventory/route.ts(43,83): error TS2339: Property 'errors' does not exist on type 'ZodError<{ stock: number; price?: number | undefined; gift_customization?: boolean | undefined; }>'.
+src/app/api/seller/shipping/route.ts(61,83): error TS2339: Property 'errors' does not exist on type 'ZodError<{ zone_name: string; charge: number; }>'.

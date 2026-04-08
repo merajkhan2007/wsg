@@ -16,8 +16,9 @@ export default function AdminUsersPage() {
   const fetchUsers = async () => {
     try {
       setLoading(true);
+      const token = localStorage.getItem('token') || '';
       const res = await fetch('/api/admin/users', {
-        headers: { 'Authorization': 'Bearer YOUR_ADMIN_TOKEN_HERE_FOR_TESTING' }
+        headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await res.json();
       if (data.success) {
@@ -33,10 +34,11 @@ export default function AdminUsersPage() {
   const handleRoleChange = async (userId: number, selectElem: any) => {
     const newRole = selectElem.value;
     try {
+      const token = localStorage.getItem('token') || '';
       await fetch(`/api/admin/users?id=${userId}`, {
         method: 'PATCH',
         headers: { 
-          'Authorization': 'Bearer YOUR_ADMIN_TOKEN_HERE_FOR_TESTING',
+          'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json' 
         },
         body: JSON.stringify({ role: newRole })
@@ -50,10 +52,11 @@ export default function AdminUsersPage() {
   const handleStatusChange = async (userId: number, currentStatus: string) => {
     const newStatus = currentStatus === 'active' ? 'blocked' : 'active';
     try {
+      const token = localStorage.getItem('token') || '';
       await fetch(`/api/admin/users?id=${userId}`, {
         method: 'PATCH',
         headers: { 
-          'Authorization': 'Bearer YOUR_ADMIN_TOKEN_HERE_FOR_TESTING',
+          'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json' 
         },
         body: JSON.stringify({ status: newStatus })

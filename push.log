@@ -1,0 +1,22 @@
+﻿git : To https://github.
+com/merajkhan2007/wsg.gi
+t
+At line:1 char:1
++ git push origin main 
+2>&1 | Out-File 
+push.log -Encoding utf8
++ ~~~~~~~~~~~~~~~~~~~~~~
+~~~
+    + CategoryInfo      
+        : NotSpecified: 
+(T    o 
+https://gith...han2    
+007/wsg.git:String) [   
+ ], RemoteException
+    + 
+FullyQualifiedError    
+Id : NativeCommandErr   
+ or
+ 
+   d7df712..ea63868  
+main -> main

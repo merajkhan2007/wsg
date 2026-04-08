@@ -83,10 +83,11 @@ export default function CreateProductPage() {
     setMsg({ text: '', type: '' });
 
     try {
+      const token = localStorage.getItem('token') || '';
       const res = await fetch('/api/products', {
         method: 'POST',
         headers: {
-          'Authorization': 'Bearer YOUR_SELLER_TOKEN_HERE',
+          'Authorization': `Bearer ${token}`,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
