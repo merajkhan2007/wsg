@@ -5,6 +5,8 @@ import Footer from "@/components/layout/Footer";
 import WhatsAppWidget from "@/components/layout/WhatsAppWidget";
 import "./globals.css";
 
+// Force Vercel Build Trigger - 2026-04-08
+
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
 const montserrat = Montserrat({ subsets: ["latin"], variable: "--font-montserrat", weight: "700" });
