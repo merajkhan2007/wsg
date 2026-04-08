@@ -122,12 +122,8 @@ export default function Navbar() {
                 <Menu size={24} />
               </button>
               <Link href="/" className="flex items-center gap-3 group">
-                <div className="h-[50px] sm:h-[60px] flex items-center justify-center drop-shadow-sm">
-                  <img src="/logo-train.png" alt="WeSoulGifts" className="w-auto h-full object-contain group-hover:-translate-y-0.5 transition-transform duration-300" />
-                </div>
-                <div className="flex flex-col justify-center">
-                  <span className="font-bold text-gray-900 text-[16px] sm:text-[18px] tracking-tight leading-none font-sans">WeSoulGifts</span>
-                  <span className="hidden sm:block text-[11px] text-gray-500 mt-1 font-sans">Handmade with Love</span>
+                <div className="h-[50px] sm:h-[65px] flex items-center justify-center drop-shadow-sm">
+                  <img src="/logo.png" alt="WeSoulGifts" className="w-auto h-full object-contain group-hover:-translate-y-0.5 transition-transform duration-300" />
                 </div>
               </Link>
             </div>
