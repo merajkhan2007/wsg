@@ -15,6 +15,17 @@ const CATEGORIES = [
   { name: 'Home Decor', image: 'https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=400&auto=format&fit=crop', link: '/category/home-decor' },
 ];
 
+const CATEGORY_SUBTITLES: Record<string, string> = {
+  "HandyCraft": "Timeless artistry crafted by skilled hands",
+  "Home Décor": "Elevate your living space with unique styles",
+  "Festivals": "Celebrate the warmth & joy of every season",
+  "Art and Painting": "Expressive visuals that inspire the soul",
+  "Jewellery": "Adorn yourself with elegant handcrafted designs",
+  "Love & Romance": "Meaningful gifts to express your deepest feelings",
+  "Personalise": "Make it truly yours with custom touches",
+  "Birthday Gift": "Perfect surprises to brighten up their special day"
+};
+
 const FEATURED_PRODUCTS = [
   { id: 1, name: 'Personalized Photo Lamp', price: 1499, image: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=800&auto=format&fit=crop', category: 'Personalized' },
   { id: 2, name: 'Red Roses Bouquet', price: 899, image: 'https://images.unsplash.com/photo-1562690868-60bbe7293e94?q=80&w=800&auto=format&fit=crop', category: 'Love & Romance' },
@@ -278,7 +289,7 @@ export default function Home() {
               <div className="flex justify-between items-end mb-10">
                 <div>
                   <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-2">{categoryGroup.name}</h2>
-                  <p className="text-gray-500">Discover our best curated selections</p>
+                  <p className="text-gray-500">{CATEGORY_SUBTITLES[categoryGroup.name] || "Discover our best curated selections"}</p>
                 </div>
                 <Link href={`/shop?category=${encodeURIComponent(categoryGroup.originalName || categoryGroup.name)}`} className="hidden md:flex items-center gap-2 text-brand-primary font-medium hover:underline">
                   View All <ArrowRight size={16} />
