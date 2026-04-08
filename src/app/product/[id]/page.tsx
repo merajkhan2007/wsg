@@ -60,25 +60,31 @@ export default async function ProductPage({ params }: { params: { id: string } }
               {product.title || product.name || 'HANDPAINTED LIPPAN ART PICHWAI COW WALL HANGING'}
             </h1>
             
-            <div className="mb-1 text-lg">
-               <span className="font-extrabold text-[#111827]">Special Price:</span>
-               <span className="text-[22px] font-bold text-[#35434d] ml-1">₹{product.price}</span>
-            </div>
-            
             {(() => {
-              const mrp = Math.round(product.price * 1.666);
-              const savings = mrp - product.price;
-              const percentage = Math.round((savings / mrp) * 100);
+              const mrp = Number(product.price);
+              const sellingPrice = product.special_price ? Number(product.special_price) : mrp;
+              const hasDiscount = sellingPrice < mrp;
+              const savings = mrp - sellingPrice;
+              const percentage = mrp > 0 ? Math.round((savings / mrp) * 100) : 0;
+              
               return (
                 <>
-                  <div className="mb-2 text-[15px]">
-                    <span className="font-extrabold text-[#111827]">MRP:</span>
-                    <span className="text-gray-400 line-through ml-1">₹ {mrp}</span>
+                  <div className="mb-1 text-lg">
+                     <span className="font-extrabold text-[#111827]">{hasDiscount ? 'Special Price:' : 'Price:'}</span>
+                     <span className="text-[22px] font-bold text-[#35434d] ml-1">₹{sellingPrice}</span>
                   </div>
-                  <div className="mb-3 text-[15px]">
-                    <span className="font-extrabold text-[#111827]">Savings:</span>
-                    <span className="text-[#10b981] font-bold ml-1">₹ {savings} ({percentage} %)</span>
-                  </div>
+                  {hasDiscount && (
+                    <>
+                      <div className="mb-2 text-[15px]">
+                        <span className="font-extrabold text-[#111827]">MRP:</span>
+                        <span className="text-gray-400 line-through ml-1">₹{mrp}</span>
+                      </div>
+                      <div className="mb-3 text-[15px]">
+                        <span className="font-extrabold text-[#111827]">Savings:</span>
+                        <span className="text-[#10b981] font-bold ml-1">₹{savings} ({percentage}%)</span>
+                      </div>
+                    </>
+                  )}
                 </>
               );
             })()}

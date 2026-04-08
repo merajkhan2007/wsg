@@ -296,7 +296,12 @@ export default function Home() {
                         <h3 className="text-sm font-medium text-gray-800 group-hover:text-brand-primary transition-colors leading-snug line-clamp-2">
                           <Link href={`/product/${product.id}`}>{product.title || product.name}</Link>
                         </h3>
-                        <p className="text-brand-accent font-bold mt-auto pt-1 text-sm md:text-base">₹{product.price}</p>
+                        <p className="text-brand-accent font-bold mt-auto pt-1 text-sm md:text-base">
+                          ₹{product.special_price ? product.special_price : product.price}
+                          {Number(product.special_price) < Number(product.price) && (
+                             <span className="text-xs text-gray-400 line-through ml-2 font-normal">₹{product.price}</span>
+                          )}
+                        </p>
                       </div>
                     </motion.div>
                   );
