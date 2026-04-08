@@ -18,12 +18,11 @@ async function getProduct(id: string) {
   }
 }
 
-async function getRelatedProducts(categoryId: string | null, currentProductId: string) {
-  if (!categoryId) return [];
+async function getRelatedProducts(currentProductId: string) {
   try {
     const res = await query(
-      'SELECT p.*, c.name as category_name FROM products p LEFT JOIN categories c ON p.category_id = c.id WHERE p.category_id = $1 AND p.id != $2 ORDER BY random() LIMIT 4',
-      [categoryId, currentProductId]
+      'SELECT p.*, c.name as category_name FROM products p LEFT JOIN categories c ON p.category_id = c.id WHERE p.id != $1 ORDER BY random() LIMIT 4',
+      [currentProductId]
     );
     return res.rows;
   } catch (error) {
@@ -34,7 +33,7 @@ async function getRelatedProducts(categoryId: string | null, currentProductId: s
 
 export default async function ProductPage({ params }: { params: { id: string } }) {
   let product = await getProduct(params.id);
-  let relatedProducts = product ? await getRelatedProducts(product.category_id, product.id) : [];
+  let relatedProducts = product ? await getRelatedProducts(product.id) : [];
 
   if (!product) {
     notFound();
