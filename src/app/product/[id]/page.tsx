@@ -90,7 +90,6 @@ export default async function ProductPage({ params }: { params: { id: string } }
             })()}
 
             <div className="text-[#10b981] font-bold mb-2 text-[17px]">In Stock</div>
-            <div className="text-[#ff4d6d] font-bold mb-6 text-[15px]">Hurry! Only 4 left!</div>
 
             <div className="flex items-center gap-2 mb-4">
                <span className="font-extrabold text-[#111827]">Size:</span>
