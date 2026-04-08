@@ -68,7 +68,8 @@ export default function SellerSettingsPage() {
       const data = await res.json();
       if (res.ok && data.url) {
         setProfile((prev: any) => ({ ...prev, [docType === 'aadhar' ? 'aadhar_url' : 'pan_url']: data.url }));
-        setMsg({ text: `${docType.toUpperCase()} uploaded successfully! Remember to save settings.`, type: 'success' });
+        setMsg({ text: `${docType.toUpperCase()} uploaded successfully! Remember to 'Save Configuration' below.`, type: 'success' });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
         throw new Error(data.error || 'Upload failed');
       }
@@ -259,7 +260,7 @@ export default function SellerSettingsPage() {
                      <div className="border border-gray-200 rounded-2xl p-6 bg-gray-50/30">
                         <div className="flex justify-between items-start mb-4">
                            <h4 className="font-semibold text-gray-800">Aadhar Card</h4>
-                           {profile.aadhar_url && <CheckCircle2 className="w-5 h-5 text-emerald-500" />}
+                           {profile.aadhar_url && <span className="flex items-center text-xs font-semibold text-emerald-600 bg-emerald-50 px-2 py-1 rounded"><CheckCircle2 className="w-4 h-4 mr-1" /> Uploaded</span>}
                         </div>
                         {profile.aadhar_url ? (
                            <div className="relative aspect-video rounded-xl overflow-hidden border border-gray-200 bg-gray-100 mb-4 group">
@@ -287,7 +288,7 @@ export default function SellerSettingsPage() {
                      <div className="border border-gray-200 rounded-2xl p-6 bg-gray-50/30">
                         <div className="flex justify-between items-start mb-4">
                            <h4 className="font-semibold text-gray-800">PAN Card</h4>
-                           {profile.pan_url && <CheckCircle2 className="w-5 h-5 text-emerald-500" />}
+                           {profile.pan_url && <span className="flex items-center text-xs font-semibold text-emerald-600 bg-emerald-50 px-2 py-1 rounded"><CheckCircle2 className="w-4 h-4 mr-1" /> Uploaded</span>}
                         </div>
                         {profile.pan_url ? (
                            <div className="relative aspect-video rounded-xl overflow-hidden border border-gray-200 bg-gray-100 mb-4 group">
