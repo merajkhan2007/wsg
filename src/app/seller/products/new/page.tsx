@@ -22,6 +22,7 @@ export default function CreateProductPage() {
     title: '',
     description: '',
     price: '',
+    special_price: '',
     stock: '',
     category_id: ''
   });
@@ -94,6 +95,7 @@ export default function CreateProductPage() {
           title: formData.title,
           description: formData.description,
           price: parseFloat(formData.price),
+          special_price: formData.special_price ? parseFloat(formData.special_price) : null,
           stock: parseInt(formData.stock),
           category_id: parseInt(formData.category_id),
           images: uploadedImages
@@ -231,7 +233,7 @@ export default function CreateProductPage() {
                
                <div className="space-y-6">
                   <div>
-                     <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Base Price</label>
+                     <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Base Price (MRP)</label>
                      <div className="relative">
                         <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 font-bold"><IndianRupee className="w-4 h-4" /></span>
                         <input 
@@ -246,6 +248,24 @@ export default function CreateProductPage() {
                            className="w-full pl-10 pr-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-brand-accent transition-all text-gray-900 font-mono"
                         />
                      </div>
+                  </div>
+                  
+                  <div>
+                     <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Special Price (Selling Price)</label>
+                     <div className="relative">
+                        <span className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 font-bold"><IndianRupee className="w-4 h-4" /></span>
+                        <input 
+                           type="number"
+                           name="special_price"
+                           min="0"
+                           step="0.01"
+                           value={formData.special_price}
+                           onChange={handleChange}
+                           placeholder="0.00"
+                           className="w-full pl-10 pr-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-brand-accent transition-all text-gray-900 font-mono"
+                        />
+                     </div>
+                     <p className="text-[10px] text-gray-500 mt-1">Leave empty if no discount applies.</p>
                   </div>
                   
                   <div>

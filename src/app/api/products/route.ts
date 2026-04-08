@@ -63,15 +63,15 @@ export async function POST(req: Request) {
     const seller = sellerResult.rows[0];
     if (!seller) return NextResponse.json({ error: 'Seller not found' }, { status: 404 });
 
-    const { title, description, price, stock, category_id, images } = await req.json();
+    const { title, description, price, special_price, stock, category_id, images } = await req.json();
 
     if (!title || !price || !category_id) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
     const result = await query(
-      'INSERT INTO products (seller_id, title, description, price, stock, category_id, images) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *',
-      [seller.id, title, description, price, stock, category_id, JSON.stringify(images || [])]
+      'INSERT INTO products (seller_id, title, description, price, special_price, stock, category_id, images) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *',
+      [seller.id, title, description, price, special_price || null, stock, category_id, JSON.stringify(images || [])]
     );
 
     return NextResponse.json(result.rows[0], { status: 201 });
@@ -97,7 +97,7 @@ export async function PUT(req: Request) {
     const seller = sellerResult.rows[0];
     if (!seller) return NextResponse.json({ error: 'Seller not found' }, { status: 404 });
 
-    const { id, title, description, price, stock, category_id, images } = await req.json();
+    const { id, title, description, price, special_price, stock, category_id, images } = await req.json();
 
     if (!id || !title || !price || !category_id) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
@@ -110,8 +110,8 @@ export async function PUT(req: Request) {
     }
 
     const result = await query(
-      'UPDATE products SET title = $1, description = $2, price = $3, stock = $4, category_id = $5, images = $6 WHERE id = $7 RETURNING *',
-      [title, description, price, stock, category_id, JSON.stringify(images || []), id]
+      'UPDATE products SET title = $1, description = $2, price = $3, special_price = $4, stock = $5, category_id = $6, images = $7 WHERE id = $8 RETURNING *',
+      [title, description, price, special_price || null, stock, category_id, JSON.stringify(images || []), id]
     );
 
     return NextResponse.json(result.rows[0], { status: 200 });
