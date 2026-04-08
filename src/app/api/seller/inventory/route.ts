@@ -17,7 +17,7 @@ export async function GET(req: NextRequest) {
     const seller_id = sellerRes.rows[0].id;
 
     const res = await query(`
-      SELECT id, title, price, stock, gift_customization, is_featured, created_at, image, images
+      SELECT id, title, price, stock, gift_customization, is_featured, created_at, images
       FROM products
       WHERE seller_id = $1
       ORDER BY created_at DESC

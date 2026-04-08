@@ -118,7 +118,7 @@ export default function SellerProductsPage() {
                   } else if (Array.isArray(product.images)) {
                     parsedImages = product.images;
                   }
-                  const displayImage = parsedImages.length > 0 ? parsedImages[0] : product.image;
+                  const displayImage = parsedImages.length > 0 ? parsedImages[0] : null;
 
                   return (
                   <tr key={product.id} className="hover:bg-gray-50/30 transition-colors group">
