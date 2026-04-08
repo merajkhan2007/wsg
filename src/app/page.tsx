@@ -51,8 +51,8 @@ export default function Home() {
     {
       image: "https://images.unsplash.com/photo-1584824486516-0555a07fc511?q=80&w=1920&auto=format&fit=crop",
       tag: "Make it Yours",
-      title: "Custom Engraved <br /> Jewelry Collections",
-      description: "Explore our newest additions to the personalized jewelry collection, handcrafted with love.",
+      title: "Custom Engraved <br /> Jewellery Collections",
+      description: "Explore our newest additions to the personalized jewellery collection, handcrafted with love.",
       btnText: "Explore Collection",
       link: "/category/personalized"
     },
@@ -90,7 +90,7 @@ export default function Home() {
              "home decor": "Home Decors",
              "festival & festive": "Festivals",
              "art & paintings": "Art and Painting",
-             "jewelry & accessories": "Jewellery",
+             "jewellery & accessories": "Jewellery",
              "love & romance": "Love & Romance",
              "personalized gifts": "Personalise",
              "birthday": "Birthday Gift"
@@ -388,7 +388,7 @@ export default function Home() {
           <div className="prose prose-sm md:prose-base max-w-none text-gray-600">
             <h2 className="text-2xl font-serif font-bold text-gray-900 mb-4">Handmade Products Online at WeSoulGifts</h2>
             <p className="mb-4 text-justify">
-              If you’re looking to explore the beauty of handmade products online, WeSoulGifts is your perfect destination. From handcrafted home décor and artistic paintings to customized gifts, fashion items, and unique jewelry — we bring you a carefully curated collection of creative products made with love by skilled artisans across India.
+              If you’re looking to explore the beauty of handmade products online, WeSoulGifts is your perfect destination. From handcrafted home décor and artistic paintings to customized gifts, fashion items, and unique jewellery — we bring you a carefully curated collection of creative products made with love by skilled artisans across India.
             </p>
             <p className="mb-4 text-justify">
               At WeSoulGifts, we believe that every handmade product tells a story. Our platform connects talented local creators with people who appreciate originality, craftsmanship, and authenticity. Whether you're decorating your home or searching for a meaningful gift, you’ll find something truly special here.
@@ -419,9 +419,9 @@ export default function Home() {
               Explore our stylish range of handmade fashion products including sarees, kurtis, dupattas, scarves, and T-shirts. We also offer men’s fashion items like kurtas and T-shirts, along with eco-friendly fabric bags.
             </p>
 
-            <h4 className="text-lg font-semibold text-gray-800 mb-2">💍 Jewelry & Accessories</h4>
+            <h4 className="text-lg font-semibold text-gray-800 mb-2">💍 Jewellery & Accessories</h4>
             <p className="mb-4 text-justify">
-              Our handmade jewelry collection features elegant designs made from terracotta, clay, beads, threads, and other materials. Each piece is crafted with precision to give you a unique and stylish look.
+              Our handmade jewellery collection features elegant designs made from terracotta, clay, beads, threads, and other materials. Each piece is crafted with precision to give you a unique and stylish look.
             </p>
 
             <h4 className="text-lg font-semibold text-gray-800 mb-2">🎁 Customized Gifts</h4>

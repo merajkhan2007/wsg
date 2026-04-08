@@ -240,7 +240,7 @@ export default function Navbar() {
               <Link href="/shop?category=art%20%26%20paintings" className="hover:text-white/80 transition-colors flex items-center gap-1 group">
                 Art and Painting <span className="text-[8px] opacity-60 group-hover:text-white/80 transition-colors mt-0.5">▼</span>
               </Link>
-              <Link href="/shop?category=jewelry%20%26%20accessories" className="hover:text-white/80 transition-colors flex items-center gap-1 group">
+              <Link href="/shop?category=jewellery%20%26%20accessories" className="hover:text-white/80 transition-colors flex items-center gap-1 group">
                 Jewellery <span className="text-[8px] opacity-60 group-hover:text-white/80 transition-colors mt-0.5">▼</span>
               </Link>
               <Link href="/shop?category=love%20%26%20romance" className="hover:text-white/80 transition-colors flex items-center gap-1 group">
@@ -373,7 +373,7 @@ export default function Navbar() {
                 <Link href="/shop?category=home%20decor" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-primary hover:translate-x-1 transition-all">Home Decors</Link>
                 <Link href="/shop?category=festival%20%26%20festive" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-primary hover:translate-x-1 transition-all">Festivals</Link>
                 <Link href="/shop?category=art%20%26%20paintings" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-primary hover:translate-x-1 transition-all">Art and Painting</Link>
-                <Link href="/shop?category=jewelry%20%26%20accessories" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-primary hover:translate-x-1 transition-all">Jewellery</Link>
+                <Link href="/shop?category=jewellery%20%26%20accessories" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-primary hover:translate-x-1 transition-all">Jewellery</Link>
                 <Link href="/shop?category=love%20%26%20romance" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-primary hover:translate-x-1 transition-all">Love & Romance</Link>
                 <Link href="/shop?category=personalized%20gifts" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-primary hover:translate-x-1 transition-all">Personalise</Link>
                 <Link href="/shop?category=birthday" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-primary hover:translate-x-1 transition-all">Birthday Gift</Link>
