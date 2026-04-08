@@ -228,23 +228,29 @@ export default function Navbar() {
           <div className="max-w-[1200px] w-full mx-auto px-6 flex justify-center items-center relative font-montserrat font-bold text-[14.8px] leading-[23.68px]">
             <div className="flex items-center gap-[28px] text-white">
               <Link href="/" className="hover:text-white/80 transition-colors">Home</Link>
-              <Link href="/shop" className="hover:text-white/80 transition-colors flex items-center gap-1 group">
-                Home & Living <span className="text-[8px] opacity-60 group-hover:text-white/80 transition-colors mt-0.5">▼</span>
+              <Link href="/shop?category=HandiCrafts" className="hover:text-white/80 transition-colors flex items-center gap-1 group">
+                HandiCrafts <span className="text-[8px] opacity-60 group-hover:text-white/80 transition-colors mt-0.5">▼</span>
               </Link>
-              <Link href="/shop" className="hover:text-white/80 transition-colors flex items-center gap-1 group">
-                Fashion <span className="text-[8px] opacity-60 group-hover:text-white/80 transition-colors mt-0.5">▼</span>
+              <Link href="/shop?category=Home%20Decors" className="hover:text-white/80 transition-colors flex items-center gap-1 group">
+                Home Decors <span className="text-[8px] opacity-60 group-hover:text-white/80 transition-colors mt-0.5">▼</span>
               </Link>
-              <Link href="/shop" className="hover:text-white/80 transition-colors flex items-center gap-1 group">
+              <Link href="/shop?category=Festivals" className="hover:text-white/80 transition-colors flex items-center gap-1 group">
+                Festivals <span className="text-[8px] opacity-60 group-hover:text-white/80 transition-colors mt-0.5">▼</span>
+              </Link>
+              <Link href="/shop?category=Art%20and%20Painting" className="hover:text-white/80 transition-colors flex items-center gap-1 group">
+                Art and Painting <span className="text-[8px] opacity-60 group-hover:text-white/80 transition-colors mt-0.5">▼</span>
+              </Link>
+              <Link href="/shop?category=Jewellery" className="hover:text-white/80 transition-colors flex items-center gap-1 group">
                 Jewellery <span className="text-[8px] opacity-60 group-hover:text-white/80 transition-colors mt-0.5">▼</span>
               </Link>
-              <Link href="/shop" className="hover:text-white/80 transition-colors flex items-center gap-1 group">
-                Gifts <span className="text-[8px] opacity-60 group-hover:text-white/80 transition-colors mt-0.5">▼</span>
+              <Link href="/shop?category=Love%20%26%20Romance" className="hover:text-white/80 transition-colors flex items-center gap-1 group">
+                Love & Romance <span className="text-[8px] opacity-60 group-hover:text-white/80 transition-colors mt-0.5">▼</span>
               </Link>
-              <Link href="/shop" className="hover:text-white/80 transition-colors flex items-center gap-1 group">
-                Stationery <span className="text-[8px] opacity-60 group-hover:text-white/80 transition-colors mt-0.5">▼</span>
+              <Link href="/shop?category=Personalise" className="hover:text-white/80 transition-colors flex items-center gap-1 group">
+                Personalise <span className="text-[8px] opacity-60 group-hover:text-white/80 transition-colors mt-0.5">▼</span>
               </Link>
-              <Link href="/shop" className="hover:text-white/80 transition-colors flex items-center gap-1 group">
-                Paintings <span className="text-[8px] opacity-60 group-hover:text-white/80 transition-colors mt-0.5">▼</span>
+              <Link href="/shop?category=Birthday%20Gift" className="hover:text-white/80 transition-colors flex items-center gap-1 group">
+                Birthday Gift <span className="text-[8px] opacity-60 group-hover:text-white/80 transition-colors mt-0.5">▼</span>
               </Link>
             </div>
             <div className="absolute right-6">
@@ -362,8 +368,14 @@ export default function Navbar() {
                 <div className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2 border-b border-gray-100 pb-2">Storefront</div>
                 <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-primary hover:translate-x-1 transition-all">Home</Link>
                 <Link href="/shop" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-primary hover:translate-x-1 transition-all">Shop All</Link>
-                <Link href="/category/birthday" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-primary hover:translate-x-1 transition-all">Birthday Gifts</Link>
-                <Link href="/category/anniversary" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-primary hover:translate-x-1 transition-all">Anniversary Gifts</Link>
+                <Link href="/shop?category=HandiCrafts" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-primary hover:translate-x-1 transition-all">HandiCrafts</Link>
+                <Link href="/shop?category=Home%20Decors" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-primary hover:translate-x-1 transition-all">Home Decors</Link>
+                <Link href="/shop?category=Festivals" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-primary hover:translate-x-1 transition-all">Festivals</Link>
+                <Link href="/shop?category=Art%20and%20Painting" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-primary hover:translate-x-1 transition-all">Art and Painting</Link>
+                <Link href="/shop?category=Jewellery" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-primary hover:translate-x-1 transition-all">Jewellery</Link>
+                <Link href="/shop?category=Love%20%26%20Romance" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-primary hover:translate-x-1 transition-all">Love & Romance</Link>
+                <Link href="/shop?category=Personalise" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-primary hover:translate-x-1 transition-all">Personalise</Link>
+                <Link href="/shop?category=Birthday%20Gift" onClick={() => setIsMobileMenuOpen(false)} className="hover:text-brand-primary hover:translate-x-1 transition-all">Birthday Gift</Link>
               </div>
             )}
             

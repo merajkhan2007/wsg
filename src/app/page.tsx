@@ -17,7 +17,7 @@ const CATEGORIES = [
 
 const CATEGORY_SUBTITLES: Record<string, string> = {
   "HandiCrafts": "Timeless artistry crafted by skilled hands",
-  "Home Décor": "Elevate your living space with unique styles",
+  "Home Decors": "Elevate your living space with unique styles",
   "Festivals": "Celebrate the warmth & joy of every season",
   "Art and Painting": "Expressive visuals that inspire the soul",
   "Jewellery": "Adorn yourself with elegant handcrafted designs",
@@ -87,7 +87,7 @@ export default function Home() {
            
            const categoryMapping: Record<string, string> = {
              "handicrafts": "HandiCrafts",
-             "home decor": "Home Décor",
+             "home decor": "Home Decors",
              "festival & festive": "Festivals",
              "art & paintings": "Art and Painting",
              "jewelry & accessories": "Jewellery",
@@ -98,7 +98,7 @@ export default function Home() {
 
            const order = [
              "HandiCrafts",
-             "Home Décor",
+             "Home Decors",
              "Festivals",
              "Art and Painting",
              "Jewellery",
