@@ -9,13 +9,15 @@ import { useSearchParams } from 'next/navigation';
 export default function ShopContent({ initialProducts }: { initialProducts: any[] }) {
   const searchParams = useSearchParams();
   const defaultCategory = searchParams.get('category') || 'All';
+  const defaultBrand = searchParams.get('brand') || 'All';
   
   const [search, setSearch] = useState('');
   const [activeCategory, setActiveCategory] = useState<string>(defaultCategory);
+  const [activeBrand, setActiveBrand] = useState<string>(defaultBrand);
   
   useEffect(() => {
-    const category = searchParams.get('category');
-    setActiveCategory(category || 'All');
+    setActiveCategory(searchParams.get('category') || 'All');
+    setActiveBrand(searchParams.get('brand') || 'All');
   }, [searchParams]);
 
   const categories = useMemo(() => {
@@ -29,9 +31,12 @@ export default function ShopContent({ initialProducts }: { initialProducts: any[
                             (product.description || '').toLowerCase().includes(search.toLowerCase());
       const matchesCategory = activeCategory === 'All' || 
           (product.category_name && product.category_name.toLowerCase() === activeCategory.toLowerCase());
-      return matchesSearch && matchesCategory;
+      const matchesBrand = activeBrand === 'All' ||
+          (product.shop_name && product.shop_name.toLowerCase() === activeBrand.toLowerCase());
+
+      return matchesSearch && matchesCategory && matchesBrand;
     });
-  }, [initialProducts, search, activeCategory]);
+  }, [initialProducts, search, activeCategory, activeBrand]);
 
   return (
     <div className="min-h-screen bg-surface-light pt-10 pb-20">
@@ -41,7 +46,7 @@ export default function ShopContent({ initialProducts }: { initialProducts: any[
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6">
           <div>
             <h1 className="text-4xl font-serif font-bold text-gray-900 mb-2 capitalize">
-              {activeCategory === 'All' ? 'Our Collection' : activeCategory}
+              {activeBrand !== 'All' ? `${activeBrand}'s Collection` : (activeCategory === 'All' ? 'Our Collection' : activeCategory)}
             </h1>
             <p className="text-gray-500">Explore gifts that create lasting memories</p>
           </div>
@@ -136,7 +141,7 @@ export default function ShopContent({ initialProducts }: { initialProducts: any[
             <h3 className="text-lg font-medium text-gray-900">No products found</h3>
             <p className="mt-1">Try adjusting your search criteria</p>
             <button 
-              onClick={() => { setSearch(''); setActiveCategory('All'); }}
+              onClick={() => { setSearch(''); setActiveCategory('All'); setActiveBrand('All'); }}
               className="mt-6 text-brand-primary font-medium hover:underline"
             >
               Clear filters

@@ -6,7 +6,7 @@ import { Suspense } from 'react';
 
 async function getProducts() {
   try {
-    const res = await query('SELECT p.*, c.name as category_name FROM products p LEFT JOIN categories c ON p.category_id = c.id ORDER BY p.created_at DESC');
+    const res = await query('SELECT p.*, c.name as category_name, s.shop_name FROM products p LEFT JOIN categories c ON p.category_id = c.id LEFT JOIN sellers s ON p.seller_id = s.id ORDER BY p.created_at DESC');
     return res.rows;
   } catch (error) {
     console.error(error);

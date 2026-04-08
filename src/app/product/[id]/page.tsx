@@ -111,9 +111,15 @@ export default async function ProductPage({ params }: { params: { id: string } }
                <span className="border-[1.5px] border-[#1d2b36] px-5 py-1.5 text-xs font-bold text-[#1d2b36] uppercase tracking-wider">REGULAR</span>
             </div>
 
-            <div className="mb-2 text-[15px]">
+            <div className="mb-2 text-[15px] flex items-center">
                <span className="font-extrabold text-[#111827]">Brand:</span>
-               <span className="text-[#35434d] ml-1">{product.shop_name || 'Creative Corner'}</span>
+               {product.shop_name ? (
+                 <Link href={`/shop?brand=${encodeURIComponent(product.shop_name)}`} className="text-[#10b981] font-bold hover:underline ml-2">
+                   {product.shop_name}
+                 </Link>
+               ) : (
+                 <span className="text-[#35434d] ml-2">Creative Corner</span>
+               )}
             </div>
 
             <div className="mb-8 text-[15px]">
