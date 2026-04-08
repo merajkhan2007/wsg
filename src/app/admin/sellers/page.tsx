@@ -208,14 +208,26 @@ export default function SellersPayoutsPage() {
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="text-sm text-gray-900 font-mono mb-1">{seller.business_registration_number || 'No Reg. ID'}</div>
                         {seller.bank_name ? (
-                           <div className="text-xs text-gray-500 flex flex-col gap-0.5">
+                           <div className="text-xs text-gray-500 flex flex-col gap-0.5 mb-2">
                               <span className="font-semibold text-brand-accent">{seller.bank_name}</span>
                               <span className="font-mono tracking-tight">{seller.bank_account_number}</span>
                               <span>IFSC: <span className="uppercase">{seller.bank_ifsc}</span></span>
                            </div>
                         ) : (
-                           <span className="text-xs text-rose-400 italic">No bank info added</span>
+                           <span className="text-xs text-rose-400 italic mb-2 block">No bank info added</span>
                         )}
+                        <div className="flex gap-2 mt-1">
+                           {seller.aadhar_url ? (
+                              <a href={seller.aadhar_url} target="_blank" rel="noopener noreferrer" className="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2 py-1 rounded hover:bg-emerald-100 flex items-center transition-colors shadow-sm"><CheckCircle className="w-3 h-3 mr-1"/>Aadhar</a>
+                           ) : (
+                              <span className="text-xs font-semibold text-gray-400 bg-gray-50 px-2 py-1 rounded flex items-center"><XCircle className="w-3 h-3 mr-1"/>Aadhar</span>
+                           )}
+                           {seller.pan_url ? (
+                              <a href={seller.pan_url} target="_blank" rel="noopener noreferrer" className="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2 py-1 rounded hover:bg-emerald-100 flex items-center transition-colors shadow-sm"><CheckCircle className="w-3 h-3 mr-1"/>PAN</a>
+                           ) : (
+                              <span className="text-xs font-semibold text-gray-400 bg-gray-50 px-2 py-1 rounded flex items-center"><XCircle className="w-3 h-3 mr-1"/>PAN</span>
+                           )}
+                        </div>
                       </td>
                       <td className="px-6 py-4 whitespace-nowrap">
                         <div className="text-sm font-bold text-emerald-600">

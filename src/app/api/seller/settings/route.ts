@@ -12,7 +12,8 @@ export async function GET(req: NextRequest) {
     // Retrieve full profile from users and sellers tables
     const res = await query(`
       SELECT u.id, u.name, u.email, s.shop_name, s.shop_description, s.shop_logo,
-             s.bank_name, s.bank_account_name, s.bank_account_number, s.bank_ifsc
+             s.bank_name, s.bank_account_name, s.bank_account_number, s.bank_ifsc,
+             s.aadhar_url, s.pan_url
       FROM users u
       LEFT JOIN sellers s ON s.user_id = u.id
       WHERE u.id = $1
@@ -33,7 +34,7 @@ export async function PATCH(req: NextRequest) {
      }
      
      const body = await req.json();
-     const { shop_name, shop_description, shop_logo, name, bank_name, bank_account_name, bank_account_number, bank_ifsc } = body;
+     const { shop_name, shop_description, shop_logo, name, bank_name, bank_account_name, bank_account_number, bank_ifsc, aadhar_url, pan_url } = body;
      
      // Build dynamic query for users table
      let updates = [];
@@ -68,6 +69,8 @@ export async function PATCH(req: NextRequest) {
      if (bank_account_name !== undefined) { sellerUpdates.push(`bank_account_name = $${sellerParamIndex++}`); sellerParams.push(bank_account_name); }
      if (bank_account_number !== undefined) { sellerUpdates.push(`bank_account_number = $${sellerParamIndex++}`); sellerParams.push(bank_account_number); }
      if (bank_ifsc !== undefined) { sellerUpdates.push(`bank_ifsc = $${sellerParamIndex++}`); sellerParams.push(bank_ifsc); }
+     if (aadhar_url !== undefined) { sellerUpdates.push(`aadhar_url = $${sellerParamIndex++}`); sellerParams.push(aadhar_url); }
+     if (pan_url !== undefined) { sellerUpdates.push(`pan_url = $${sellerParamIndex++}`); sellerParams.push(pan_url); }
 
      if (sellerUpdates.length > 0) {
        sellerParams.push(user.id);

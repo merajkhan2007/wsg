@@ -1,17 +1,19 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import { Settings, User, Save, Image as ImageIcon, MapPin, Store } from 'lucide-react';
+import { Settings, User, Save, Image as ImageIcon, MapPin, Store, UploadCloud, Loader2, FileText, CheckCircle2 } from 'lucide-react';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
 export default function SellerSettingsPage() {
   const [profile, setProfile] = useState<any>({ 
      name: '', shop_name: '', shop_description: '', shop_logo: '',
-     bank_name: '', bank_account_name: '', bank_account_number: '', bank_ifsc: ''
+     bank_name: '', bank_account_name: '', bank_account_number: '', bank_ifsc: '',
+     aadhar_url: '', pan_url: ''
   });
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [uploadingDoc, setUploadingDoc] = useState<'aadhar' | 'pan' | null>(null);
   const [msg, setMsg] = useState({ text: '', type: '' });
   const [isEditingBank, setIsEditingBank] = useState(false);
 
@@ -36,13 +38,45 @@ export default function SellerSettingsPage() {
             bank_name: data.profile.bank_name || '',
             bank_account_name: data.profile.bank_account_name || '',
             bank_account_number: data.profile.bank_account_number || '',
-            bank_ifsc: data.profile.bank_ifsc || ''
+            bank_ifsc: data.profile.bank_ifsc || '',
+            aadhar_url: data.profile.aadhar_url || '',
+            pan_url: data.profile.pan_url || ''
         });
       }
     } catch (err) {
       console.error(err);
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleDocumentUpload = async (e: React.ChangeEvent<HTMLInputElement>, docType: 'aadhar' | 'pan') => {
+    if (!e.target.files || e.target.files.length === 0) return;
+    
+    setUploadingDoc(docType);
+    setMsg({ text: '', type: '' });
+    
+    const file = e.target.files[0];
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+      const res = await fetch('/api/upload', {
+        method: 'POST',
+        body: formData
+      });
+      const data = await res.json();
+      if (res.ok && data.url) {
+        setProfile((prev: any) => ({ ...prev, [docType === 'aadhar' ? 'aadhar_url' : 'pan_url']: data.url }));
+        setMsg({ text: `${docType.toUpperCase()} uploaded successfully! Remember to save settings.`, type: 'success' });
+      } else {
+        throw new Error(data.error || 'Upload failed');
+      }
+    } catch (err: any) {
+      setMsg({ text: err.message || 'Error uploading document', type: 'error' });
+    } finally {
+      setUploadingDoc(null);
+      e.target.value = '';
     }
   };
 
@@ -212,6 +246,71 @@ export default function SellerSettingsPage() {
                            className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-brand-accent transition-all text-gray-900 uppercase disabled:opacity-60 disabled:bg-gray-100/50 disabled:cursor-not-allowed"
                         />
                      </div>
+                  </div>
+               </div>
+
+               <div className="mt-12 pt-8 border-t border-gray-100">
+                  <h3 className="text-lg font-semibold text-gray-900 mb-6 flex items-center">
+                     <FileText className="w-5 h-5 mr-3 text-brand-accent" /> Identity Verification
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                     
+                     {/* Aadhar Upload */}
+                     <div className="border border-gray-200 rounded-2xl p-6 bg-gray-50/30">
+                        <div className="flex justify-between items-start mb-4">
+                           <h4 className="font-semibold text-gray-800">Aadhar Card</h4>
+                           {profile.aadhar_url && <CheckCircle2 className="w-5 h-5 text-emerald-500" />}
+                        </div>
+                        {profile.aadhar_url ? (
+                           <div className="relative aspect-video rounded-xl overflow-hidden border border-gray-200 bg-gray-100 mb-4 group">
+                              <img src={profile.aadhar_url} className="w-full h-full object-cover" alt="Aadhar Card" />
+                              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                 <label className="cursor-pointer bg-white text-gray-800 text-xs font-semibold px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors">
+                                    Replace Image
+                                    <input type="file" className="hidden" accept="image/*" onChange={(e) => handleDocumentUpload(e, 'aadhar')} disabled={uploadingDoc === 'aadhar'} />
+                                 </label>
+                              </div>
+                           </div>
+                        ) : (
+                           <label className={twMerge(
+                              "border-2 border-dashed border-gray-300 rounded-xl bg-white hover:bg-gray-50 p-6 flex flex-col items-center justify-center text-center cursor-pointer transition-colors mb-4",
+                              uploadingDoc === 'aadhar' && "opacity-60 pointer-events-none"
+                           )}>
+                              <input type="file" className="hidden" accept="image/*" onChange={(e) => handleDocumentUpload(e, 'aadhar')} disabled={uploadingDoc === 'aadhar'} />
+                              {uploadingDoc === 'aadhar' ? <Loader2 className="w-6 h-6 text-brand-accent animate-spin mb-2" /> : <UploadCloud className="w-6 h-6 text-gray-400 mb-2" />}
+                              <span className="text-sm font-medium text-gray-600">Upload Aadhar</span>
+                           </label>
+                        )}
+                     </div>
+
+                     {/* PAN Upload */}
+                     <div className="border border-gray-200 rounded-2xl p-6 bg-gray-50/30">
+                        <div className="flex justify-between items-start mb-4">
+                           <h4 className="font-semibold text-gray-800">PAN Card</h4>
+                           {profile.pan_url && <CheckCircle2 className="w-5 h-5 text-emerald-500" />}
+                        </div>
+                        {profile.pan_url ? (
+                           <div className="relative aspect-video rounded-xl overflow-hidden border border-gray-200 bg-gray-100 mb-4 group">
+                              <img src={profile.pan_url} className="w-full h-full object-cover" alt="PAN Card" />
+                              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                 <label className="cursor-pointer bg-white text-gray-800 text-xs font-semibold px-4 py-2 rounded-lg hover:bg-gray-100 transition-colors">
+                                    Replace Image
+                                    <input type="file" className="hidden" accept="image/*" onChange={(e) => handleDocumentUpload(e, 'pan')} disabled={uploadingDoc === 'pan'} />
+                                 </label>
+                              </div>
+                           </div>
+                        ) : (
+                           <label className={twMerge(
+                              "border-2 border-dashed border-gray-300 rounded-xl bg-white hover:bg-gray-50 p-6 flex flex-col items-center justify-center text-center cursor-pointer transition-colors mb-4",
+                              uploadingDoc === 'pan' && "opacity-60 pointer-events-none"
+                           )}>
+                              <input type="file" className="hidden" accept="image/*" onChange={(e) => handleDocumentUpload(e, 'pan')} disabled={uploadingDoc === 'pan'} />
+                              {uploadingDoc === 'pan' ? <Loader2 className="w-6 h-6 text-brand-accent animate-spin mb-2" /> : <UploadCloud className="w-6 h-6 text-gray-400 mb-2" />}
+                              <span className="text-sm font-medium text-gray-600">Upload PAN</span>
+                           </label>
+                        )}
+                     </div>
+
                   </div>
                </div>
 

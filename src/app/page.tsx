@@ -75,7 +75,7 @@ export default function Home() {
            }, {});
            
            const newCategories = Object.keys(grouped).map(k => ({
-             name: k.trim().toLowerCase().endsWith('gifts') ? k : k + ' Gifts',
+             name: k,
              products: grouped[k]
            }));
            setCategories(newCategories);
@@ -203,7 +203,7 @@ export default function Home() {
             </div>
             <div className="mt-1 sm:mt-0">
               <h4 className="font-semibold text-gray-900 text-sm">Free Shipping</h4>
-              <p className="text-xs text-gray-500 mt-0.5">On orders over ₹999</p>
+              <p className="text-xs text-gray-500 mt-0.5">On orders over ₹499</p>
             </div>
           </div>
           <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3 sm:gap-4">

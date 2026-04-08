@@ -1,0 +1,46 @@
+[
+  {
+    "column_name": "created_at",
+    "data_type": "timestamp without time zone"
+  },
+  {
+    "column_name": "user_id",
+    "data_type": "integer"
+  },
+  {
+    "column_name": "id",
+    "data_type": "integer"
+  },
+  {
+    "column_name": "bank_name",
+    "data_type": "character varying"
+  },
+  {
+    "column_name": "bank_account_name",
+    "data_type": "character varying"
+  },
+  {
+    "column_name": "bank_account_number",
+    "data_type": "character varying"
+  },
+  {
+    "column_name": "bank_ifsc",
+    "data_type": "character varying"
+  },
+  {
+    "column_name": "shop_description",
+    "data_type": "text"
+  },
+  {
+    "column_name": "shop_logo",
+    "data_type": "character varying"
+  },
+  {
+    "column_name": "shop_name",
+    "data_type": "character varying"
+  },
+  {
+    "column_name": "approval_status",
+    "data_type": "character varying"
+  }
+]
