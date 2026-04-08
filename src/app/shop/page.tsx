@@ -70,8 +70,7 @@ export default async function ShopPage() {
                       src={displayImage} 
                       alt={product.title || product.name || 'Product Image'} 
                       fill
-                      sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 16vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
+                      className="object-contain transition-transform duration-500 group-hover:scale-110"
                     />
                   </Link>
                   <div className="absolute inset-x-0 bottom-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0 flex justify-center bg-gradient-to-t from-black/50 to-transparent">

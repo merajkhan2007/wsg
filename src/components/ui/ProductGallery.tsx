@@ -24,7 +24,7 @@ export default function ProductGallery({ images, title }: { images: string[], ti
             alt={title} 
             fill
             priority
-            className="object-cover group-hover:scale-105 transition-transform duration-700"
+            className="object-contain group-hover:scale-105 transition-transform duration-700"
           />
           {/* Zoom Overlay Hint */}
            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center pointer-events-none">
@@ -43,7 +43,7 @@ export default function ProductGallery({ images, title }: { images: string[], ti
                   selectedIndex === idx ? "border-brand-primary" : "border-transparent hover:border-brand-primary/50"
                 )}
               >
-                <Image src={imgSrc} alt={`thumbnail-${idx}`} fill className={twMerge("object-cover transition-opacity", selectedIndex === idx ? "opacity-100" : "opacity-70 hover:opacity-100")} />
+                <Image src={imgSrc} alt={`thumbnail-${idx}`} fill className={twMerge("object-contain transition-opacity", selectedIndex === idx ? "opacity-100" : "opacity-70 hover:opacity-100")} />
               </div>
             ))}
           </div>
