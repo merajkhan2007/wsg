@@ -35,6 +35,31 @@ export default function SellerProductsPage() {
     }
   };
 
+  const handleExport = () => {
+    if (!products || products.length === 0) return alert('No products to export');
+    
+    const headers = ['ID', 'Title', 'Price', 'Stock', 'Gift Customization', 'Listed Date'];
+    const rows = products.map((p: any) => {
+      const title = p.title ? p.title.replace(/"/g, '""') : '';
+      const date = new Date(p.created_at).toLocaleDateString();
+      return `${p.id},"${title}",${p.price},${p.stock},${p.gift_customization ? 'Yes' : 'No'},"${date}"`;
+    });
+    
+    const csvContent = "data:text/csv;charset=utf-8," + headers.join(",") + "\n" + rows.join("\n");
+    const encodedUri = encodeURI(csvContent);
+    
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", "seller_inventory.csv");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleBulkCSV = () => {
+    alert("Bulk CSV upload functionality is currently under development. Please add products manually using the Add Product button.");
+  };
+
   return (
     <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500 text-gray-700">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -43,10 +68,10 @@ export default function SellerProductsPage() {
           <p className="text-gray-500 mt-2">Manage your catalog, stock levels, and gift options.</p>
         </div>
         <div className="flex items-center gap-3">
-          <button className="px-4 py-2 bg-gray-50 hover:bg-gray-100 text-gray-900 rounded-xl text-sm font-medium transition-colors border border-gray-200 flex items-center">
+          <button onClick={handleExport} className="px-4 py-2 bg-gray-50 hover:bg-gray-100 text-gray-900 rounded-xl text-sm font-medium transition-colors border border-gray-200 flex items-center">
              <Download className="w-4 h-4 mr-2" /> Export
           </button>
-          <button className="px-4 py-2 bg-gray-50 hover:bg-gray-100 text-gray-900 rounded-xl text-sm font-medium transition-colors border border-gray-200 flex items-center">
+          <button onClick={handleBulkCSV} className="px-4 py-2 bg-gray-50 hover:bg-gray-100 text-gray-900 rounded-xl text-sm font-medium transition-colors border border-gray-200 flex items-center">
              <UploadCloud className="w-4 h-4 mr-2 text-brand-accent" /> Bulk CSV
           </button>
           <Link href="/seller/products/new" className="px-4 py-2 bg-brand-accent hover:bg-brand-accent/90 text-white rounded-xl text-sm font-semibold transition-colors shadow-glow flex items-center">
