@@ -7,6 +7,7 @@ import AddToCartButton from '@/components/ui/AddToCartButton';
 import AddToWishlistButton from '@/components/ui/AddToWishlistButton';
 import BuyNowButton from '@/components/ui/BuyNowButton';
 import ProductGallery from '@/components/ui/ProductGallery';
+import RelatedProductsCarousel from '@/components/ui/RelatedProductsCarousel';
 
 async function getProduct(id: string) {
   try {
@@ -21,7 +22,7 @@ async function getProduct(id: string) {
 async function getRelatedProducts(currentProductId: string) {
   try {
     const res = await query(
-      'SELECT p.*, c.name as category_name FROM products p LEFT JOIN categories c ON p.category_id = c.id WHERE p.id != $1 ORDER BY random() LIMIT 4',
+      'SELECT p.*, c.name as category_name FROM products p LEFT JOIN categories c ON p.category_id = c.id WHERE p.id != $1 ORDER BY random() LIMIT 12',
       [currentProductId]
     );
     return res.rows;
@@ -140,58 +141,7 @@ export default async function ProductPage({ params }: { params: { id: string } }
         </div>
       </div>
       
-      {/* Related Products Section */}
-      {relatedProducts.length > 0 && (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 pt-16 border-t border-gray-100">
-          <h2 className="text-2xl md:text-3xl font-serif font-bold text-gray-900 mb-8">You May Also Like</h2>
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-            {relatedProducts.map((relProduct: any) => {
-              let parsedImages: string[] = [];
-              if (typeof relProduct.images === 'string') {
-                try { parsedImages = JSON.parse(relProduct.images); } catch(e){}
-              } else if (Array.isArray(relProduct.images)) {
-                parsedImages = relProduct.images;
-              }
-
-              let displayImage = relProduct.image;
-              if (parsedImages.length > 0) {
-                displayImage = parsedImages[0];
-              } else if (!displayImage) {
-                displayImage = 'https://images.unsplash.com/photo-1513201099705-a9746e1e201f?q=80&w=800&auto=format&fit=crop';
-              }
-
-              return (
-                <div key={relProduct.id} className="group flex flex-col bg-white p-3 rounded-[12px] shadow-sm border border-gray-50 hover:shadow-[0_8px_25px_rgba(233,78,119,0.12)] transition-all duration-300 transform hover:-translate-y-1">
-                  <div className="relative overflow-hidden rounded-xl mb-3 aspect-[4/5] bg-brand-base border border-gray-50">
-                    <Link href={`/product/${relProduct.id}`} className="absolute inset-0 z-0">
-                      <Image 
-                        src={displayImage} 
-                        alt={relProduct.title || relProduct.name || 'Product'} 
-                        fill
-                        className="object-contain transition-transform duration-500 group-hover:scale-110"
-                      />
-                    </Link>
-                    <div className="absolute z-10 top-2 left-2 bg-white/90 backdrop-blur-sm px-2 py-0.5 rounded-full text-[10px] font-medium text-gray-600 shadow-sm pointer-events-none">
-                      {relProduct.category_name || relProduct.category || 'Gifts'}
-                    </div>
-                  </div>
-                  <div className="flex-1 flex flex-col">
-                    <h3 className="text-sm font-medium text-gray-800 group-hover:text-brand-primary transition-colors leading-snug line-clamp-2">
-                      <Link href={`/product/${relProduct.id}`}>{relProduct.title || relProduct.name}</Link>
-                    </h3>
-                    <p className="text-brand-accent font-bold mt-auto pt-1 text-sm md:text-base">
-                      ₹{relProduct.special_price ? relProduct.special_price : relProduct.price}
-                      {Number(relProduct.special_price) < Number(relProduct.price) && (
-                         <span className="text-xs text-gray-400 line-through ml-2 font-normal">₹{relProduct.price}</span>
-                      )}
-                    </p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      )}
+      <RelatedProductsCarousel products={relatedProducts} />
     </div>
   );
 }
