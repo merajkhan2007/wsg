@@ -16,7 +16,7 @@ const CATEGORIES = [
 ];
 
 const CATEGORY_SUBTITLES: Record<string, string> = {
-  "HandyCraft": "Timeless artistry crafted by skilled hands",
+  "HandiCrafts": "Timeless artistry crafted by skilled hands",
   "Home Décor": "Elevate your living space with unique styles",
   "Festivals": "Celebrate the warmth & joy of every season",
   "Art and Painting": "Expressive visuals that inspire the soul",
@@ -36,7 +36,7 @@ const FEATURED_PRODUCTS = [
 ];
 
 export default function Home() {
-  const [categories, setCategories] = useState<{name: string, products: any[]}[]>([{ name: 'Trending Expressions', products: FEATURED_PRODUCTS }]);
+  const [categories, setCategories] = useState<{name: string, originalName?: string, products: any[]}[]>([{ name: 'Trending Expressions', products: FEATURED_PRODUCTS }]);
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const HERO_SLIDES = [
@@ -86,7 +86,7 @@ export default function Home() {
            }, {});
            
            const categoryMapping: Record<string, string> = {
-             "handicrafts": "HandyCraft",
+             "handicrafts": "HandiCrafts",
              "home decor": "Home Décor",
              "festival & festive": "Festivals",
              "art & paintings": "Art and Painting",
@@ -97,7 +97,7 @@ export default function Home() {
            };
 
            const order = [
-             "HandyCraft",
+             "HandiCrafts",
              "Home Décor",
              "Festivals",
              "Art and Painting",
