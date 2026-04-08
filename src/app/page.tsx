@@ -74,30 +74,40 @@ export default function Home() {
              return acc;
            }, {});
            
-           const orderPrefixes = [
-             "handycraft",
-             "home décor",
-             "festivals",
-             "art and painting",
-             "jewel",
-             "love",
-             "personal",
-             "birthday"
+           const categoryMapping: Record<string, string> = {
+             "handicrafts": "HandyCraft",
+             "home decor": "Home Décor",
+             "festival & festive": "Festivals",
+             "art & paintings": "Art and Painting",
+             "jewelry & accessories": "Jewellery",
+             "love & romance": "Love & Romance",
+             "personalized gifts": "Personalise",
+             "birthday": "Birthday Gift"
+           };
+
+           const order = [
+             "HandyCraft",
+             "Home Décor",
+             "Festivals",
+             "Art and Painting",
+             "Jewellery",
+             "Love & Romance",
+             "Personalise",
+             "Birthday Gift"
            ];
 
-           const newCategories = Object.keys(grouped).map(k => ({
-             name: k,
-             products: grouped[k]
-           })).sort((a, b) => {
-             const aName = a.name.toLowerCase();
-             const bName = b.name.toLowerCase();
-             
-             let aIndex = orderPrefixes.findIndex(prefix => aName.includes(prefix) || aName.startsWith(prefix));
-             let bIndex = orderPrefixes.findIndex(prefix => bName.includes(prefix) || bName.startsWith(prefix));
-             
+           const newCategories = Object.keys(grouped).map(k => {
+             const lowerK = k.toLowerCase().trim();
+             const displayName = categoryMapping[lowerK] || k;
+             return {
+               name: displayName,
+               products: grouped[k]
+             };
+           }).sort((a, b) => {
+             let aIndex = order.indexOf(a.name);
+             let bIndex = order.indexOf(b.name);
              if (aIndex === -1) aIndex = 999;
              if (bIndex === -1) bIndex = 999;
-             
              if (aIndex !== bIndex) return aIndex - bIndex;
              return a.name.localeCompare(b.name);
            });
