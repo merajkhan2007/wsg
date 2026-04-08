@@ -30,7 +30,6 @@ const FEATURED_PRODUCTS = [
   { id: 1, name: 'Personalized Photo Lamp', price: 1499, image: 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=800&auto=format&fit=crop', category: 'Personalized' },
   { id: 2, name: 'Red Roses Bouquet', price: 899, image: 'https://images.unsplash.com/photo-1562690868-60bbe7293e94?q=80&w=800&auto=format&fit=crop', category: 'Love & Romance' },
   { id: 3, name: 'Luxury Spa Hamper', price: 2499, image: 'https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=800&auto=format&fit=crop', category: 'Anniversary' },
-  { id: 4, name: 'Chocolate Truffle Box', price: 699, image: 'https://images.unsplash.com/photo-1549007994-cb92caebd54b?q=80&w=800&auto=format&fit=crop', category: 'Birthday' },
   { id: 5, name: 'Handcrafted Wooden Watch', price: 3499, image: 'https://images.unsplash.com/photo-1523170335258-f5ed11844a49?q=80&w=800&auto=format&fit=crop', category: 'Gifts' },
   { id: 6, name: 'Engraved Silver Pendant', price: 1999, image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80&w=800&auto=format&fit=crop', category: 'Jewellery' },
 ];
