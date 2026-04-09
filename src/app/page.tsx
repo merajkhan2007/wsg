@@ -40,27 +40,27 @@ export default function Home() {
 
   const HERO_SLIDES = [
     {
+      image: "/hero-slider-1.png",
+      tag: "Curated with Love",
+      title: "Premium Handcrafted <br /> Gift Collections",
+      description: "Discover our aesthetically pleasing, handcrafted gifts that speak to the soul.",
+      btnText: "Explore Gifts",
+      link: "/shop"
+    },
+    {
+      image: "/hero-slider-2.png",
+      tag: "Special Moments",
+      title: "Make Every Occasion <br /> Unforgettable",
+      description: "Send warmth and affection with our beautifully packaged, premium gift hampers.",
+      btnText: "Shop Hampers",
+      link: "/category/personalized"
+    },
+    {
       image: "/hero-banner.png",
       tag: "",
       title: "",
       description: "",
       btnText: "",
-      link: "/shop"
-    },
-    {
-      image: "https://images.unsplash.com/photo-1584824486516-0555a07fc511?q=80&w=1920&auto=format&fit=crop",
-      tag: "Make it Yours",
-      title: "Custom Engraved <br /> Jewellery Collections",
-      description: "Explore our newest additions to the personalized jewellery collection, handcrafted with love.",
-      btnText: "Explore Collection",
-      link: "/category/personalized"
-    },
-    {
-      image: "https://images.unsplash.com/photo-1607083206968-13611e3d76db?q=80&w=1920&auto=format&fit=crop",
-      tag: "Up to 50% Off",
-      title: "The Festive Sale <br /> is Now Live",
-      description: "Use code FESTIVE50 at checkout to unlock massive discounts on premium gifts.",
-      btnText: "Shop Sale",
       link: "/shop"
     }
   ];
