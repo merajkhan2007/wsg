@@ -98,6 +98,7 @@ export default function AdminOrdersPage() {
        case 'processing': return 'text-brand-primary bg-brand-primary/10 border-brand-primary/20';
        case 'refunded':
        case 'cancelled': return 'text-red-500 bg-red-50 border-red-200';
+       case 'pending_verification': return 'text-orange-600 bg-orange-50 border-orange-200';
        default: return 'text-amber-500 bg-amber-50 border-amber-200'; // pending
     }
   };
@@ -139,12 +140,12 @@ export default function AdminOrdersPage() {
                                 selectedOrder?.id === order.id && "bg-gray-50/80 border-brand-accent"
                              )}
                           >
-                             <div className="flex justify-between items-start mb-2">
-                                <span className="text-xs font-mono font-bold text-gray-500">#{String(order.id).padStart(4, '0')}</span>
-                                <span className={clsx("px-2 py-0.5 rounded text-[10px] font-semibold border", getStatusColor(order.status))}>
-                                   {order.status.toUpperCase()}
-                                </span>
-                             </div>
+                              <div className="flex justify-between items-start mb-2">
+                                 <span className="text-xs font-mono font-bold text-gray-500">#{String(order.id).padStart(4, '0')}</span>
+                                 <span className={clsx("px-2 py-0.5 rounded text-[10px] font-semibold border", getStatusColor(order.status))}>
+                                    {order.status.replace('_', ' ').toUpperCase()}
+                                 </span>
+                              </div>
                              <h4 className="text-sm font-medium text-gray-900 line-clamp-1 mb-1">{order.product_names || 'Products'}</h4>
                              <div className="flex justify-between items-end mt-2">
                                 <span className="text-xs text-gray-400 max-w-[150px] truncate">for {order.customer_name} • {order.item_count} items</span>
@@ -170,7 +171,10 @@ export default function AdminOrdersPage() {
                         <div className="flex items-center gap-3 mb-1">
                            <h2 className="text-xl font-bold text-gray-900 tracking-tight">Order #{String(selectedOrder.id).padStart(4, '0')}</h2>
                            <span className={clsx("px-2.5 py-1 rounded-md text-xs font-semibold border", getStatusColor(selectedOrder.status))}>
-                               {selectedOrder.status}
+                               {selectedOrder.status.replace('_', ' ')}
+                           </span>
+                           <span className="px-2.5 py-1 rounded-md text-xs font-semibold border bg-gray-50 border-gray-200 text-gray-600">
+                               {selectedOrder.payment_method || 'COD'}
                            </span>
                         </div>
                         <p className="text-sm text-gray-500 flex items-center gap-2">
@@ -181,6 +185,12 @@ export default function AdminOrdersPage() {
                            <MapPin className="w-4 h-4 text-brand-accent shrink-0" />
                            <span className="max-w-md bg-gray-50/80 px-2 py-1 rounded border border-gray-100">{selectedOrder.address}</span>
                         </p>
+                        {selectedOrder.phone && (
+                          <p className="text-sm flex items-center gap-2 mt-2">
+                             <AlertCircle className="w-4 h-4 text-gray-400" />
+                             Customer Phone: <span className="font-semibold text-gray-800">{selectedOrder.phone}</span>
+                          </p>
+                        )}
                      </div>
                      <div className="text-right">
                         <p className="text-xs text-gray-400 mb-1">Order Total</p>
@@ -239,6 +249,15 @@ export default function AdminOrdersPage() {
                      <div className="mt-8">
                         <h4 className="text-sm font-bold text-gray-900 border-b pb-2 mb-4">Admin Status Overrides</h4>
                         <div className="flex gap-4">
+                           {selectedOrder.status === 'pending_verification' && (
+                              <button 
+                                 id="status-btn-pending"
+                                 onClick={() => handleUpdateStatus('pending')}
+                                 className="flex-1 bg-orange-50 hover:bg-orange-100 text-orange-700 py-3 rounded-xl font-medium transition-colors flex items-center justify-center border border-orange-200 flex-col"
+                               >
+                                 <CheckCircle className="w-5 h-5 mb-1" /> Verify COD Order
+                              </button>
+                           )}
                            {selectedOrder.status !== 'delivered' && (
                               <button 
                                  id="status-btn-delivered"

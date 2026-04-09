@@ -47,14 +47,14 @@ export async function GET(req: NextRequest) {
 
     // Return list of all global orders
     const res = await query(`
-       SELECT o.id, o.status, o.created_at, o.total_amount, o.address, u.name as customer_name,
+       SELECT o.id, o.status, o.created_at, o.total_amount, o.address, o.phone, o.payment_method, u.name as customer_name,
               COUNT(oi.id) as item_count,
               STRING_AGG(p.title, ', ') as product_names
        FROM orders o
        JOIN users u ON o.user_id = u.id
        LEFT JOIN order_items oi ON o.id = oi.order_id
        LEFT JOIN products p ON oi.product_id = p.id
-       GROUP BY o.id, u.name, o.status, o.created_at, o.total_amount, o.address
+       GROUP BY o.id, u.name, o.status, o.created_at, o.total_amount, o.address, o.phone, o.payment_method
        ORDER BY o.created_at DESC
     `);
     

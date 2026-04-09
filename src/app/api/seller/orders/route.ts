@@ -22,7 +22,7 @@ export async function GET(req: NextRequest) {
          JOIN products p ON oi.product_id = p.id
          JOIN sellers s ON p.seller_id = s.id
          JOIN orders o ON oi.order_id = o.id
-         WHERE s.user_id = $1 AND o.id = $2
+         WHERE s.user_id = $1 AND o.id = $2 AND o.status != 'pending_verification'
        `, [user.id, orderId]);
        
        if (res.rowCount === 0) return NextResponse.json({ error: 'Order not found or access denied' }, { status: 404 });
@@ -55,7 +55,7 @@ export async function GET(req: NextRequest) {
        JOIN products p ON oi.product_id = p.id
        JOIN sellers s ON p.seller_id = s.id
        JOIN users u ON o.user_id = u.id
-       WHERE s.user_id = $1
+       WHERE s.user_id = $1 AND o.status != 'pending_verification'
        GROUP BY o.id, u.name, o.status, o.created_at, o.total_amount, o.address
        ORDER BY o.created_at DESC
     `, [user.id]);

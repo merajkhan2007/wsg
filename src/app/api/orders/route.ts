@@ -59,11 +59,12 @@ export async function POST(req: Request) {
 
     const total_amount = items.reduce((sum: number, item: any) => sum + (item.price * item.quantity), 0);
     const payment_status = payment_method === 'Razorpay' ? 'paid' : 'pending';
+    const initial_status = payment_method === 'COD' ? 'pending_verification' : 'pending';
 
     // Insert order
     const orderResult = await query(
-      'INSERT INTO orders (user_id, total_amount, address, phone, payment_method, payment_status, razorpay_order_id, razorpay_payment_id, razorpay_signature) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *',
-      [user_id, total_amount, address, phone, payment_method, payment_status, razorpay_order_id || null, razorpay_payment_id || null, razorpay_signature || null]
+      'INSERT INTO orders (user_id, total_amount, address, phone, payment_method, payment_status, razorpay_order_id, razorpay_payment_id, razorpay_signature, status) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *',
+      [user_id, total_amount, address, phone, payment_method, payment_status, razorpay_order_id || null, razorpay_payment_id || null, razorpay_signature || null, initial_status]
     );
     const order = orderResult.rows[0];
 
