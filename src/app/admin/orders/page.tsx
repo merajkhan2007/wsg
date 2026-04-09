@@ -8,6 +8,7 @@ import { twMerge } from 'tailwind-merge';
 export default function AdminOrdersPage() {
   const [orders, setOrders] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState('');
   const [selectedOrder, setSelectedOrder] = useState<any | null>(null);
   const [orderItems, setOrderItems] = useState<any[]>([]);
   const [itemsLoading, setItemsLoading] = useState(false);
@@ -103,6 +104,11 @@ export default function AdminOrdersPage() {
     }
   };
 
+  const filteredOrders = orders.filter(o => 
+     String(o.id).includes(searchQuery.toLowerCase()) || 
+     (o.customer_name && o.customer_name.toLowerCase().includes(searchQuery.toLowerCase()))
+  );
+
   return (
     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500 text-gray-700">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
@@ -120,6 +126,8 @@ export default function AdminOrdersPage() {
                   <Search className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
                   <input 
                      type="text" 
+                     value={searchQuery}
+                     onChange={(e) => setSearchQuery(e.target.value)}
                      placeholder="Search order ID or customer..." 
                      className="w-full pl-9 pr-4 py-2.5 rounded-xl border border-gray-200 bg-white focus:outline-none focus:ring-2 focus:ring-brand-accent/20 focus:border-brand-accent transition-all text-sm"
                   />
@@ -129,9 +137,9 @@ export default function AdminOrdersPage() {
             <div className="flex-1 overflow-y-auto">
               {loading ? (
                  <div className="flex justify-center p-10"><div className="w-6 h-6 rounded-full border-t-2 border-r-2 border-brand-accent animate-spin"></div></div>
-              ) : orders.length > 0 ? (
+              ) : filteredOrders.length > 0 ? (
                  <ul className="divide-y divide-gray-100">
-                    {orders.map((order) => (
+                    {filteredOrders.map((order) => (
                        <li key={order.id}>
                           <button 
                              onClick={() => loadOrderDetails(order.id)}
