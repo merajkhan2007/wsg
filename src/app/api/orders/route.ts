@@ -46,8 +46,9 @@ export async function POST(req: Request) {
       }
       
       const crypto = require('crypto');
+      const secret = (process.env.RAZORPAY_KEY_SECRET || '').replace(/['"]/g, '').trim();
       const generated_signature = crypto
-        .createHmac('sha256', process.env.RAZORPAY_KEY_SECRET!)
+        .createHmac('sha256', secret)
         .update(razorpay_order_id + "|" + razorpay_payment_id)
         .digest('hex');
 

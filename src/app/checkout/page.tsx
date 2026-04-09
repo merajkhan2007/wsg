@@ -64,7 +64,7 @@ export default function CheckoutPage() {
 
         // 2. Open Razorpay Checkout
         const options = {
-            key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID, 
+            key: (process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || '').replace(/['"]/g, '').trim(), 
             amount: rzpOrder.amount, 
             currency: "INR",
             name: "WeSoulGifts",

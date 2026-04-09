@@ -8,7 +8,9 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Amount is required' }, { status: 400 });
     }
 
-    const authHeader = `Basic ${Buffer.from(`${process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID}:${process.env.RAZORPAY_KEY_SECRET}`).toString('base64')}`;
+    const keyId = (process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || '').replace(/['"]/g, '').trim();
+    const keySecret = (process.env.RAZORPAY_KEY_SECRET || '').replace(/['"]/g, '').trim();
+    const authHeader = `Basic ${Buffer.from(`${keyId}:${keySecret}`).toString('base64')}`;
 
     const res = await fetch('https://api.razorpay.com/v1/orders', {
       method: 'POST',
