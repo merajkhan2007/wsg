@@ -32,12 +32,12 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold mb-6 text-white text-sm tracking-widest uppercase">Categories</h4>
             <ul className="space-y-3 text-sm">
-              <li><Link href="/shop?category=Home%20Living" className="text-brand-secondary hover:text-brand-primary transition-colors flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-secondary/50"></span> Home & Living</Link></li>
-              <li><Link href="/shop?category=Fashion" className="text-brand-secondary hover:text-brand-primary transition-colors flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-secondary/50"></span> Fashion</Link></li>
+              <li><Link href="/shop?category=home%20decor" className="text-brand-secondary hover:text-brand-primary transition-colors flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-secondary/50"></span> Home Decor</Link></li>
+              <li><Link href="/shop?category=handicrafts" className="text-brand-secondary hover:text-brand-primary transition-colors flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-secondary/50"></span> HandiCrafts</Link></li>
               <li><Link href="/shop?category=jewellery%20%26%20accessories" className="text-brand-secondary hover:text-brand-primary transition-colors flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-secondary/50"></span> Jewellery</Link></li>
-              <li><Link href="/shop?category=Gifts" className="text-brand-secondary hover:text-brand-primary transition-colors flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-secondary/50"></span> Gifts</Link></li>
-              <li><Link href="/shop?category=Stationery" className="text-brand-secondary hover:text-brand-primary transition-colors flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-secondary/50"></span> Stationery</Link></li>
-              <li><Link href="/shop?category=Paintings" className="text-brand-secondary hover:text-brand-primary transition-colors flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-secondary/50"></span> Paintings</Link></li>
+              <li><Link href="/shop?category=personalized%20gifts" className="text-brand-secondary hover:text-brand-primary transition-colors flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-secondary/50"></span> Personalized Gifts</Link></li>
+              <li><Link href="/shop?category=art%20%26%20paintings" className="text-brand-secondary hover:text-brand-primary transition-colors flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-secondary/50"></span> Art & Paintings</Link></li>
+              <li><Link href="/shop?category=festival%20%26%20festive" className="text-brand-secondary hover:text-brand-primary transition-colors flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-brand-secondary/50"></span> Festivals</Link></li>
             </ul>
           </div>
 
@@ -56,7 +56,7 @@ export default function Footer() {
               <ul className="space-y-3 text-sm">
                 <li><Link href="/about" className="text-brand-secondary hover:text-brand-primary transition-colors">About Us</Link></li>
                 <li><Link href="/contact" className="text-brand-secondary hover:text-brand-primary transition-colors">Contact</Link></li>
-                <li><Link href="/sell" className="text-brand-secondary hover:text-brand-primary transition-colors">Become a Seller</Link></li>
+                <li><Link href="/register?role=seller" className="text-brand-secondary hover:text-brand-primary transition-colors">Become a Seller</Link></li>
               </ul>
             </div>
           </div>
