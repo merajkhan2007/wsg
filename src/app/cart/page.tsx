@@ -41,7 +41,31 @@ export default function CartPage() {
         <h1 className="text-3xl font-serif font-bold text-gray-900 mb-8">Your Cart ({items.length} items)</h1>
 
         {!mounted ? (
-          <div className="py-20 text-center text-gray-500">Loading cart...</div>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 animate-pulse">
+            <div className="lg:col-span-2 space-y-6">
+              {[1, 2].map(i => (
+                <div key={i} className="flex flex-col sm:flex-row gap-6 bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+                  <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-xl bg-gray-200 flex-shrink-0"></div>
+                  <div className="flex-grow flex flex-col pt-2">
+                    <div className="h-5 bg-gray-200 rounded w-3/4 mb-4"></div>
+                    <div className="h-5 bg-gray-200 rounded w-1/4 mb-6"></div>
+                    <div className="flex gap-4 mt-auto">
+                       <div className="h-10 bg-gray-200 rounded-full w-24"></div>
+                       <div className="h-10 bg-gray-200 rounded-full w-20"></div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+            <div className="lg:col-span-1">
+              <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 h-80 flex flex-col">
+                <div className="h-6 bg-gray-200 rounded w-1/2 mb-8"></div>
+                <div className="h-4 bg-gray-200 rounded w-full mb-4"></div>
+                <div className="h-4 bg-gray-200 rounded w-full mb-8"></div>
+                <div className="h-14 bg-gray-200 rounded-full w-full mt-auto"></div>
+              </div>
+            </div>
+          </div>
         ) : items.length === 0 ? (
           <div className="bg-white p-12 text-center rounded-2xl shadow-sm border border-gray-100">
              <div className="w-24 h-24 bg-brand-primary/10 rounded-full flex items-center justify-center mx-auto mb-6 text-brand-primary text-4xl">

@@ -164,7 +164,20 @@ export default function CheckoutPage() {
           {/* Summary Sidebar placeholder for checkout */}
           <div className="hidden lg:block bg-gradient-to-br from-gray-50 to-white p-8 rounded-3xl shadow-sm border border-gray-100 h-fit sticky top-24">
              <div className="flex flex-col gap-6">
-                {!mounted ? <div className="text-gray-500">Loading...</div> : items.map((item) => (
+                {!mounted ? (
+                  <div className="space-y-6 animate-pulse">
+                     {[1, 2, 3].map(i => (
+                       <div key={i} className="flex gap-4">
+                         <div className="w-20 h-20 rounded-xl bg-gray-200 flex-shrink-0"></div>
+                         <div className="flex-1 flex flex-col justify-center">
+                           <div className="h-4 bg-gray-200 rounded w-3/4 mb-2"></div>
+                           <div className="h-3 bg-gray-200 rounded w-1/4 mb-3"></div>
+                           <div className="h-4 bg-gray-200 rounded w-1/3"></div>
+                         </div>
+                       </div>
+                     ))}
+                  </div>
+                ) : items.map((item) => (
                   <div key={item.id} className="flex gap-4">
                     <div className="w-20 h-20 rounded-xl overflow-hidden bg-gray-100 flex-shrink-0">
                       <img src={item.image} alt={item.name} className="w-full h-full object-cover" />

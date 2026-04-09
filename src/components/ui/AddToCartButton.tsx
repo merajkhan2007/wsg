@@ -21,7 +21,7 @@ export default function AddToCartButton({ product }: { product: any }) {
       cart.push({
         id: product.id,
         name: product.title || product.name,
-        price: product.price,
+        price: product.special_price ? Number(product.special_price) : Number(product.price),
         quantity: 1,
         image: parsedImages.length > 0 ? parsedImages[0] : (product.image || 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=200&auto=format&fit=crop'),
       });
