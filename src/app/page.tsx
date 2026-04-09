@@ -133,7 +133,7 @@ export default function Home() {
       
       {/* Hero Section - Slider */}
       <section className="w-full">
-        <div className="relative w-full h-[400px] md:h-[450px] lg:h-[500px] overflow-hidden group">
+        <div className="relative w-full h-[450px] md:h-[550px] lg:h-[650px] overflow-hidden group">
           {HERO_SLIDES.map((slide, index) => (
             <div
               key={index}
@@ -151,11 +151,11 @@ export default function Home() {
                   index === currentSlide ? 'scale-110' : 'scale-100'
                 }`}
               />
-              {slide.title && <div className="absolute inset-0 bg-gradient-to-r from-brand-primary/90 via-brand-secondary/70 to-transparent"></div>}
+              {slide.title && <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent"></div>}
               
               <div className="absolute inset-0 flex flex-col justify-center">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-                  <div className="w-full sm:max-w-2xl">
+                  <div className="w-full sm:max-w-xl md:pl-8">
                     {slide.tag && (
                       <motion.span 
                         key={`tag-${index}`}
@@ -173,7 +173,7 @@ export default function Home() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={index === currentSlide ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                         transition={{ duration: 0.6, delay: 0.1 }}
-                        className="text-4xl md:text-5xl lg:text-7xl font-serif font-bold text-white mb-6 leading-tight"
+                        className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-4 leading-tight"
                         dangerouslySetInnerHTML={{ __html: slide.title }}
                       />
                     )}
@@ -183,7 +183,7 @@ export default function Home() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={index === currentSlide ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
-                        className="text-base md:text-xl text-white/90 mb-10 max-w-lg"
+                        className="text-base md:text-lg text-white/90 mb-8 max-w-lg"
                       >
                         {slide.description}
                       </motion.p>
