@@ -1,5 +1,6 @@
-import { NextResponse } from 'next/server';
+import { NextResponse, NextRequest } from 'next/server';
 import { query } from '@/lib/db';
+import { getUser } from '@/lib/auth';
 
 export async function GET(req: Request) {
   try {
@@ -79,6 +80,34 @@ export async function POST(req: Request) {
     return NextResponse.json(order, { status: 201 });
   } catch (error: any) {
     console.error('Create Order Error:', error);
+    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
+  }
+}
+
+export async function PATCH(req: NextRequest) {
+  try {
+    const user = getUser(req);
+    if (!user) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
+    const { order_id, action } = await req.json();
+
+    if (action === 'cancel' && order_id) {
+       const check = await query('SELECT status FROM orders WHERE id = $1 AND user_id = $2', [order_id, user.id]);
+       if (check.rowCount === 0) return NextResponse.json({ error: 'Order not found or unauthorized' }, { status: 404 });
+       
+       const status = check.rows[0].status;
+       // Only allow cancellation if it hasn't shipped
+       if (['pending', 'pending_verification', 'processing'].includes(status)) {
+           await query("UPDATE orders SET status = 'cancelled' WHERE id = $1", [order_id]);
+           return NextResponse.json({ success: true, message: 'Order successfully cancelled' });
+       } else {
+           return NextResponse.json({ error: 'Order cannot be cancelled at this stage' }, { status: 400 });
+       }
+    }
+
+    return NextResponse.json({ error: 'Invalid operation' }, { status: 400 });
+  } catch (error: any) {
+    console.error('Update Order Error:', error);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }

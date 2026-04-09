@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { Package, Heart, Settings, LogOut, MessageSquare, Send, Clock, User as UserIcon, Trash2, ShoppingCart } from 'lucide-react';
+import { Package, Heart, Settings, LogOut, MessageSquare, Send, Clock, User as UserIcon, Trash2, ShoppingCart, XCircle } from 'lucide-react';
 import Link from 'next/link';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
@@ -12,6 +12,7 @@ export default function CustomerDashboard() {
   const [user, setUser] = useState<any>(null);
   const [orders, setOrders] = useState<any[]>([]);
   const [loadingOrders, setLoadingOrders] = useState(true);
+  const [isCancelling, setIsCancelling] = useState<number | null>(null);
   
   const [activeTab, setActiveTab] = useState<'orders' | 'messages' | 'wishlist' | 'settings'>('orders');
   
@@ -114,6 +115,31 @@ export default function CustomerDashboard() {
     localStorage.removeItem('user');
     window.dispatchEvent(new Event('user_updated'));
     router.push('/login');
+  };
+
+  const handleCancelOrder = async (orderId: number) => {
+    if (!window.confirm('Are you sure you want to cancel this order?')) return;
+    setIsCancelling(orderId);
+    try {
+      const res = await fetch('/api/orders', {
+        method: 'PATCH',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ order_id: orderId, action: 'cancel' })
+      });
+      const data = await res.json();
+      if (data.success) {
+        setOrders(orders.map(o => o.id === orderId ? { ...o, status: 'cancelled' } : o));
+      } else {
+        alert(data.error || 'Failed to cancel order');
+      }
+    } catch(err) {
+      alert('An error occurred');
+    } finally {
+       setIsCancelling(null);
+    }
   };
 
   const loadConversation = async (conv: any) => {
@@ -305,6 +331,15 @@ export default function CustomerDashboard() {
                           >
                             <MessageSquare size={16} /> Need Support
                           </button>
+                          {['pending', 'pending_verification', 'processing'].includes(order.status) && (
+                             <button
+                               onClick={() => handleCancelOrder(order.id)}
+                               disabled={isCancelling === order.id}
+                               className="text-center bg-red-50 text-red-600 px-6 py-2 rounded-full font-medium hover:bg-red-100 transition-colors flex items-center justify-center border border-red-200 disabled:opacity-50"
+                             >
+                               {isCancelling === order.id ? 'Loading...' : 'Cancel Order'}
+                             </button>
+                          )}
                           <Link href={`/dashboard/customer/order/${order.id}`} className="text-center bg-gray-50 text-gray-700 px-6 py-2 rounded-full font-medium hover:bg-gray-100 transition-colors flex items-center justify-center">
                             View Details
                           </Link>
