@@ -62,14 +62,6 @@ export default function Home() {
       description: "Bring warmth and character to your home with our artisanal mandalas, candles, and decor pieces.",
       btnText: "Shop Home Decor",
       link: "/category/home-decor"
-    },
-    {
-      image: "/hero-banner.png",
-      tag: "",
-      title: "",
-      description: "",
-      btnText: "",
-      link: "/shop"
     }
   ];
 
