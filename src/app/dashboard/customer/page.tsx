@@ -324,23 +324,23 @@ export default function CustomerDashboard() {
                           <p className="text-xs text-gray-500 mb-1">Placed on {new Date(order.created_at).toLocaleDateString()}</p>
                           <p className="font-semibold text-gray-900">Total: ₹{Number(order.total_amount).toFixed(2)}</p>
                         </div>
-                        <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+                        <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto mt-4 sm:mt-0">
                           <button 
                             onClick={() => startChatFromOrder(order)}
-                            className="text-center bg-orange-100 text-orange-700 px-6 py-2 rounded-full font-medium hover:bg-orange-200 transition-colors flex items-center justify-center gap-2 border border-orange-200"
+                            className="text-center bg-orange-50 text-orange-700 px-4 py-2 rounded-xl text-sm font-medium hover:bg-orange-100 transition-colors flex items-center justify-center gap-1.5 border border-orange-200 whitespace-nowrap shadow-sm"
                           >
-                            <MessageSquare size={16} /> Need Support
+                            <MessageSquare size={14} /> Need Support
                           </button>
                           {['pending', 'pending_verification', 'processing'].includes(order.status) && (
                              <button
                                onClick={() => handleCancelOrder(order.id)}
                                disabled={isCancelling === order.id}
-                               className="text-center bg-red-50 text-red-600 px-6 py-2 rounded-full font-medium hover:bg-red-100 transition-colors flex items-center justify-center border border-red-200 disabled:opacity-50"
+                               className="text-center bg-red-50 text-red-600 px-4 py-2 rounded-xl text-sm font-medium hover:bg-red-100 transition-colors flex items-center justify-center border border-red-200 disabled:opacity-50 whitespace-nowrap shadow-sm"
                              >
                                {isCancelling === order.id ? 'Loading...' : 'Cancel Order'}
                              </button>
                           )}
-                          <Link href={`/dashboard/customer/order/${order.id}`} className="text-center bg-gray-50 text-gray-700 px-6 py-2 rounded-full font-medium hover:bg-gray-100 transition-colors flex items-center justify-center">
+                          <Link href={`/dashboard/customer/order/${order.id}`} className="text-center bg-white text-gray-700 px-4 py-2 rounded-xl text-sm font-medium hover:bg-gray-50 border border-gray-200 transition-colors flex items-center justify-center whitespace-nowrap shadow-sm">
                             View Details
                           </Link>
                         </div>
