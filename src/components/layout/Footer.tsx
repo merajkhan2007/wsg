@@ -93,6 +93,7 @@ export default function Footer() {
             <Link href="/privacy" className="text-brand-secondary hover:text-brand-primary transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="text-brand-secondary hover:text-brand-primary transition-colors">Terms of Service</Link>
             <Link href="/refund-policy" className="text-brand-secondary hover:text-brand-primary transition-colors">Refund Policy</Link>
+            <Link href="/cancellation-policy" className="text-brand-secondary hover:text-brand-primary transition-colors">Cancellation Policy</Link>
             <Link href="/shipping" className="text-brand-secondary hover:text-brand-primary transition-colors">Shipping Info</Link>
           </div>
         </div>
