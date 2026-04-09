@@ -56,6 +56,14 @@ export default function Home() {
       link: "/category/personalized"
     },
     {
+      image: "/hero-slider-3.png",
+      tag: "Elegant Living",
+      title: "Transform Your Space <br /> with Handcrafted Decor",
+      description: "Bring warmth and character to your home with our artisanal mandalas, candles, and decor pieces.",
+      btnText: "Shop Home Decor",
+      link: "/category/home-decor"
+    },
+    {
       image: "/hero-banner.png",
       tag: "",
       title: "",
