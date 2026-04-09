@@ -33,19 +33,36 @@ export async function GET(req: Request) {
 
 export async function POST(req: Request) {
   try {
-    const { user_id, items, address, phone } = await req.json();
+    const { user_id, items, address, phone, payment_method, razorpay_order_id, razorpay_payment_id, razorpay_signature } = await req.json();
     // items should be [{ product_id, quantity, price }]
 
-    if (!user_id || !items || items.length === 0 || !address || !phone) {
-      return NextResponse.json({ error: 'Missing user_id, items, address, or phone' }, { status: 400 });
+    if (!user_id || !items || items.length === 0 || !address || !phone || !payment_method) {
+      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+    }
+
+    if (payment_method === 'Razorpay') {
+      if (!razorpay_order_id || !razorpay_payment_id || !razorpay_signature) {
+         return NextResponse.json({ error: 'Missing Razorpay details' }, { status: 400 });
+      }
+      
+      const crypto = require('crypto');
+      const generated_signature = crypto
+        .createHmac('sha256', process.env.RAZORPAY_KEY_SECRET!)
+        .update(razorpay_order_id + "|" + razorpay_payment_id)
+        .digest('hex');
+
+      if (generated_signature !== razorpay_signature) {
+        return NextResponse.json({ error: 'Payment verification failed' }, { status: 400 });
+      }
     }
 
     const total_amount = items.reduce((sum: number, item: any) => sum + (item.price * item.quantity), 0);
+    const payment_status = payment_method === 'Razorpay' ? 'paid' : 'pending';
 
     // Insert order
     const orderResult = await query(
-      'INSERT INTO orders (user_id, total_amount, address, phone) VALUES ($1, $2, $3, $4) RETURNING *',
-      [user_id, total_amount, address, phone]
+      'INSERT INTO orders (user_id, total_amount, address, phone, payment_method, payment_status, razorpay_order_id, razorpay_payment_id, razorpay_signature) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *',
+      [user_id, total_amount, address, phone, payment_method, payment_status, razorpay_order_id || null, razorpay_payment_id || null, razorpay_signature || null]
     );
     const order = orderResult.rows[0];
 
