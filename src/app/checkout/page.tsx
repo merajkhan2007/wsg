@@ -159,9 +159,13 @@ export default function CheckoutPage() {
       <div className="min-h-[80vh] flex items-center justify-center bg-surface-light px-4">
         <div className="bg-white p-12 rounded-3xl shadow-soft border border-gray-100 max-w-lg w-full text-center">
           <CheckCircle2 className="w-24 h-24 text-green-500 mx-auto mb-6" />
-          <h1 className="text-3xl font-serif font-bold text-gray-900 mb-4">Payment Successful!</h1>
+          <h1 className="text-3xl font-serif font-bold text-gray-900 mb-4">
+            {paymentMethod === 'COD' ? 'Order Placed, Pending Verification' : 'Payment Successful!'}
+          </h1>
           <p className="text-gray-600 mb-8 leading-relaxed">
-            Thank you for shopping with WeSoulGifts. Your order has been placed successfully. A confirmation email has been sent to you.
+            {paymentMethod === 'COD' 
+              ? 'Thank you for shopping with WeSoulGifts. Your Cash on Delivery order is currently pending verification. Our team will contact you shortly to confirm your order.' 
+              : 'Thank you for shopping with WeSoulGifts. Your order has been placed successfully. A confirmation email has been sent to you.'}
           </p>
           <div className="bg-gray-50 p-4 rounded-xl mb-8 border border-gray-100 text-left text-sm text-gray-500 space-y-2">
             <div className="flex justify-between"><span>Order Number:</span> <span className="font-semibold text-gray-900">#WSG-{placedOrderId ? String(placedOrderId).padStart(4, '0') : '0000'}</span></div>
@@ -260,7 +264,7 @@ export default function CheckoutPage() {
               </div>
 
               <button type="submit" disabled={items.length === 0 || isProcessing} className="w-full bg-brand-accent text-white py-4 rounded-full font-bold text-lg hover:bg-brand-dark transition-colors shadow-glow mt-8 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed">
-                 {isProcessing ? 'Processing... ' : `Pay ₹${total}`}
+                 {isProcessing ? 'Processing... ' : (paymentMethod === 'COD' ? 'Confirm COD Order' : `Pay ₹${total}`)}
               </button>
             </form>
           </div>
