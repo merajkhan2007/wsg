@@ -10,6 +10,11 @@ export async function POST(req: Request) {
 
     const keyId = (process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || '').replace(/['"]/g, '').trim();
     const keySecret = (process.env.RAZORPAY_KEY_SECRET || '').replace(/['"]/g, '').trim();
+    
+    if (!keyId || !keySecret) {
+       return NextResponse.json({ error: `Vercel Configuration Error: NEXT_PUBLIC_RAZORPAY_KEY_ID or RAZORPAY_KEY_SECRET is completely empty! Please double check your Vercel variables.` }, { status: 400 });
+    }
+
     const authHeader = `Basic ${Buffer.from(`${keyId}:${keySecret}`).toString('base64')}`;
 
     const res = await fetch('https://api.razorpay.com/v1/orders', {
