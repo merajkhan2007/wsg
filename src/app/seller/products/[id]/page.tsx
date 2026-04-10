@@ -26,7 +26,8 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
     price: '',
     special_price: '',
     stock: '',
-    category_id: ''
+    category_id: '',
+    delivery_days: '3'
   });
 
   useEffect(() => {
@@ -48,7 +49,8 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
                price: product.price ? product.price.toString() : '',
                special_price: product.special_price ? product.special_price.toString() : '',
                stock: product.stock !== null ? product.stock.toString() : '',
-               category_id: product.category_id ? product.category_id.toString() : ''
+               category_id: product.category_id ? product.category_id.toString() : '',
+               delivery_days: product.delivery_days ? product.delivery_days.toString() : '3'
             });
 
             if (product.images && Array.isArray(product.images)) {
@@ -130,7 +132,8 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
           special_price: formData.special_price ? parseFloat(formData.special_price) : null,
           stock: parseInt(formData.stock),
           category_id: parseInt(formData.category_id),
-          images: uploadedImages
+          images: uploadedImages,
+          delivery_days: parseInt(formData.delivery_days) || 3
         })
       });
 
@@ -353,6 +356,21 @@ export default function EditProductPage({ params }: { params: { id: string } }) 
                         placeholder="e.g. 50"
                         className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-brand-accent transition-all text-gray-900 font-mono"
                      />
+                  </div>
+                  
+                  <div>
+                     <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Delivery Days</label>
+                     <input 
+                        type="number"
+                        name="delivery_days"
+                        required
+                        min="1"
+                        value={formData.delivery_days}
+                        onChange={handleChange}
+                        placeholder="e.g. 3"
+                        className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-brand-accent transition-all text-gray-900 font-mono"
+                     />
+                     <p className="text-[10px] text-gray-500 mt-1">Expected delivery time in days.</p>
                   </div>
                </div>
             </div>
