@@ -1,6 +1,7 @@
 "use client";
 
 import { ShoppingCart } from 'lucide-react';
+import toast from 'react-hot-toast';
 
 export default function AddToCartButton({ product }: { product: any }) {
   const handleAddToCart = () => {
@@ -28,7 +29,17 @@ export default function AddToCartButton({ product }: { product: any }) {
     }
 
     localStorage.setItem('cart', JSON.stringify(cart));
-    alert('Added to cart!');
+    toast.success(`${product.title || product.name || 'Item'} added to cart!`, {
+      style: {
+        background: '#fff',
+        color: '#333',
+        border: '1px solid #E94E77',
+      },
+      iconTheme: {
+        primary: '#E94E77',
+        secondary: '#fff',
+      },
+    });
     window.dispatchEvent(new Event('cart_updated')); // Trigger navbar update if needed
   };
 

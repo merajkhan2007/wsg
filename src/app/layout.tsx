@@ -3,6 +3,7 @@ import { Inter, Playfair_Display, Montserrat } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import WhatsAppWidget from "@/components/layout/WhatsAppWidget";
+import { Toaster } from 'react-hot-toast';
 import "./globals.css";
 
 // Force Vercel Build Trigger - 2026-04-08
@@ -30,6 +31,22 @@ export default function RootLayout({
         </main>
         <Footer />
         <WhatsAppWidget />
+        <Toaster 
+          position="bottom-center" 
+          toastOptions={{
+            style: {
+              background: '#333',
+              color: '#fff',
+              borderRadius: '10px',
+            },
+            success: {
+              iconTheme: {
+                primary: '#4ade80',
+                secondary: '#fff',
+              },
+            },
+          }} 
+        />
       </body>
     </html>
   );
