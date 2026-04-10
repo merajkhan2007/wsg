@@ -8,6 +8,7 @@ import AddToWishlistButton from '@/components/ui/AddToWishlistButton';
 import BuyNowButton from '@/components/ui/BuyNowButton';
 import ProductGallery from '@/components/ui/ProductGallery';
 import RelatedProductsCarousel from '@/components/ui/RelatedProductsCarousel';
+import TrustBadges from '@/components/ui/TrustBadges';
 
 async function getProduct(id: string) {
   try {
@@ -128,9 +129,13 @@ export default async function ProductPage({ params }: { params: { id: string } }
             </div>
 
             {/* Action Buttons */}
-            <div className="flex flex-wrap gap-4 mb-10 w-full">
+            <div className="flex flex-wrap gap-4 mb-8 w-full">
                <AddToCartButton product={product} />
                <BuyNowButton product={product} />
+            </div>
+
+            <div className="mb-10 w-full">
+               <TrustBadges />
             </div>
 
             {/* DESCRIPTION */}

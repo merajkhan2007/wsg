@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Mail, MapPin } from 'lucide-react';
+import { Mail, MapPin, Lock, CreditCard, ShieldCheck } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -84,6 +84,31 @@ export default function Footer() {
             </div>
           </div>
 
+        </div>
+
+        {/* Secure & Trust Bar */}
+        <div className="py-6 mb-4 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-3 text-white/80">
+            <ShieldCheck className="text-brand-primary" size={24} />
+            <div className="flex flex-col">
+              <span className="text-sm font-bold tracking-wider uppercase text-white">100% Secure Shopping</span>
+              <span className="text-xs text-white/60">SSL Encrypted Checkout</span>
+            </div>
+          </div>
+          <div className="flex items-center gap-4">
+            <span className="text-xs text-white/50 uppercase tracking-widest font-semibold mr-2">We Accept</span>
+            <div className="flex gap-2">
+              <div className="w-12 h-8 rounded bg-white/10 flex items-center justify-center border border-white/5">
+                <CreditCard size={18} className="text-white/80" />
+              </div>
+              <div className="w-12 h-8 rounded bg-white/10 flex items-center justify-center border border-white/5 text-xs font-bold text-white/80">
+                UPI
+              </div>
+              <div className="w-12 h-8 rounded bg-white/10 flex items-center justify-center border border-white/5 text-[10px] font-bold text-white/80 leading-none text-center px-1">
+                Net Banking
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Bottom Bar */}
