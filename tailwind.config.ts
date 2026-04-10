@@ -35,6 +35,8 @@ const config: Config = {
       animation: {
         'fade-in': 'fadeIn 0.5s ease-out',
         'float': 'float 3s ease-in-out infinite',
+        'soft-bounce': 'softBounce 3s ease-in-out infinite',
+        'ping-slow': 'ping 3s cubic-bezier(0, 0, 0.2, 1) infinite',
       },
       keyframes: {
         fadeIn: {
@@ -44,6 +46,10 @@ const config: Config = {
         float: {
           '0%, 100%': { transform: 'translateY(0)' },
           '50%': { transform: 'translateY(-10px)' },
+        },
+        softBounce: {
+          '0%, 100%': { transform: 'translateY(0)', animationTimingFunction: 'cubic-bezier(0.8, 0, 1, 1)' },
+          '50%': { transform: 'translateY(-8px)', animationTimingFunction: 'cubic-bezier(0, 0, 0.2, 1)' },
         }
       }
     },
