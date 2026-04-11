@@ -182,9 +182,16 @@ export default function SellerProductsPage() {
                                     fetch(`/api/products?id=${product.id}`, {
                                        method: 'DELETE',
                                        headers: { 'Authorization': `Bearer ${token}` }
-                                    }).then(res => {
-                                       if(res.ok) setProducts(products.filter((p: any) => p.id !== product.id));
-                                       else alert('Failed to delete product.');
+                                    }).then(async (res) => {
+                                       if(res.ok) {
+                                          setProducts(prev => prev.filter((p: any) => p.id !== product.id));
+                                          alert('Product deleted successfully');
+                                       } else {
+                                          const text = await res.text();
+                                          alert('Failed to delete product: ' + text);
+                                       }
+                                    }).catch(err => {
+                                       alert('Error: ' + err.message);
                                     });
                                  }
                               }}
