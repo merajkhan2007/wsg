@@ -224,41 +224,43 @@ export default function Navbar() {
         </div>
 
         {/* Bottom Menu - Gradient */}
-        <div className="hidden lg:flex bg-premium-gradient h-[50px] items-center relative z-10 shadow-sm w-full px-4 xl:px-10">
-          <div className="flex-1 flex items-center justify-center font-montserrat font-bold text-[12px] xl:text-[14px] leading-snug">
-            <div className="flex items-center gap-4 xl:gap-8 text-white whitespace-nowrap">
-              <Link href="/" className="hover:text-white/80 transition-colors">Home</Link>
-              <Link href="/shop?category=handicrafts" className="hover:text-white/80 transition-colors flex items-center gap-1 group">
-                HandiCrafts <span className="text-[8px] opacity-60 group-hover:text-white/80 transition-colors mt-0.5">▼</span>
-              </Link>
-              <Link href="/shop?category=home%20decor" className="hover:text-white/80 transition-colors flex items-center gap-1 group">
-                Home Decors <span className="text-[8px] opacity-60 group-hover:text-white/80 transition-colors mt-0.5">▼</span>
-              </Link>
-              <Link href="/shop?category=festival%20%26%20festive" className="hover:text-white/80 transition-colors flex items-center gap-1 group">
-                Festivals <span className="text-[8px] opacity-60 group-hover:text-white/80 transition-colors mt-0.5">▼</span>
-              </Link>
-              <Link href="/shop?category=art%20%26%20paintings" className="hover:text-white/80 transition-colors flex items-center gap-1 group">
-                Art and Painting <span className="text-[8px] opacity-60 group-hover:text-white/80 transition-colors mt-0.5">▼</span>
-              </Link>
-              <Link href="/shop?category=jewellery%20%26%20accessories" className="hover:text-white/80 transition-colors flex items-center gap-1 group">
-                Jewellery <span className="text-[8px] opacity-60 group-hover:text-white/80 transition-colors mt-0.5">▼</span>
-              </Link>
-              <Link href="/shop?category=love%20%26%20romance" className="hover:text-white/80 transition-colors flex items-center gap-1 group">
-                Love & Romance <span className="text-[8px] opacity-60 group-hover:text-white/80 transition-colors mt-0.5">▼</span>
-              </Link>
-              <Link href="/shop?category=personalized%20gifts" className="hover:text-white/80 transition-colors flex items-center gap-1 group">
-                Personalise <span className="text-[8px] opacity-60 group-hover:text-white/80 transition-colors mt-0.5">▼</span>
-              </Link>
-              <Link href="/shop?category=birthday" className="hover:text-white/80 transition-colors flex items-center gap-1 group">
-                Birthday Gift <span className="text-[8px] opacity-60 group-hover:text-white/80 transition-colors mt-0.5">▼</span>
+        <div className="hidden lg:flex bg-premium-gradient h-[50px] items-center relative z-10 shadow-sm w-full">
+          <div className="w-full mx-auto px-4 sm:px-8 lg:px-12 flex justify-between items-center">
+            <div className="flex-1 flex items-center justify-start font-montserrat font-bold text-[12px] xl:text-[14px] leading-snug">
+              <div className="flex items-center gap-4 xl:gap-8 text-white whitespace-nowrap">
+                <Link href="/" className="hover:text-white/80 transition-colors">Home</Link>
+                <Link href="/shop?category=handicrafts" className="hover:text-white/80 transition-colors flex items-center gap-1 group">
+                  HandiCrafts <span className="text-[8px] opacity-60 group-hover:text-white/80 transition-colors mt-0.5">▼</span>
+                </Link>
+                <Link href="/shop?category=home%20decor" className="hover:text-white/80 transition-colors flex items-center gap-1 group">
+                  Home Decors <span className="text-[8px] opacity-60 group-hover:text-white/80 transition-colors mt-0.5">▼</span>
+                </Link>
+                <Link href="/shop?category=festival%20%26%20festive" className="hover:text-white/80 transition-colors flex items-center gap-1 group">
+                  Festivals <span className="text-[8px] opacity-60 group-hover:text-white/80 transition-colors mt-0.5">▼</span>
+                </Link>
+                <Link href="/shop?category=art%20%26%20paintings" className="hover:text-white/80 transition-colors flex items-center gap-1 group">
+                  Art and Painting <span className="text-[8px] opacity-60 group-hover:text-white/80 transition-colors mt-0.5">▼</span>
+                </Link>
+                <Link href="/shop?category=jewellery%20%26%20accessories" className="hover:text-white/80 transition-colors flex items-center gap-1 group">
+                  Jewellery <span className="text-[8px] opacity-60 group-hover:text-white/80 transition-colors mt-0.5">▼</span>
+                </Link>
+                <Link href="/shop?category=love%20%26%20romance" className="hover:text-white/80 transition-colors flex items-center gap-1 group">
+                  Love & Romance <span className="text-[8px] opacity-60 group-hover:text-white/80 transition-colors mt-0.5">▼</span>
+                </Link>
+                <Link href="/shop?category=personalized%20gifts" className="hover:text-white/80 transition-colors flex items-center gap-1 group">
+                  Personalise <span className="text-[8px] opacity-60 group-hover:text-white/80 transition-colors mt-0.5">▼</span>
+                </Link>
+                <Link href="/shop?category=birthday" className="hover:text-white/80 transition-colors flex items-center gap-1 group">
+                  Birthday Gift <span className="text-[8px] opacity-60 group-hover:text-white/80 transition-colors mt-0.5">▼</span>
+                </Link>
+              </div>
+            </div>
+            
+            <div className="shrink-0 pl-4 border-l border-white/20 ml-4 hidden 2xl:block">
+              <Link href="/login?tab=register&role=seller" className="bg-white text-brand-primary px-5 py-1.5 rounded-full text-[11px] font-bold shadow-sm hover:bg-brand-base transition-colors flex items-center whitespace-nowrap">
+                Sell on WeSoulGifts
               </Link>
             </div>
-          </div>
-          
-          <div className="shrink-0 pl-4 border-l border-white/20 ml-4 hidden 2xl:block">
-            <Link href="/login?tab=register&role=seller" className="bg-white text-brand-primary px-5 py-1.5 rounded-full text-[11px] font-bold shadow-sm hover:bg-brand-base transition-colors flex items-center whitespace-nowrap">
-              Sell on WeSoulGifts
-            </Link>
           </div>
         </div>
       </nav>
