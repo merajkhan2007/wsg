@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import { Package, PackageSearch, UploadCloud, Download, Plus, Settings2, Check, Gift } from 'lucide-react';
+import { Package, PackageSearch, UploadCloud, Download, Plus, Settings2, Check, Gift, Trash2 } from 'lucide-react';
 import { clsx } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 import Link from 'next/link';
@@ -171,9 +171,28 @@ export default function SellerProductsPage() {
                       </div>
                     </td>
                     <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <Link href={`/seller/products/${product.id}`} className="text-gray-500 hover:text-gray-900 transition-colors p-2 rounded-lg hover:bg-gray-50 inline-block">
-                           <Settings2 className="w-4 h-4"/>
-                        </Link>
+                        <div className="flex items-center justify-end gap-2">
+                           <Link href={`/seller/products/${product.id}`} className="text-gray-500 hover:text-gray-900 transition-colors p-2 rounded-lg hover:bg-gray-50 inline-block">
+                              <Settings2 className="w-4 h-4"/>
+                           </Link>
+                           <button 
+                              onClick={() => {
+                                 if (window.confirm("Are you sure you want to delete this product?")) {
+                                    const token = localStorage.getItem('token') || '';
+                                    fetch(`/api/products?id=${product.id}`, {
+                                       method: 'DELETE',
+                                       headers: { 'Authorization': `Bearer ${token}` }
+                                    }).then(res => {
+                                       if(res.ok) setProducts(products.filter((p: any) => p.id !== product.id));
+                                       else alert('Failed to delete product.');
+                                    });
+                                 }
+                              }}
+                              className="text-red-400 hover:text-red-600 transition-colors p-2 rounded-lg hover:bg-red-50 inline-block"
+                           >
+                              <Trash2 className="w-4 h-4"/>
+                           </button>
+                        </div>
                     </td>
                   </tr>
                   );
