@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ShoppingCart, Heart, Search, Filter } from 'lucide-react';
 import { useSearchParams } from 'next/navigation';
+import QuickAddButton from '@/components/ui/QuickAddButton';
 
 export default function ShopContent({ initialProducts }: { initialProducts: any[] }) {
   const searchParams = useSearchParams();
@@ -109,9 +110,7 @@ export default function ShopContent({ initialProducts }: { initialProducts: any[
                       />
                     </Link>
                     <div className="absolute inset-x-0 bottom-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0 flex justify-center bg-gradient-to-t from-black/50 to-transparent">
-                      <button className="bg-brand-primary/90 backdrop-blur-sm text-white px-4 py-2 w-full rounded-lg text-xs md:text-sm font-medium hover:bg-[#d63b63] transition-colors shadow-sm flex items-center justify-center gap-2">
-                        <ShoppingCart size={16} /> Add
-                      </button>
+                      <QuickAddButton product={product} className="bg-brand-primary/90 backdrop-blur-sm text-white px-4 py-2 w-full rounded-lg text-xs md:text-sm font-medium hover:bg-[#d63b63] transition-colors shadow-sm flex items-center justify-center gap-2" />
                     </div>
                     <button className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm p-1.5 rounded-full text-gray-400 hover:text-brand-primary hover:bg-white transition-all shadow-sm">
                       <Heart size={16} />

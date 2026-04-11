@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Gift, Heart, Sparkles, ShoppingCart, Truck, ShieldCheck, RefreshCw, Headset, Mail, ChevronLeft, ChevronRight } from 'lucide-react';
+import QuickAddButton from '@/components/ui/QuickAddButton';
 
 const CATEGORIES = [
   { name: 'Birthday', image: 'https://images.unsplash.com/photo-1530103862676-de8892bc952f?q=80&w=400&auto=format&fit=crop', link: '/category/birthday' },
@@ -325,9 +326,7 @@ export default function Home() {
                           />
                         </Link>
                         <div className="absolute inset-x-0 bottom-0 p-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-2 group-hover:translate-y-0 flex justify-center bg-gradient-to-t from-black/50 to-transparent pointer-events-none z-10">
-                          <button className="pointer-events-auto bg-brand-primary/90 backdrop-blur-sm text-white px-4 py-2 w-full rounded-lg text-sm font-medium hover:bg-[#d63b63] transition-colors shadow-sm flex items-center justify-center gap-2">
-                            <ShoppingCart size={16} /> Add
-                          </button>
+                          <QuickAddButton product={product} />
                         </div>
                         <button className="absolute z-10 top-2 right-2 bg-white/90 backdrop-blur-sm p-1.5 rounded-full text-gray-400 hover:text-brand-primary hover:bg-white transition-all shadow-sm">
                           <Heart size={16} />
