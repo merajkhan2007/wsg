@@ -23,7 +23,7 @@ export default function RelatedProductsCarousel({ products }: { products: any[] 
   if (!products || products.length === 0) return null;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 pt-16 border-t border-gray-100">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-gray-100">
       <div className="flex items-center justify-between mb-8">
         <h2 className="text-2xl md:text-3xl font-serif font-bold text-gray-900">You May Also Like</h2>
         <div className="flex gap-2">
