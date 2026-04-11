@@ -63,15 +63,15 @@ export async function POST(req: Request) {
     const seller = sellerResult.rows[0];
     if (!seller) return NextResponse.json({ error: 'Seller not found' }, { status: 404 });
 
-    const { title, description, price, special_price, stock, category_id, images, delivery_days } = await req.json();
+    const { title, description, price, special_price, stock, category_id, images, delivery_days, sizes, colors } = await req.json();
 
     if (!title || !price || !category_id) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
     const result = await query(
-      'INSERT INTO products (seller_id, title, description, price, special_price, stock, category_id, images, delivery_days) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING *',
-      [seller.id, title, description, price, special_price || null, stock, category_id, JSON.stringify(images || []), delivery_days || 3]
+      'INSERT INTO products (seller_id, title, description, price, special_price, stock, category_id, images, delivery_days, sizes, colors) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING *',
+      [seller.id, title, description, price, special_price || null, stock, category_id, JSON.stringify(images || []), delivery_days || 3, sizes || null, colors || null]
     );
 
     return NextResponse.json(result.rows[0], { status: 201 });
@@ -97,7 +97,7 @@ export async function PUT(req: Request) {
     const seller = sellerResult.rows[0];
     if (!seller) return NextResponse.json({ error: 'Seller not found' }, { status: 404 });
 
-    const { id, title, description, price, special_price, stock, category_id, images, delivery_days } = await req.json();
+    const { id, title, description, price, special_price, stock, category_id, images, delivery_days, sizes, colors } = await req.json();
 
     if (!id || !title || !price || !category_id) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
@@ -110,8 +110,8 @@ export async function PUT(req: Request) {
     }
 
     const result = await query(
-      'UPDATE products SET title = $1, description = $2, price = $3, special_price = $4, stock = $5, category_id = $6, images = $7, delivery_days = $8 WHERE id = $9 RETURNING *',
-      [title, description, price, special_price || null, stock, category_id, JSON.stringify(images || []), delivery_days || 3, id]
+      'UPDATE products SET title = $1, description = $2, price = $3, special_price = $4, stock = $5, category_id = $6, images = $7, delivery_days = $8, sizes = $10, colors = $11 WHERE id = $9 RETURNING *',
+      [title, description, price, special_price || null, stock, category_id, JSON.stringify(images || []), delivery_days || 3, id, sizes || null, colors || null]
     );
 
     return NextResponse.json(result.rows[0], { status: 200 });

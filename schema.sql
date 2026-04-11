@@ -195,3 +195,8 @@ INSERT INTO categories (name) VALUES
 ('Festival & Festive'),
 ('Personalized Gifts')
 ON CONFLICT (name) DO NOTHING;
+
+ALTER TABLE products ADD COLUMN IF NOT EXISTS sizes VARCHAR(255);
+ALTER TABLE products ADD COLUMN IF NOT EXISTS colors VARCHAR(255);
+ALTER TABLE order_items ADD COLUMN IF NOT EXISTS size VARCHAR(50);
+ALTER TABLE order_items ADD COLUMN IF NOT EXISTS color VARCHAR(50);

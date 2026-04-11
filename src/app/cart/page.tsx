@@ -20,14 +20,14 @@ export default function CartPage() {
     window.dispatchEvent(new Event('cart_updated'));
   };
 
-  const updateQuantity = (id: number, delta: number) => {
+  const updateQuantity = (id: number, size: string | null, color: string | null, delta: number) => {
     saveCart(items.map(item => 
-      item.id === id ? { ...item, quantity: Math.max(1, item.quantity + delta) } : item
+      (item.id === id && item.size === size && item.color === color) ? { ...item, quantity: Math.max(1, item.quantity + delta) } : item
     ));
   };
 
-  const removeItem = (id: number) => {
-    saveCart(items.filter(item => item.id !== id));
+  const removeItem = (id: number, size: string | null, color: string | null) => {
+    saveCart(items.filter(item => !(item.id === id && item.size === size && item.color === color)));
   };
 
   const subtotal = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
@@ -81,28 +81,35 @@ export default function CartPage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {/* Cart Items */}
             <div className="lg:col-span-2 space-y-6">
-              {items.map(item => (
-                <div key={item.id} className="flex flex-col sm:flex-row gap-6 bg-white p-6 rounded-2xl shadow-sm border border-gray-100 items-center sm:items-start group hover:border-brand-primary/30 transition-colors">
+              {items.map((item, idx) => (
+                <div key={`${item.id}-${item.size}-${item.color}-${idx}`} className="flex flex-col sm:flex-row gap-6 bg-white p-6 rounded-2xl shadow-sm border border-gray-100 items-center sm:items-start group hover:border-brand-primary/30 transition-colors">
                   <div className="w-24 h-24 sm:w-32 sm:h-32 rounded-xl overflow-hidden flex-shrink-0 bg-gray-100">
                     <img src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
                   </div>
                   
                   <div className="flex-grow flex flex-col items-center sm:items-start text-center sm:text-left">
-                    <h3 className="text-lg font-medium text-gray-900 mb-2">{item.name}</h3>
+                    <h3 className="text-lg font-medium text-gray-900 mb-1">{item.name}</h3>
+                    {(item.size || item.color) && (
+                      <div className="text-sm text-gray-500 mb-2 flex items-center gap-2">
+                        {item.color && <span>Color: <strong>{item.color}</strong></span>}
+                        {item.size && item.color && <span>|</span>}
+                        {item.size && <span>Size: <strong>{item.size}</strong></span>}
+                      </div>
+                    )}
                     <p className="text-brand-primary font-semibold text-lg mb-4">₹{item.price}</p>
                     
                     <div className="flex items-center gap-6 mt-auto">
                       <div className="flex items-center border border-gray-200 rounded-full overflow-hidden">
-                        <button onClick={() => updateQuantity(item.id, -1)} className="p-2 text-gray-500 hover:text-brand-primary hover:bg-brand-primary/5 transition-colors">
+                        <button onClick={() => updateQuantity(item.id, item.size || null, item.color || null, -1)} className="p-2 text-gray-500 hover:text-brand-primary hover:bg-brand-primary/5 transition-colors">
                           <Minus size={16} />
                         </button>
                         <span className="w-10 text-center font-medium text-gray-900">{item.quantity}</span>
-                        <button onClick={() => updateQuantity(item.id, 1)} className="p-2 text-gray-500 hover:text-brand-primary hover:bg-brand-primary/5 transition-colors">
+                        <button onClick={() => updateQuantity(item.id, item.size || null, item.color || null, 1)} className="p-2 text-gray-500 hover:text-brand-primary hover:bg-brand-primary/5 transition-colors">
                           <Plus size={16} />
                         </button>
                       </div>
                       
-                      <button onClick={() => removeItem(item.id)} className="text-gray-400 hover:text-red-500 transition-colors flex items-center gap-1 text-sm font-medium">
+                      <button onClick={() => removeItem(item.id, item.size || null, item.color || null)} className="text-gray-400 hover:text-red-500 transition-colors flex items-center gap-1 text-sm font-medium">
                         <Trash2 size={16} /> Remove
                       </button>
                     </div>

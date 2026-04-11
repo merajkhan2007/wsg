@@ -3,9 +3,8 @@ import { notFound } from 'next/navigation';
 import { ShoppingCart, Heart, Star, ShieldCheck, Truck, Clock } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import AddToCartButton from '@/components/ui/AddToCartButton';
+import ProductOptions from '@/components/ui/ProductOptions';
 import AddToWishlistButton from '@/components/ui/AddToWishlistButton';
-import BuyNowButton from '@/components/ui/BuyNowButton';
 import ProductGallery from '@/components/ui/ProductGallery';
 import RelatedProductsCarousel from '@/components/ui/RelatedProductsCarousel';
 import TrustBadges from '@/components/ui/TrustBadges';
@@ -107,10 +106,7 @@ export default async function ProductPage({ params }: { params: { id: string } }
 
             <div className="text-[#10b981] font-bold mb-2 text-[17px]">In Stock</div>
 
-            <div className="flex items-center gap-2 mb-4">
-               <span className="font-extrabold text-[#111827]">Size:</span>
-               <span className="border-[1.5px] border-[#1d2b36] px-5 py-1.5 text-xs font-bold text-[#1d2b36] uppercase tracking-wider">REGULAR</span>
-            </div>
+
 
             <div className="mb-2 text-[15px] flex items-center">
                <span className="font-extrabold text-[#111827]">Brand:</span>
@@ -128,11 +124,8 @@ export default async function ProductPage({ params }: { params: { id: string } }
                <span className="text-[#35434d] ml-1 flex-1">Apr 12 - Apr 22</span>
             </div>
 
-            {/* Action Buttons */}
-            <div className="flex flex-wrap gap-4 mb-8 w-full">
-               <AddToCartButton product={product} />
-               <BuyNowButton product={product} />
-            </div>
+            {/* Action Buttons & Options */}
+            <ProductOptions product={product} />
 
             <div className="mb-10 w-full">
                <TrustBadges />

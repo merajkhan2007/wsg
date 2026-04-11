@@ -25,7 +25,9 @@ export default function CreateProductPage() {
     special_price: '',
     stock: '',
     category_id: '',
-    delivery_days: '3'
+    delivery_days: '3',
+    sizes: '',
+    colors: ''
   });
 
   useEffect(() => {
@@ -100,7 +102,9 @@ export default function CreateProductPage() {
           stock: parseInt(formData.stock),
           category_id: parseInt(formData.category_id),
           images: uploadedImages,
-          delivery_days: parseInt(formData.delivery_days) || 3
+          delivery_days: parseInt(formData.delivery_days) || 3,
+          sizes: formData.sizes.trim(),
+          colors: formData.colors.trim()
         })
       });
 
@@ -173,6 +177,30 @@ export default function CreateProductPage() {
                         placeholder="Detail the materials, dimensions, and story behind this product..."
                         className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-brand-accent transition-all text-gray-900 resize-none leading-relaxed"
                      />
+                  </div>
+                  <div>
+                     <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Available Sizes</label>
+                     <input 
+                        type="text" 
+                        name="sizes"
+                        value={formData.sizes}
+                        onChange={handleChange}
+                        placeholder="e.g. S, M, L, XL or 10 inch, 12 inch (comma separated)"
+                        className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-brand-accent transition-all text-gray-900 font-medium"
+                     />
+                     <p className="text-[10px] text-gray-500 mt-1">Leave empty if standard size.</p>
+                  </div>
+                  <div>
+                     <label className="block text-xs font-semibold text-gray-400 uppercase tracking-wider mb-2">Available Colors</label>
+                     <input 
+                        type="text" 
+                        name="colors"
+                        value={formData.colors}
+                        onChange={handleChange}
+                        placeholder="e.g. Red, Blue, Green (comma separated)"
+                        className="w-full px-4 py-3 bg-gray-50/50 border border-gray-200 rounded-xl focus:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-brand-accent transition-all text-gray-900 font-medium"
+                     />
+                     <p className="text-[10px] text-gray-500 mt-1">Leave empty if only one color exists.</p>
                   </div>
                </div>
             </div>

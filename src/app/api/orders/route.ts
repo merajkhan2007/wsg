@@ -72,8 +72,8 @@ export async function POST(req: Request) {
     // Insert order items
     for (const item of items) {
       await query(
-        'INSERT INTO order_items (order_id, product_id, quantity, price) VALUES ($1, $2, $3, $4)',
-        [order.id, item.product_id, item.quantity, item.price]
+        'INSERT INTO order_items (order_id, product_id, quantity, price, size, color) VALUES ($1, $2, $3, $4, $5, $6)',
+        [order.id, item.product_id, item.quantity, item.price, item.size || null, item.color || null]
       );
     }
 

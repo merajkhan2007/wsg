@@ -2,11 +2,20 @@
 
 import { ShoppingBasket } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
 
-export default function BuyNowButton({ product }: { product: any }) {
+export default function BuyNowButton({ product, selectedSize, selectedColor, hasSizes, hasColors }: { product: any, selectedSize?: string, selectedColor?: string, hasSizes?: boolean, hasColors?: boolean }) {
   const router = useRouter();
 
   const handleBuyNow = () => {
+    if (hasSizes && !selectedSize) {
+      toast.error('Please select a size first.');
+      return;
+    }
+    if (hasColors && !selectedColor) {
+      toast.error('Please select a color first.');
+      return;
+    }
     const existing = localStorage.getItem('cart');
     let cart = existing ? JSON.parse(existing) : [];
 
@@ -17,7 +26,12 @@ export default function BuyNowButton({ product }: { product: any }) {
       parsedImages = product.images;
     }
 
-    const itemIndex = cart.findIndex((item: any) => item.id === product.id);
+    const itemIndex = cart.findIndex((item: any) => 
+      item.id === product.id && 
+      item.size === (selectedSize || null) && 
+      item.color === (selectedColor || null)
+    );
+    
     if (itemIndex > -1) {
       cart[itemIndex].quantity += 1;
     } else {
@@ -27,6 +41,8 @@ export default function BuyNowButton({ product }: { product: any }) {
         price: product.special_price ? Number(product.special_price) : Number(product.price),
         quantity: 1,
         image: parsedImages.length > 0 ? parsedImages[0] : (product.image || 'https://images.unsplash.com/photo-1549465220-1a8b9238cd48?q=80&w=200&auto=format&fit=crop'),
+        size: selectedSize || null,
+        color: selectedColor || null
       });
     }
 
