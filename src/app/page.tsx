@@ -154,7 +154,7 @@ export default function Home() {
               {slide.title && <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/30 to-transparent"></div>}
               
               <div className="absolute inset-0 flex flex-col justify-center">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
                   <div className="w-full sm:max-w-xl md:pl-8">
                     {slide.tag && (
                       <motion.span 
@@ -239,7 +239,7 @@ export default function Home() {
       </section>
 
       {/* Trust Bar */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 mb-4">
+      <section className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 mt-8 mb-4">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 p-6 bg-white rounded-2xl shadow-sm border border-gray-100">
           <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3 sm:gap-4">
             <div className="w-12 h-12 rounded-full bg-blue-50 flex items-center justify-center text-blue-500 shrink-0">
@@ -284,7 +284,7 @@ export default function Home() {
       <div className="">
         {categories.map((categoryGroup, index) => (
           <section key={index} className={`py-10 ${index % 2 === 0 ? 'bg-surface-light' : 'bg-white'}`}>
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8">
               <div className="flex justify-between items-end mb-10">
                 <div>
                   <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-2">{categoryGroup.name}</h2>
@@ -295,7 +295,7 @@ export default function Home() {
                 </Link>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-5 lg:gap-6">
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-5 lg:gap-6">
                 {categoryGroup.products.map((product: any, pIndex: number) => {
                   let parsedImages: string[] = [];
                   if (typeof product.images === 'string') {

@@ -23,7 +23,7 @@ export default function RelatedProductsCarousel({ products }: { products: any[] 
   if (!products || products.length === 0) return null;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-gray-100">
+    <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8 mt-12 pt-8 border-t border-gray-100">
       <div className="flex items-center justify-between mb-8">
         <h2 className="text-2xl md:text-3xl font-serif font-bold text-gray-900">You May Also Like</h2>
         <div className="flex gap-2">
@@ -68,7 +68,7 @@ export default function RelatedProductsCarousel({ products }: { products: any[] 
             return (
               <div 
                 key={relProduct.id} 
-                className="snap-start flex-none w-[160px] sm:w-[220px] lg:w-[calc(20%-1.6rem)] group flex flex-col bg-white p-3 rounded-[12px] shadow-sm border border-gray-50 hover:shadow-[0_8px_25px_rgba(233,78,119,0.12)] transition-all duration-300 transform hover:-translate-y-1"
+                className="snap-start flex-none w-[160px] sm:w-[220px] lg:w-[calc(16.666%-1.5rem)] group flex flex-col bg-white p-3 rounded-[12px] shadow-sm border border-gray-50 hover:shadow-[0_8px_25px_rgba(233,78,119,0.12)] transition-all duration-300 transform hover:-translate-y-1"
               >
                 <div className="relative overflow-hidden rounded-xl mb-3 aspect-[4/5] bg-brand-base border border-gray-50">
                   <Link href={`/product/${relProduct.id}`} className="absolute inset-0 z-0">

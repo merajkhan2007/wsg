@@ -40,7 +40,7 @@ export default function ShopContent({ initialProducts }: { initialProducts: any[
 
   return (
     <div className="min-h-screen bg-surface-light pt-10 pb-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1536px] mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 gap-6">
@@ -81,7 +81,7 @@ export default function ShopContent({ initialProducts }: { initialProducts: any[
 
         {/* Product Grid */}
         {displayProducts.length > 0 ? (
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6 lg:gap-8">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6 lg:gap-8">
             {displayProducts.map((product) => {
               let parsedImages: string[] = [];
               if (typeof product.images === 'string') {
