@@ -68,7 +68,7 @@ export default function RelatedProductsCarousel({ products }: { products: any[] 
             return (
               <div 
                 key={relProduct.id} 
-                className="snap-start flex-none w-[160px] sm:w-[220px] lg:w-[calc(16.666%-1.5rem)] group flex flex-col bg-white p-3 rounded-[12px] shadow-sm border border-gray-50 hover:shadow-[0_8px_25px_rgba(233,78,119,0.12)] transition-all duration-300 transform hover:-translate-y-1"
+                className="snap-start flex-none w-[160px] sm:w-[220px] lg:w-[calc(20%-1.6rem)] group flex flex-col bg-white p-3 rounded-[12px] shadow-sm border border-gray-50 hover:shadow-[0_8px_25px_rgba(233,78,119,0.12)] transition-all duration-300 transform hover:-translate-y-1"
               >
                 <div className="relative overflow-hidden rounded-xl mb-3 aspect-[4/5] bg-brand-base border border-gray-50">
                   <Link href={`/product/${relProduct.id}`} className="absolute inset-0 z-0">
